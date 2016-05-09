@@ -231,7 +231,7 @@
 			var cleanState = function(el) {
 				$('.close-popup').click();
 			    $(el)[0].reset();
-			    $(this).find('[type="submit"]').removeAttr('disabled');	
+			    $(el).find('[type="submit"]').removeAttr('disabled');	
 			}
 
 			$('[data-action="wod-selector"]:not(:disabled)').click(function(e){

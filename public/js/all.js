@@ -9,6 +9,13 @@ $(function() {
     /*-------------------------------------------------*/
 	$("select").selectOrDie();
 
+    //hack for https://github.com/vestman/Select-or-Die/issues/22
+    $('.sod_select.touch .sod').change(function() {
+        var newValue = $(this).find('option:selected').val();
+        $('.sod_option.selected.active').removeClass('selected active');
+        $('.sod_option[data-value="'+newValue+'"]').addClass('selected active');
+    });
+
 	/*-------------------------------------------------*/
     /* =  Popup notification
     /*-------------------------------------------------*/
@@ -29,10 +36,17 @@ $(function() {
     });
 
     /*-------------------------------------------------*/
-    /* =  scroll on link
+    /* =  Scroll on link
     /*-------------------------------------------------*/
+    if ($(window).width() < 950) {
+      var top_ofset = $('header').height() + 60;
+    }
+    else {
+      var top_ofset = $('header').height() + 10;
+    }
+
     $('header nav ul a').smoothScroll({
-      offset: 0,
+      offset: - top_ofset,
       // one of 'top' or 'left'
       direction: 'top',
       easing: 'easeInOutExpo',
