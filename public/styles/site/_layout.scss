@@ -197,12 +197,14 @@ section.gray-section {
     }
 }
 
-.footer-main small {
-    position: relative;
-    top: 9px;
-    color: #777777;
-    font-size: 14px;
-    font-family: 'Open Sans', sans-serif;
+.footer-main {
+    small {
+        position: relative;
+        top: 9px;
+        color: #777777;
+        font-size: 14px;
+        font-family: 'Open Sans', sans-serif;
+    }
     .social-links a {
         color: white;
         display: inline-block;
