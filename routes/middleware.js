@@ -24,6 +24,10 @@ exports.initLocals = function(req, res, next) {
 	var locals = res.locals;
 	
 	locals.user = req.user;
+
+	console.log(req.protocol + '://' + req.get('host') + req.originalUrl);
+
+	locals.url = req.protocol + '://' + req.get('host') + req.originalUrl;
 	
 	next();
 	
