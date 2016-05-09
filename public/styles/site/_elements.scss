@@ -1,0 +1,304 @@
+.popup {
+    visibility: hidden;
+    opacity: 0;
+    transition: all .3s ease;
+    opacity: 1\9;
+    visibility: visible\9;
+    display: none\9;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 99;
+    overflow-y: auto;
+    transition: all .2s ease-in
+}
+
+.popup.active {
+    visibility: visible;
+    opacity: 1;
+    display: block\9
+}
+
+.popup .close-popup {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    color: #cccccc;
+    line-height: .2;
+    font-size: 43px
+}
+
+.popup .close-popup:hover {
+    color: #222
+}
+
+.popup .overlay-popup {
+    position: absolute;
+    min-height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.8)
+}
+
+.popup .content-popup {
+    max-width: 745px;
+    margin: 100px auto;
+    background-color: #fff;
+    position: relative;
+    z-index: 999;
+    padding: 90px 75px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    @media (max-width: 480px) {
+        margin: 0 auto;
+        padding: 60px 20px;
+    }
+}
+.popup-flash {
+    width: 100%;
+    height: 100%;
+    display: none;
+    background: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999999999;
+    .element {
+	    width: 300px;
+	    height: auto;
+	    position: absolute;
+	    left: 50%;
+	    margin-left: -150px;
+	    top: 50%;
+	    margin-top: -50px;
+	    background-color: #fff;
+	    display: block;
+	    border-radius: 4px;
+	    text-align: center;
+	    padding: 10px;
+	    p, h3 {
+		    color: #000;
+		    margin-bottom: 20px;
+		    &.success {
+		    	color: #15ad9e;
+		    }
+		    &.error {
+		    	color: #ea5555;
+		    }
+		}
+		button {
+		    margin: 0 auto 10px;
+		    height: 40px;
+		    line-height: 36px;
+		    &:hover {
+			    padding-right: 30px
+			}
+		}
+	}
+}
+
+.btn--primary {
+    -webkit-font-smoothing: inherit;
+    transition: all .2s ease-in;
+    overflow: hidden;
+    background-color: transparent;
+    border-radius: 0;
+    color: #111;
+    font-weight: 700;
+    height: 53px;
+    line-height: 53px;
+    width: auto;
+    padding: 0 30px;
+    text-align: center;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-family: "Titillium Web", sans-serif;
+    box-sizing: border-box;
+    height: 56px;
+    line-height: 50px;
+    border: 2px solid #ebebeb;
+    display: inline-block;
+    position: relative;
+    top: 1px
+}
+
+.btn--primary span {
+    position: absolute;
+    top: 50%;
+    -ms-transform: translate(0, -50%);
+    -webkit-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    right: 13px;
+    transition: all .2s ease-in;
+    visibility: hidden;
+    opacity: 0;
+    transition: all .3s ease;
+    opacity: 1\9;
+    visibility: visible\9;
+    display: none\9
+}
+
+.iOS .btn--primary span {
+    opacity: 1;
+    visibility: visible;
+    display: none
+}
+
+.btn--primary:not(:disabled):hover {
+    background-color: #4a8fe7;
+    border-color: #4a8fe7;
+    padding-right: 60px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.btn--primary:not(:disabled):hover span {
+    -ms-transform: translate(-30px, -50%);
+    -webkit-transform: translate(-30px, -50%);
+    transform: translate(-30px, -50%);
+    visibility: visible;
+    opacity: 1;
+    display: block\9
+}
+
+.iOS .btn--primary:not(:disabled):hover span {
+    display: block
+}
+
+.btn--primary:disabled, .big-blue-btn:disabled {
+    opacity: 0.5;
+    cursor: default !important
+}
+
+.big-blue-btn {
+    width: 100%;
+    height: 75px;
+    line-height: 75px;
+    background-color: #4a8fe7;
+    font-weight: 700;
+    color: #fff;
+    border: none;
+    font-size: 23px;
+    transition: all .2s ease-in
+}
+
+.big-blue-btn:hover {
+    background-color: #3482e6
+}
+
+.btn--black:not(:disabled):hover, .btn--black.active {
+    padding-right: 30px;
+    background-color: #111;
+    border-color: #111;
+    color: #fff;
+}
+.btn--black.active {
+    cursor: default !important;
+}
+
+@media (max-width: 768px) {
+    .btn--primary {
+        height: 46px;
+        line-height: 42px
+    }
+    .big-blue-btn {
+        font-size: 18px;
+        height: 55px;
+        line-height: 55px
+    }
+}
+
+#map {
+    width: 100%;
+    height: 400px;
+}
+.map {
+    position: relative;
+    .map-info-box {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 400px;
+        overflow: hidden;
+        .map-info {
+            position: absolute;
+            left: 50%;
+            height: auto;
+            width: 95%;
+            top: 50%;
+            max-width: 600px;
+            -ms-transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            visibility: visible;
+            opacity: 1;
+            display: block\9;
+            text-align: center;
+            transition: all 0.5s ease-in;
+            z-index: 3;
+            h5 {
+                margin-bottom: 5px;
+                color: #fff
+            }
+            a {
+                color: #fff;
+            }
+            p {
+                margin-bottom: 5px;
+                color: #fff
+            }
+        }
+        &.active {
+            .map-info {
+                visibility: hidden;
+                opacity: 0;
+                transition: all .3s ease;
+                opacity: 1\9;
+                visibility: visible\9;
+                display: none\9
+            }
+            &:before {
+                -ms-transform: translate(0, -100%);
+                -webkit-transform: translate(0, -100%);
+                transform: translate(0, -100%)
+            }
+            &:after {
+                -ms-transform: translate(0, 100%);
+                -webkit-transform: translate(0, 100%);
+                transform: translate(0, 100%)
+            }
+        }
+        &:before {
+            position: absolute;
+            content: "";
+            left: 0;
+            top: 0;
+            bottom: auto;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+            -ms-transform: translate(0, 0);
+            -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+            transition: all 0.3s ease-in
+        }
+        &:after {
+            position: absolute;
+            content: "";
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+            -ms-transform: translate(0, 0);
+            -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+            transition: all 0.3s ease-in
+        }
+    }
+}

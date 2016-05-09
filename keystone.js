@@ -1,5 +1,3 @@
-// Simulate config options from your production environment by
-// customising the .env file in your project's root folder.
 require('dotenv').load();
 
 // Require keystone
@@ -12,8 +10,8 @@ var handlebars = require('express-handlebars');
 
 keystone.init({
 
-	'name': 'kogekampen',
-	'brand': 'kogekampen',
+	'name': 'Kogekampen',
+	'brand': 'Kogekampen',
 	
 	'sass': 'public',
 	'static': 'public',
@@ -32,7 +30,7 @@ keystone.init({
 	'auto update': true,
 	'session': true,
 	'auth': true,
-	'user model': 'User'
+	'user model': 'Admin'
 
 });
 
@@ -58,8 +56,10 @@ keystone.set('routes', require('./routes'));
 // Configure the navigation bar in Keystone's Admin UI
 
 keystone.set('nav', {
-	'galleries': 'galleries',
-	'users': 'users'
+	//'galleries': 'galleries',
+	'admins': 'admins',
+	'competitions': 'competitions',
+	'wods': 'wods'
 });
 
 // Start Keystone to connect to your database and initialise the web server

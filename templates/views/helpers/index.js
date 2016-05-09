@@ -347,7 +347,24 @@ module.exports = function() {
 	
 	_helpers.underscoreFormat = function (obj, underscoreMethod) {
 		return obj._[underscoreMethod].format();
-	}
+	};
+
+	_helpers.math = function(lvalue, operator, rvalue, options) {
+	    lvalue = parseFloat(lvalue);
+	    rvalue = parseFloat(rvalue);
+	        
+	    return {
+	        "+": lvalue + rvalue,
+	        "-": lvalue - rvalue,
+	        "*": lvalue * rvalue,
+	        "/": lvalue / rvalue,
+	        "%": lvalue % rvalue
+	    }[operator];
+	};
+
+	_helpers.json = function(context) {
+    	return JSON.stringify(context);
+    };
 	
 	return _helpers;
 };

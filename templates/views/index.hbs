@@ -1,21 +1,264 @@
 {{!< default}}
-<div class="container">
-	<div class="jumbotron"><img src="/images/logo.svg" width="160">
-		<h1>Welcome</h1>
-		<p>This is your new <a href='http://keystonejs.com' target='_blank'>KeystoneJS</a> website.</p>
-		<p>
-			It includes the latest versions of
-			<a href='http://getbootstrap.com/' target='_blank'>Bootstrap</a>
-			and <a href='http://www.jquery.com/' target='_blank'>jQuery</a>.
-		</p>
-		<p>Visit the <a href='http://keystonejs.com/guide' target='_blank'>Getting Started</a> guide to learn how to customise it.</p>
-		<hr>
-		<p>We have created a default Admin user for you with the email <strong>a.jarbol@hotmail.com</strong> and the password <strong>sommerhus.89</strong>.</p>
-		<p><a href="/keystone/signin" style="margin-right: 10px" class="btn btn-lg btn-primary">Sign in</a> to use the Admin UI.</p>
-		<hr>
-		<p>
-			Remember to <a href='https://github.com/keystonejs/keystone' target='_blank'>Star KeystoneJS on GitHub</a> and
-			<a href='https://twitter.com/keystonejs' target='_blank'>follow @keystonejs</a> on twitter for updates.
-		</p>
-	</div>
-</div>
+  	<main>
+	  	<div class="popup register-popup">
+			<div class="overlay-popup"></div>
+			<div class="content-popup">
+	        	<a href="javascript:void(0)" class="close-popup">&times;</a>
+
+				<h2 class="text-center uppercase">Tilmeldning til Kogekampen 2</h2>
+				<h5 class="text-center light">For at deltage i RX skal du have kendskab til disse bevægelser: Toes to Bar, Overhead Squat, Pistols, Snatch, og Clean and Jerk. Der er ikke krav til deltagelse i begynderrækken!</h5>
+				<form class="contact-form">
+					<input type="text" class="input input--primary" name="entry.2005620554" placeholder="NAVN">
+					<select name="entry.1045781291" data-placeholder="Køn">
+			            <option value="Mand">Mand</option>
+			            <option value="Dame">Kvinde</option>
+			        </select>
+					<select name="entry.1065046570" data-placeholder="Hvilken række stiller du op I?">
+			            <option value="Begynder">Skaleret</option>
+			            <option value="Rx">RX</option>
+			        </select>
+			        <p>OBS: Der er ikke flere pladser for kvinder i RX og Begynder rækken. - Kvinder vil komme på venteliste indtil videre.</p>
+					<br>
+					<button class="big-blue-btn" type="submit">TILMELD</button>
+				</form>
+			</div>
+	  	</div>
+
+	  	<div class="subheader" id="subheader-section" style="background-image:url('/images/hero.jpg')">
+
+		    <article>
+		    	<div class="container">
+					<img src="images/kogekampen-logo.png" alt="" class="logo">
+		    	  	<a href="javascript:void(0)" class="btn--primary register-now">TILMELD DIG NU<span class="biceps-icon"></span></a>
+		    	</div>
+	    		<div class="counter">
+			    	<ul class="countdown">
+				        <li>
+				            <span class="days">--</span>
+				            <p class="days_ref">days</p>
+				        </li>
+				        <li>
+				            <span class="hours">--</span>
+				            <p class="hours_ref">hours</p>
+				        </li>
+				        <li>
+				            <span class="minutes">--</span>
+				            <p class="minutes_ref">minutes</p>
+				        </li>
+				        <li>
+				            <span class="seconds">--</span>
+				            <p class="seconds_ref">seconds</p>
+				        </li>
+				    </ul>
+			    </div>
+		    </article>
+	  	</div>
+
+	  	<section class="info-section" id="info">
+	  		<div class="container">
+		  		<h2><strong>INFO</strong></h2>
+		  		{{{competition.description}}}
+				<div class="row requirement-boxes">
+					<div class="col-sm-6">
+
+						<article style="background-image:url('images/rx.jpg');">
+							<div>
+							{{{competition.rxRequirements}}}
+							</div>
+						</article>
+
+					</div>
+					<div class="col-sm-6">
+
+						<article style="background-image:url('images/skaleret.jpg');">
+							<div>
+								{{{competition.scaledRequirements}}}
+							</div>
+						</article>
+
+					</div>
+				</div>
+	  		</div>
+	  	</section>
+	  	<section class="p-0">
+	  		<div class="map">
+				<div id="map"></div>
+				<div class="map-info-box">
+		            <div class="map-info">
+		            	<h5>Adressen</h5>
+		            	<p>{{competition.location.name}}</p>
+		            	<p>{{competition.location.street1}}, {{competition.location.postcode}} {{competition.location.suburb}}</p>
+		            	<h5>Tidspunktet</h5>
+		            	<p>{{competition.prettyTime}}</p>
+			        </div>
+		        </div>
+			</div>
+		</section>
+	  	<section class="wods-section gray-section" id="wods">
+	  		<div class="container">
+		  		<h2><strong>WODS</strong></h2>
+		  		<form class="wod-control">
+		  			<h3>Vælg en række:</h3>
+		  			<select data-action="division-select">
+			            <option value="rx" selected>RX</option>
+			            <option value="scaled">Skaleret</option>
+			        </select>
+			  		<div class="row">
+			  		{{#each wods}}
+			  			<div class="col-sm-3">
+			  				<button class="btn--primary btn--black {{#if @first}}active{{/if}}" {{#unless rx}}disabled{{/unless}} data-action="wod-selector" data-target="{{@index}}">
+				  				{{#if finisher}}
+				  					Finisher
+				  				{{else}}
+				  					#{{math @index "+" 1}}
+				  				{{/if}}
+			  					<br/>
+			  					{{#if released}}{{name}}{{else}}?{{/if}}
+			  				</button>
+			  			</div>
+			  		{{/each}}
+			  		</div>
+			  		<hr>
+			  		{{#each wods}}
+			  			{{#if @first}}
+					  		<article class="workout-desc" style="background-image:url('images/overhead.jpg');">
+						  		<div>
+						  			{{{rx}}}
+						  		</div>	
+					  		</article>
+					  	{{/if}}
+				  	{{/each}}
+			  	</div>
+	  		</div>
+	  	</section>
+  	</main>
+  	<script async defer src="https://maps.googleapis.com/maps/api/js?key={{competition.googleMapsApi}}&callback=initMap"></script>
+  	<script>
+  		var initMap = function() {
+			var styles = [
+				{
+					"featureType": "administrative",
+					"stylers": [
+					{ "visibility": "off" }
+					]
+				},
+				{
+					"featureType": "poi",
+					"stylers": [
+						{ "visibility": "off" },
+						{ "color": "#ffffff" }
+					]
+				},
+				{
+					"featureType": "road",
+					"stylers": [
+						{ "visibility": "on" },
+						{ "color": "#ffffff" }
+					]
+				},
+				{
+					"featureType": "transit",
+					"stylers": [
+						{ "visibility": "off" }
+					]
+				},
+				{
+					"featureType": "landscape",
+					"stylers": [
+						{ "visibility": "on" },
+						{ "color": "#B3B3B3" }
+					]
+				},
+				{
+					"featureType": "water",
+					"stylers": [
+						{ "visibility": "on" },
+						{ "color": "#14a1fb" }
+					]
+				}
+			];
+
+			var coords = [{{competition.location.geo}}];
+			var styledMap = new google.maps.StyledMapType(styles, {name: "Kogeriet Map"});
+
+			var mapOptions = {
+				zoom: 14,
+				center: new google.maps.LatLng(coords[0]-0.0025, coords[1]+0.015),
+				scrollwheel: false,
+				zoomControl: false,
+				mapTypeControl: false,
+				streetViewControl: false,
+				disableDefaultUI: false,
+				draggable: false
+			};
+			var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+			var marker1 = new google.maps.Marker({
+			    position: new google.maps.LatLng(coords[0], coords[1]),
+			    map: map,
+			    icon: 'images/pin.svg'
+			});
+			map.mapTypes.set('map', styledMap);
+			map.setMapTypeId('map');
+  		}
+  		$(function(){
+			$('.countdown').downCount({
+		        date: '{{{competition.startTime}}}',
+		        offset: 0
+		    }, function () {
+		    	$('.countdown').hide();
+		    	$('.register-now').hide();
+		    });
+
+			// WOD CTRL
+			var wods = {{{json wods}}};
+			var wodIndex = 0;
+			var wodDivision = 'rx';
+
+			var setWod = function(template){
+				$('.workout-desc div').html(template);
+			}
+
+			$('[data-action="division-select"]').change(function(e){
+				e.preventDefault();
+				var division = $(this).val();
+				if (division != wodDivision && wods[wodIndex] && wods[wodIndex][division]) {
+					setWod(wods[wodIndex][division]);
+					wodDivision = division;
+				}
+			});
+
+			var cleanState = function(el) {
+				$('.close-popup').click();
+			    $(el)[0].reset();
+			    $(this).find('[type="submit"]').removeAttr('disabled');	
+			}
+
+			$('[data-action="wod-selector"]:not(:disabled)').click(function(e){
+				e.preventDefault();
+				var index = $(this).data('target');
+				$('[data-action="wod-selector"]').removeClass('active');
+				$(this).addClass('active');
+				if (index != wodIndex && wods[index] && wods[index][wodDivision]) {
+					setWod(wods[index][wodDivision]);
+					wodIndex = index;
+				}
+			});
+		    $('.contact-form').on('submit',function(e){
+		    	e.preventDefault();
+		    	$(this).find('[type="submit"]').attr('disabled', 'disabled');
+				$.ajax({
+					url: 'https://docs.google.com/forms/d/{{competition.googleFormId}}/formResponse?'+$(this).serialize(), 
+					type: 'POST',
+					success: $.proxy(function(response) {
+					    cleanState(this);
+					    showNotification("Perfekt! 👊", "Din tilmelding er modtaget, vi glæder os til at se dig." , "success");
+					}, this),
+					error: $.proxy(function(response) {
+						cleanState(this);
+						showNotification("Perfekt! 👊", "Din tilmelding er modtaget, vi glæder os til at se dig." , "success");
+					}, this)
+				});
+	        });
+		});
+  	</script>

@@ -1,105 +1,92 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--[if IE 8]>    <html class=" no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if IE 9]>    <html class=" no-js ie9 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class=" no-js" lang="en"> <!--<![endif]-->
+  	<head>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>kogekampen</title>
-		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-		<link href="/styles/site.css" rel="stylesheet">
 
-		{{!-- This file provides the default styling for the KeystoneJS Content Editor
-			- only renders when user is logged in and admin--}}
-		{{{isAdminEditorCSS user}}}
+	    <title>Kogekampen</title>
 
-		{{!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
-		//- Safely remove this block if you are not targeting IE8 --}}
-		<!--[if lt IE 9]>
-			<script src="//cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.js"></script>
-			<script src="//cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
-		<![endif]-->
+	    <!-- Prefetch DNS for external assets (Twitter widgets etc). -->
+	    <link rel="dns-prefetch" href="//ajax.googleapis.com">
+	    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+	    <link rel="dns-prefetch" href="//themes.googleusercontent.com">
+	    <link rel="dns-prefetch" href="//www.google-analytics.com">
 
-	</head>
+
+	    <link rel="stylesheet" href="/styles/site.css">
+
+	    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+	    <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,400italic,700' rel='stylesheet' type='text/css'>
+	    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+	    <meta name="description" content="">
+	    <meta name="author" content="@ajarbol">
+
+	    {{{isAdminEditorCSS user}}}
+
+  	</head>
 	<body>
-		<div id="header">
+	    <div class="popup-flash">
+	      <div class="element">
+	        <button data-action="popup-flash-close" class="btn--primary" type="button">OK</button>
+	      </div>
+	    </div>
+	  	<header class="header-main">
 			<div class="container">
-				<div role="navigation" class="navbar navbar-default">
-					<div class="container-fluid">
-						<div class="navbar-header">
-							<button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle">
-								<span class="sr-only">Toggle navigation</span>
-								<span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-							</button>
-							<a href="/" class="navbar-brand">kogekampen</a>
-						</div>
-						<div class="collapse navbar-collapse">
-							<ul class="nav navbar-nav navbar-left">
-									{{# each navLinks}}
-									<li {{#ifeq ../section key}}class="active"{{else}}{{/ifeq}}>
-										<a href="{{ href }}">{{ label }}</a>
-									</li>
-								{{/each}}
-							</ul>
-							<ul class="nav navbar-nav navbar-right">
-								{{#if user}}
-								<li><a href="/keystone/signout">Sign Out</a></li>
-								{{else}}
-								<li><a href="/keystone/signin">Sign In</a></li>
-								{{/if}}
-							</ul>
-						</div>
-					</div>
-				</div>
+				<a href="javascript:void(0)" class="right bars"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+				<nav class="right">
+					<ul class="list-unstyled">
+						<li class="">
+							<a href="#info">info</a>
+						</li>
+						<li>
+							<a href="#wods">Wods</a>
+						</li>
+						<li class="">
+							<a href="#resultater">resultater</a>
+						</li>
+					</ul>
+				</nav>
 			</div>
-		</div>
-		<div id="body">
-			<!--
-				Flash messages allow you to display once-off status messages to users, e.g. form
-				validation errors, success messages, etc
-			-->
-			{{#if messages}}
-			<div id="flash-messages" class="container">
-				{{#if messages.info}}
-				<div class="alert alert-info">
-						{{{flashMessages messages.info}}}
-				</div>
-				{{/if}}
-				{{#if messages.success}}
-				<div class="alert alert-success">
-						{{{flashMessages messages.success}}}
-				</div>
-				{{/if}}
-				{{#if messages.warning}}
-				<div class="alert alert-warning">
-						{{{flashMessages messages.warning}}}
-				</div>
-				{{/if}}
-				{{#if messages.error}}
-				<div class="alert alert-danger">
-						{{{flashMessages messages.error}}}
-				</div>
-				{{/if}}
-			</div>
-			{{/if}}
-			<!-- The content block should contain the body of your template's content-->
-			{{{body}}}
-		</div>
-		<div class="container">
-			<div id="footer">
-				<p>Powered by <a href="http://keystonejs.com" target="_blank">KeystoneJS</a>.</p>
-			</div>
-		</div>
-		{{!--
-			//- jQuery 1.11.3 is included by default, and required by both Bootstrap
-			//- and the KeystoneJS Content Editor. If you are not targeting IE8,
-			//- you can upgrade to 2.1.4 (also bundled) for better performance.
-		--}}
-		<script src="/js/jquery/jquery-1.11.3.min.js"></script>
-		{{!--
-			//- Customise which Bootstrap javascript files are served by including
-			//- them specifically here, instead of bootstrap-3.3.5.min.js
-		--}}
+		</header>
+		<script src="/js/jquery/jquery-2.1.4.min.js"></script>
+		<script src="/js/jquery.easing.min.js"></script>
 		<script src="/js/bootstrap/bootstrap-3.3.5.min.js"></script>
+		<script src="/js/selectordie.min.js"></script>
+		<script src="/js/jquery.downcount.min.js"></script>
+		<script src="/js/jquery.smooth-scroll.min.js"></script>
+		<script src="/js/all.js"></script>
+		<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+			ga('create', 'UA-71029383-1', 'auto');
+			ga('send', 'pageview');
+		</script>
 		{{{isAdminEditorJS user}}}
+		{{{body}}}
+	  	<footer class="footer-main">
+			<div class="container">
+				<small>
+					Contact @ajarbol with any problems <span class="glyphicon glyphicon-heart"></span>
+				</small>
+				<div class="social-links right">
+					<a href="https://www.crossfitcopenhagen.dk/gyms/kogeriet/" target="_blank">
+						<span class="glyphicon glyphicon-home"></span>
+					</a>
+					<a href="https://www.facebook.com/groups/854519947947397/" target="_blank" style="padding-top:3px;">
+						<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+			 viewBox="0 0 155.139 155.139" style="enable-background:new 0 0 155.139 155.139;" xml:space="preserve">
+							<g>
+								<path d="M89.584,155.139V84.378h23.742l3.562-27.585H89.584V39.184
+									c0-7.984,2.208-13.425,13.67-13.425l14.595-0.006V1.08C115.325,0.752,106.661,0,96.577,0C75.52,0,61.104,12.853,61.104,36.452
+									v20.341H37.29v27.585h23.814v70.761H89.584z"/>
+							</g>
+						</svg>
+					</a>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</footer>
 	</body>
 </html>
