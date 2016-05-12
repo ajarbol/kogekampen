@@ -20,7 +20,8 @@ exports = module.exports = function(req, res) {
 		if (event.googleFormId) {
 			var data = {
 				'entry.2103811410': req.body.name,
-				'entry.1475078930': req.body.phone
+				'entry.1475078930': req.body.phone,
+				'entry.1068859250': 'Selvfølgelig!'
 			};
 			var options = {
 				method: 'POST',

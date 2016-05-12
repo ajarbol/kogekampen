@@ -45,16 +45,18 @@
 	    </div>
 	  	<header class="header-main">
 			<div class="container">
+				{{#if showBackToHome}}
+				<a href="/" class="back-to-home">
+					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="30" viewBox="250 246 12 20"><path fill="#FFF" d="M262 264.787L260.706 266 250 256l10.706-10 1.294 1.206-9.406 8.794z"/></svg>
+				</a>
+				{{/if}}
 				<a href="javascript:void(0)" class="right bars"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
 				<nav class="right">
 					<ul class="list-unstyled">
-						<li class="">
-							<a href="#info">Om kogeriet</a>
+						<li>
+							<a href="/om-kogeriet">Om kogeriet</a>
 						</li>
 						<li>
-							<a href="#wods">Teams</a>
-						</li>
-						<li class="">
 							<a href="#resultater">resultater</a>
 						</li>
 					</ul>

@@ -7,7 +7,7 @@
 
 				<h2 class="text-center uppercase">Tilmeldning til Kogekampen 2</h2>
 				<h5 class="text-center light">For at deltage i RX skal du have kendskab til disse bevægelser: Toes to Bar, Overhead Squat, Pistols, Snatch, og Clean and Jerk. Der er ikke krav til deltagelse i begynderrækken!</h5>
-				<form class="contact-form">
+				<form data-action="athlete-form" class="contact-form">
 					<input type="hidden" name="eventId" value="572f7deec8b74f10423b5e72">
 					<input type="text" class="input input--primary" name="name" placeholder="NAVN">
 					<select name="gender" data-placeholder="Køn">
@@ -26,11 +26,28 @@
 				</form>
 			</div>
 	  	</div>
+	  	<div class="popup rsvp-popup">
+			<div class="overlay-popup"></div>
+			<div class="content-popup">
+	        	<a href="javascript:void(0)" class="close-popup">&times;</a>
+
+				<h2 class="text-center uppercase">Tilmelding til spisning ved Kogeriets sommerfest 2016</h2>
+				<h5 class="text-center light">Prisen for deltagelse i spisning er 50 kr. Pengene skal overføres med navn via MobilePay på 28780213.</h5>
+				<form data-action="rsvp-form" class="contact-form">
+					<input type="hidden" name="eventId" value="5733d20de36436bf938339b2">
+					<input type="text" class="input input--primary" name="name" placeholder="NAVN">
+					<input type="text" class="input input--primary" name="phone" placeholder="TELEFON NUMMER">
+			        <p><em>HUSK! Deltagelse er først gældende når du har indbetalt de 50 kr på MobilePay</em></p>
+					<br>
+					<button class="big-blue-btn" type="submit">TILMELD</button>
+				</form>
+			</div>
+	  	</div>
 
 	  	<div class="subheader" id="subheader-section" style="background-image:url('/images/hero.jpg')">
 
 		    <article>
-		    	<div class="container">
+		    	<div class="container counter-compensation">
 					<img src="images/kogekampen-logo.png" alt="" class="logo">
 		    	  	<a href="javascript:void(0)" class="btn--primary register-now">TILMELD DIG NU<span class="biceps-icon"></span></a>
 		    	</div>
@@ -59,8 +76,11 @@
 
 	  	<section class="info-section" id="info">
 	  		<div class="container">
-		  		<h2><strong>INFO</strong></h2>
+		  		<h1>INFO</h1>
 		  		{{{competition.description}}}
+		  		<div class="center">
+		    		<a href="javascript:void(0)" class="btn--primary rsvp-now" style="width: 300px;">TILMELD DIG SPISNING<span class="meat-icon"></span></a>
+		    	</div>
 				<div class="row requirement-boxes">
 					<div class="col-sm-6">
 
@@ -83,14 +103,49 @@
 				</div>
 	  		</div>
 	  	</section>
-	  	<section class="wods-section gray-section" id="wods">
+	  	<section class="teams-section gray-section" id="teams">
 	  		<div class="container">
-		  		<h2><strong>WODS</strong></h2>
+		  		<h1>TEAMS</h1>
+				<div class="row">
+					<div class="col-sm-6">
+						<h3>RX Række</h3>
+						<div class="row">
+							{{#each rxAthletes}}
+							<div class="col-xs-6">
+								<ul>
+									{{#each this}}
+										<li><img src="{{#if customImage}}http://graph.facebook.com/v2.6/{{customImage}}/picture{{else}}/images/default_{{gender}}.png{{/if}}" class="circle"><span>{{name}}</span></li>
+									{{/each}}
+								</ul>
+							</div>
+							{{/each}}
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<h3>Skaleret Række</h3>
+						<div class="row">
+							{{#each scaledAthletes}}
+							<div class="col-xs-6">
+								<ul>
+									{{#each this}}
+										<li><img src="{{#if customImage}}http://graph.facebook.com/v2.6/{{customImage}}/picture{{else}}/images/default_{{gender}}.png{{/if}}" class="circle"><span>{{name}}</span></li>
+									{{/each}}
+								</ul>
+							</div>
+							{{/each}}
+						</div>
+					</div>
+				</div>
+	  		</div>
+	  	</section>
+	  	<section class="wods-section" id="wods">
+	  		<div class="container">
+		  		<h1>WODS</h1>
 		  		<form class="wod-control">
 		  			<h3>Vælg en række:</h3>
 		  			<select data-action="division-select">
-			            <option value="rx" selected>RX</option>
-			            <option value="scaled">Skaleret</option>
+			            <option value="rx" selected>RX række</option>
+			            <option value="scaled">Skaleret række</option>
 			        </select>
 			  		<div class="row">
 			  		{{#each wods}}
@@ -205,6 +260,9 @@
 			map.setMapTypeId('map');
   		}
   		$(function(){
+  			window.addPopup($('.register-popup'), $('.register-now'));
+  			window.addPopup($('.rsvp-popup'), $('.rsvp-now'));
+
 			$('.countdown').downCount({
 		        date: '{{{competition.startTime}}}',
 		        offset: 0
@@ -232,9 +290,18 @@
 			});
 
 			var cleanState = function(el) {
-				$('.close-popup').click();
+				$(el).parent().find('.close-popup').click();
 			    $(el)[0].reset();
 			    $(el).find('[type="submit"]').removeAttr('disabled');	
+			}
+			var handleError = function(el, error) {
+				if (error) {
+					showNotification("Hov! 😅", error);	
+				}
+				else {
+					showNotification("Hov! 😅", "Et eller andet gik galt, prøv igen..." , "error");
+				}
+				$(el).find('[type="submit"]').removeAttr('disabled');
 			}
 
 			$('[data-action="wod-selector"]:not(:disabled)').click(function(e){
@@ -247,7 +314,7 @@
 					wodIndex = index;
 				}
 			});
-		    $('.contact-form').on('submit',function(e){
+		    $('[data-action="athlete-form"]').on('submit',function(e){
 		    	e.preventDefault();
 		    	$(this).find('[type="submit"]').attr('disabled', 'disabled');
 		    	var data = {};
@@ -263,13 +330,27 @@
 					    showNotification("Perfekt! 👊", "Din tilmelding er modtaget, vi glæder os til at se dig." , "success");
 					}, this),
 					error: $.proxy(function(response) {
-						if (response.responseJSON.error) {
-							showNotification("Hov! 😅", response.responseJSON.error);	
-						}
-						else {
-							showNotification("Hov! 😅", "Et eller andet gik galt, prøv igen..." , "error");
-						}
-						$(this).find('[type="submit"]').removeAttr('disabled');
+						handleError(this, response.responseJSON.error);
+					}, this)
+				});
+	        });
+	        $('[data-action="rsvp-form"]').on('submit',function(e){
+		    	e.preventDefault();
+		    	$(this).find('[type="submit"]').attr('disabled', 'disabled');
+		    	var data = {};
+		    	$.each($(this).serializeArray(), function (i, field) {
+		    		if (field.value) data[field.name] = field.value;
+		    	});
+				$.ajax({
+					url: '/api/rsvp', 
+					type: 'POST',
+					data: data,
+					success: $.proxy(function(response) {
+					    cleanState(this);
+					    showNotification("Fedt! 🍉", "Din tilmelding er modtaget, vi glæder os til at se dig." , "success");
+					}, this),
+					error: $.proxy(function(response) {
+						handleError(this, response.responseJSON.error);
 					}, this)
 				});
 	        });

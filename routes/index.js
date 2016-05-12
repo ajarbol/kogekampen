@@ -37,7 +37,8 @@ exports = module.exports = function(app) {
 	
 	// Views
 	app.get('/', routes.views.index);
-	app.get('/gallery', routes.views.gallery);
+	app.get('/om-kogeriet', routes.views.omKogeriet);
+	//app.get('/gallery', routes.views.gallery);
 
 	// API
 	app.post('/api/athlete', routes.api.athletePost);

@@ -57,15 +57,22 @@ $(function() {
     });
 
 	/*-------------------------------------------------*/
-    /* =  REGISTER POPUP
-    /*-------------------------------------------------*/ 
-	$('.register-now').on('click' , function() {
-        $('.register-popup').toggleClass('active');
-    });
-
-    $('.register-popup .close-popup, .register-popup .overlay-popup').on('click' , function() {
-        $('.register-popup').toggleClass('active');
-    });
+    /* =  POPUPs
+    /*-------------------------------------------------*/
+    window.addPopup = function ($popup, $trigger) {
+    	$trigger.on('click' , function() {
+            var offset = $(window).width() <= 480 ? 0 : 100;
+            var height = $(window).scrollTop() + offset;
+            $popup.find('.content-popup').css('margin', height + 'px auto');
+            $popup.toggleClass('active');
+        });
+        $popup.find('.close-popup').on('click' , function() {
+            $popup.toggleClass('active');
+        });
+        $popup.find('.overlay-popup').on('click' , function() {
+            $popup.toggleClass('active');
+        });
+    }
 
     /*-------------------------------------------------*/
     /* =  NAV BAR VISIBILITY AND RESPONSIVENESS

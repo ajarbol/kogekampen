@@ -3,6 +3,7 @@ var _ = require('underscore');
 
 var Event = keystone.list('Event');
 var Wod = keystone.list('Wod');
+var Athlete = keystone.list('Athlete');
 
 exports = module.exports = function(req, res) {
 	
@@ -50,6 +51,31 @@ exports = module.exports = function(req, res) {
 						};
 					}
 				});
+				next();
+			});
+	});
+
+	var splitInHalf = function(arr) {
+		var halfLength = Math.ceil(arr.length / 2);
+		return [arr.splice(0,halfLength), arr]
+	}
+
+	view.on('init', function(next) {
+		Athlete.model.find()
+			.where('competition', locals.competition)
+			.exec(function (err, athletes) {
+				var rxAthletes = [];
+				var scaledAthletes = [];
+				_.each(athletes, function (athlete) {
+					if (athlete.division === 'rx') {
+						rxAthletes.push(athlete);
+					}
+					else if (athlete.division === 'scaled') {
+						scaledAthletes.push(athlete);
+					}
+				})
+				locals.rxAthletes = splitInHalf(rxAthletes);
+				locals.scaledAthletes = splitInHalf(scaledAthletes);
 				next();
 			});
 	});
