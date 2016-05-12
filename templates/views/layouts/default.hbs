@@ -53,6 +53,11 @@
 				<a href="javascript:void(0)" class="right bars"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
 				<nav class="right">
 					<ul class="list-unstyled">
+						{{#unless showBackToHome}}
+						<li>
+							<a href="#wods">WODS</a>
+						</li>
+						{{/unless}}
 						<li>
 							<a href="/om-kogeriet">Om kogeriet</a>
 						</li>
