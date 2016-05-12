@@ -2,14 +2,15 @@ var keystone = require('keystone');
 var Types = keystone.Field.Types;
 
 /**
- * Competition Model
+ * Event Model
  * ==========
  */
 
-var Competition = new keystone.List('Competition');
+var Event = new keystone.List('Event');
 
-Competition.add({
+Event.add({
 	name: { type: Types.Text, initial: true },
+	type: { type: Types.Select, initial: true, options: ['workout', 'social'] },
 	prettyTime: { type: Types.Text },
 	startTime: { type: Types.Datetime, default: Date.now },
 	endTime: { type: Types.Datetime, default: Date.now },
@@ -26,5 +27,5 @@ Competition.add({
  * Registration
  */
 
-Competition.defaultColumns = 'name, startTime';
-Competition.register();
+Event.defaultColumns = 'name, startTime';
+Event.register();

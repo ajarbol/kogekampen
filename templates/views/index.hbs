@@ -8,14 +8,17 @@
 				<h2 class="text-center uppercase">Tilmeldning til Kogekampen 2</h2>
 				<h5 class="text-center light">For at deltage i RX skal du have kendskab til disse bevægelser: Toes to Bar, Overhead Squat, Pistols, Snatch, og Clean and Jerk. Der er ikke krav til deltagelse i begynderrækken!</h5>
 				<form class="contact-form">
-					<input type="text" class="input input--primary" name="entry.2005620554" placeholder="NAVN">
-					<select name="entry.1045781291" data-placeholder="Køn">
-			            <option value="Mand">Mand</option>
-			            <option value="Dame">Kvinde</option>
+					<input type="hidden" name="eventId" value="572f7deec8b74f10423b5e72">
+					<input type="text" class="input input--primary" name="name" placeholder="NAVN">
+					<select name="gender" data-placeholder="Køn">
+						<option value=""></option>
+			            <option value="male">Mand</option>
+			            <option value="female">Kvinde</option>
 			        </select>
-					<select name="entry.1065046570" data-placeholder="Hvilken række stiller du op I?">
-			            <option value="Begynder">Skaleret</option>
-			            <option value="Rx">RX</option>
+					<select name="division" data-placeholder="Hvilken række stiller du op I?">
+			            <option value=""></option>
+			            <option value="scaled">Skaleret</option>
+			            <option value="rx">RX</option>
 			        </select>
 			        <p>OBS: Der er ikke flere pladser for kvinder i RX og Begynder rækken. - Kvinder vil komme på venteliste indtil videre.</p>
 					<br>
@@ -80,20 +83,6 @@
 				</div>
 	  		</div>
 	  	</section>
-	  	<section class="p-0">
-	  		<div class="map">
-				<div id="map"></div>
-				<div class="map-info-box">
-		            <div class="map-info">
-		            	<h5>Adressen</h5>
-		            	<p>{{competition.location.name}}</p>
-		            	<p>{{competition.location.street1}}, {{competition.location.postcode}} {{competition.location.suburb}}</p>
-		            	<h5>Tidspunktet</h5>
-		            	<p>{{competition.prettyTime}}</p>
-			        </div>
-		        </div>
-			</div>
-		</section>
 	  	<section class="wods-section gray-section" id="wods">
 	  		<div class="container">
 		  		<h2><strong>WODS</strong></h2>
@@ -121,7 +110,7 @@
 			  		<hr>
 			  		{{#each wods}}
 			  			{{#if @first}}
-					  		<article class="workout-desc" style="background-image:url('images/overhead.jpg');">
+					  		<article class="workout-desc {{#if @last}}inverse{{/if}}" {{#if @last}}style="background-image:url('images/overhead.jpg');"{{/if}}>
 						  		<div>
 						  			{{{rx}}}
 						  		</div>	
@@ -131,6 +120,20 @@
 			  	</div>
 	  		</div>
 	  	</section>
+	  	<section class="p-0">
+	  		<div class="map">
+				<div id="map"></div>
+				<div class="map-info-box">
+		            <div class="map-info">
+		            	<h5>Adressen</h5>
+		            	<p>{{competition.location.name}}</p>
+		            	<p>{{competition.location.street1}}, {{competition.location.postcode}} {{competition.location.suburb}}</p>
+		            	<h5>Tidspunktet</h5>
+		            	<p>{{competition.prettyTime}}</p>
+			        </div>
+		        </div>
+			</div>
+		</section>
   	</main>
   	<script async defer src="https://maps.googleapis.com/maps/api/js?key={{competition.googleMapsApi}}&callback=initMap"></script>
   	<script>
@@ -247,16 +250,26 @@
 		    $('.contact-form').on('submit',function(e){
 		    	e.preventDefault();
 		    	$(this).find('[type="submit"]').attr('disabled', 'disabled');
+		    	var data = {};
+		    	$.each($(this).serializeArray(), function (i, field) {
+		    		if (field.value) data[field.name] = field.value;
+		    	});
 				$.ajax({
-					url: 'https://docs.google.com/forms/d/{{competition.googleFormId}}/formResponse?'+$(this).serialize(), 
+					url: '/api/athlete', 
 					type: 'POST',
+					data: data,
 					success: $.proxy(function(response) {
 					    cleanState(this);
 					    showNotification("Perfekt! 👊", "Din tilmelding er modtaget, vi glæder os til at se dig." , "success");
 					}, this),
 					error: $.proxy(function(response) {
-						cleanState(this);
-						showNotification("Perfekt! 👊", "Din tilmelding er modtaget, vi glæder os til at se dig." , "success");
+						if (response.responseJSON.error) {
+							showNotification("Hov! 😅", response.responseJSON.error);	
+						}
+						else {
+							showNotification("Hov! 😅", "Et eller andet gik galt, prøv igen..." , "error");
+						}
+						$(this).find('[type="submit"]').removeAttr('disabled');
 					}, this)
 				});
 	        });

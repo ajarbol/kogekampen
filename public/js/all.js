@@ -21,7 +21,7 @@ $(function() {
     /*-------------------------------------------------*/
     window.showNotification = function(title, message, className) {
         $('.popup-flash').fadeIn('fast');
-        $('.element h3').remove();
+        $('.element h3, .element p').remove();
         $('.element')
             .prepend('<p>' + message + '</p>')
             .prepend('<h3 class="' + className + '">' + title + '</h3>');

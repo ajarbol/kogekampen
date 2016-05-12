@@ -193,7 +193,10 @@ section.gray-section {
         top: 9px;
         color: #777777;
         font-size: 14px;
-        font-family: 'Open Sans', sans-serif
+        font-family: 'Open Sans', sans-serif;
+        a {
+            color: #777777;
+        }
     }
 }
 

@@ -9,7 +9,7 @@ var Types = keystone.Field.Types;
 var Wod = new keystone.List('Wod');
 
 Wod.add({
-	competition: { type: Types.Relationship, ref: 'Competition' },
+	competition: { type: Types.Relationship, ref: 'Event' },
 	order: { type: Types.Number, default: 0 },
 	name: { type: Types.Text },
 	rxDescription: { type: Types.Html, wysiwyg: true },

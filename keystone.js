@@ -58,8 +58,9 @@ keystone.set('routes', require('./routes'));
 keystone.set('nav', {
 	//'galleries': 'galleries',
 	'admins': 'admins',
-	'competitions': 'competitions',
-	'wods': 'wods'
+	'events': 'events',
+	'wods': 'wods',
+	'signups': ['athletes', 'rsvps']
 });
 
 // Start Keystone to connect to your database and initialise the web server
