@@ -12,7 +12,8 @@ Rsvp.add({
 	event: { type: Types.Relationship, ref: 'Event' },
 	name: { type: Types.Text, initial: true },
 	phone: { type: Types.Text, initial: true },
-	paid: { type: Types.Boolean, default: false }
+	paid: { type: Types.Boolean, default: false },
+	timestamp: { type: Types.Datetime, default: Date.now }
 });
 
 
@@ -20,5 +21,5 @@ Rsvp.add({
  * Registration
  */
 
-Rsvp.defaultColumns = 'name, phone, paid, event';
+Rsvp.defaultColumns = 'name, phone, paid, event, timestamp';
 Rsvp.register();

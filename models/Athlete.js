@@ -14,7 +14,8 @@ Athlete.add({
 	division: { type: Types.Select, initial: true, options: ['rx', 'scaled'] },
 	gender: { type: Types.Select, initial: true, options: ['male', 'female'] },
 	customImage: { type: Types.Text },
-	accepted: { type: Types.Boolean, default: false }
+	accepted: { type: Types.Boolean, default: false },
+	timestamp: { type: Types.Datetime, default: Date.now }
 });
 
 
@@ -22,5 +23,5 @@ Athlete.add({
  * Registration
  */
 
-Athlete.defaultColumns = 'name, division, competition';
+Athlete.defaultColumns = 'name, division, competition, timestamp';
 Athlete.register();
