@@ -23,5 +23,6 @@ Athlete.add({
  * Registration
  */
 
-Athlete.defaultColumns = 'name, division, competition, timestamp';
+Athlete.defaultColumns = 'name, division, competition, accepted, timestamp';
+Athlete.defaultSort = '-timestamp';
 Athlete.register();

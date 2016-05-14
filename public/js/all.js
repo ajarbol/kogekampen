@@ -103,4 +103,13 @@ $(function() {
     }
 
     $('.bars').click(toggleNav);
+
+    /*-------------------------------------------------*/
+    /* =  WIP features
+    /*-------------------------------------------------*/
+
+    $('[data-action="comming-soon"]').click(function(){
+        showNotification("404 🤓", "Denne side kommer snart!", "error");
+    })
+
 });

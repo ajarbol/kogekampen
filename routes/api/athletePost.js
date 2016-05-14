@@ -22,7 +22,7 @@ exports = module.exports = function(req, res) {
 			var data = {
 				'entry.1498774012': req.body.name,
 				'entry.310929253': req.body.gender === 'male' ? 'Mand' : 'Kvinde',
-				'entry.845145300': req.body.division === 'rx' ? 'Rx' : 'Begynder'
+				'entry.845145300': req.body.division === 'rx' ? 'RX' : 'Begynder'
 			};
 			var options = {
 				method: 'POST',
