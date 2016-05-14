@@ -62,6 +62,7 @@ exports = module.exports = function(req, res) {
 
 	view.on('init', function(next) {
 		Athlete.model.find()
+			.where('accepted', true)
 			.where('competition', locals.competition)
 			.exec(function (err, athletes) {
 				var rxAthletes = [];
