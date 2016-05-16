@@ -153,6 +153,10 @@
     cursor: pointer;
 }
 
+.btn--primary.btn--static:hover {
+    padding: initial;
+}
+
 .btn--primary:not(:disabled):hover span {
     -ms-transform: translate(-30px, -50%);
     -webkit-transform: translate(-30px, -50%);
@@ -311,5 +315,11 @@ span.meat-icon {
     width: 20px;
     height: 20px;
     background-image:url('/images/meat.png');
+    background-size: cover;
+}
+span.party-icon {
+    width: 20px;
+    height: 20px;
+    background-image:url('/images/party.png');
     background-size: cover;
 }

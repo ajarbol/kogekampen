@@ -60,23 +60,38 @@ exports = module.exports = function(req, res) {
 		return [arr.splice(0,halfLength), arr]
 	}
 
+	var sortByTime = function(a, b){
+		return new Date(a.timestamp) - new Date(b.timestamp);
+	}
+
 	view.on('init', function(next) {
 		Athlete.model.find()
-			.where('accepted', true)
 			.where('competition', locals.competition)
+			.sort('-timestamp')
 			.exec(function (err, athletes) {
-				var rxAthletes = [];
-				var scaledAthletes = [];
+				var rxAthletes = { male: [], female: [] };
+				var scaledAthletes = { male: [], female: [] };
 				_.each(athletes, function (athlete) {
 					if (athlete.division === 'rx') {
-						rxAthletes.push(athlete);
+						rxAthletes[athlete.gender].push(athlete);
 					}
 					else if (athlete.division === 'scaled') {
-						scaledAthletes.push(athlete);
+						scaledAthletes[athlete.gender].push(athlete);
 					}
-				})
-				locals.rxAthletes = splitInHalf(rxAthletes);
-				locals.scaledAthletes = splitInHalf(scaledAthletes);
+				});
+
+				var nonWaitlistRx = rxAthletes.male.slice(0, 18).concat(rxAthletes.female.slice(0, 9)).sort(sortByTime);
+				var nonWaitlistScaled = scaledAthletes.male.slice(0, 18).concat(scaledAthletes.female.slice(0, 9)).sort(sortByTime);
+
+				locals.rxAthletes = splitInHalf(nonWaitlistRx);
+				locals.scaledAthletes = splitInHalf(nonWaitlistScaled);
+				
+				var waitlistRx = rxAthletes.male.slice(18, rxAthletes.male.length).concat(rxAthletes.female.slice(9, rxAthletes.female.length)).sort(sortByTime);
+				var waitlistScaled = scaledAthletes.male.slice(18, scaledAthletes.male.length).concat(scaledAthletes.female.slice(9, scaledAthletes.female.length)).sort(sortByTime);
+
+				if (waitlistRx.length) locals.rxWaitlist = splitInHalf(waitlistRx);
+				if (waitlistScaled.length) locals.scaledWaitlist = splitInHalf(waitlistScaled);
+
 				next();
 			});
 	});

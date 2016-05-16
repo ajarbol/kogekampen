@@ -29,6 +29,11 @@ section.gray-section {
     background-color: #f2f2f2
 }
 
+.container-aside {
+    width: 50%;
+    margin: 0;
+}
+
 @media (max-width: 992px) {
     .container {
         width: 100%
@@ -144,7 +149,7 @@ section.gray-section {
 
 .header-main nav a {
     font-size: 17px;
-    line-height: 1.52941;
+    line-height: 1.65;
     font-weight: 700;
     position: relative;
     text-transform: uppercase
@@ -319,7 +324,9 @@ section.gray-section {
                 margin-bottom: 30px
             }
             a.btn--primary {
-                width: 240px;
+                display: block;
+                margin: 10px auto;
+                width: 280px;
                 color: #fff;
             }
         }
@@ -734,8 +741,8 @@ input[type="checkbox"]:checked+.check-box-item {
                 text-align: center;
             }
             padding: 5px 0;
-            img.circle {
-                border-radius: 50px;
+            img {
+                border-radius: 5px;
                 width: 50px;
                 border: 2px #ebebeb solid;
             }
@@ -754,6 +761,9 @@ input[type="checkbox"]:checked+.check-box-item {
 
 section {
     position: relative;
+    &:not(:last-child) {
+        border-bottom: 1px solid #e3e3e3;
+    }
     .background-cover {
         height: 300px;
         @media (max-width: 768px) {
@@ -770,6 +780,16 @@ section {
             height: 100%;
             content: "";
             background-color: rgba(0, 0, 0, 0.6);
+        }
+        &.background-cover-aside {
+            @media (max-width: 992px) {
+                display: none;
+            }
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
         }
     }
 }
