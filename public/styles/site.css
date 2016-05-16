@@ -10343,6 +10343,9 @@ input[type="checkbox"]:checked + .check-box-item {
 .teams-section h3 {
   text-align: center; }
 
+.teams-section .right-rule {
+  border-right: 1px solid #ebebeb; }
+
 .teams-section ul {
   padding: 0;
   list-style: none; }

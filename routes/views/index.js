@@ -67,7 +67,7 @@ exports = module.exports = function(req, res) {
 	view.on('init', function(next) {
 		Athlete.model.find()
 			.where('competition', locals.competition)
-			.sort('-timestamp')
+			.sort('timestamp')
 			.exec(function (err, athletes) {
 				var rxAthletes = { male: [], female: [] };
 				var scaledAthletes = { male: [], female: [] };

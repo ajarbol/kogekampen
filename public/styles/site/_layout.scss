@@ -733,6 +733,9 @@ input[type="checkbox"]:checked+.check-box-item {
     h3 {
         text-align: center;
     }
+    .right-rule {
+        border-right: 1px solid #ebebeb;
+    }
     ul {
         padding: 0;
         list-style: none;
