@@ -56,8 +56,12 @@ exports = module.exports = function(req, res) {
 	});
 
 	var splitInHalf = function(arr) {
-		var halfLength = Math.ceil(arr.length / 2);
-		return [arr.splice(0,halfLength), arr]
+		var splitArr = [[],[]];
+		_.each(arr, function (e, i){
+			if (i % 2) splitArr[1].push(e)
+			else splitArr[0].push(e);
+		});
+		return splitArr;
 	}
 
 	var sortByTime = function(a, b){
@@ -67,6 +71,7 @@ exports = module.exports = function(req, res) {
 	view.on('init', function(next) {
 		Athlete.model.find()
 			.where('competition', locals.competition)
+			.where('accepted', true)
 			.sort('timestamp')
 			.exec(function (err, athletes) {
 				var rxAthletes = { male: [], female: [] };

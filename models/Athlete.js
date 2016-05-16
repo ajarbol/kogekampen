@@ -14,7 +14,7 @@ Athlete.add({
 	division: { type: Types.Select, initial: true, options: ['rx', 'scaled'] },
 	gender: { type: Types.Select, initial: true, options: ['male', 'female'] },
 	customImage: { type: Types.Text, label: 'Facebook Id' },
-	accepted: { type: Types.Boolean, default: false },
+	accepted: { type: Types.Boolean, default: true },
 	timestamp: { type: Types.Datetime, default: Date.now }
 });
 
