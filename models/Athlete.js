@@ -15,7 +15,7 @@ Athlete.add({
 	gender: { type: Types.Select, initial: true, options: ['male', 'female'] },
 	customImage: { type: Types.Text, label: 'Facebook Id' },
 	accepted: { type: Types.Boolean, default: true },
-	timestamp: { type: Types.Datetime, default: Date.now }
+	timestamp: { type: Types.Datetime, default: Date.now, readonly: true }
 });
 
 

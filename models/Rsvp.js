@@ -13,7 +13,7 @@ Rsvp.add({
 	name: { type: Types.Text, initial: true },
 	phone: { type: Types.Text, initial: true },
 	paid: { type: Types.Boolean, default: false },
-	timestamp: { type: Types.Datetime, default: Date.now }
+	timestamp: { type: Types.Datetime, default: Date.now, readonly: true }
 });
 
 
