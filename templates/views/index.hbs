@@ -104,7 +104,44 @@
 				</div>
 	  		</div>
 	  	</section>
-	  	<section class="teams-section gray-section" id="teams">
+	  	<section class="wods-section gray-section" id="wods">
+	  		<div class="container">
+		  		<h1>WODS</h1>
+		  		<form class="wod-control">
+		  			<h3>Vælg en række:</h3>
+		  			<select data-action="division-select">
+			            <option value="rx" selected>RX række</option>
+			            <option value="scaled">Skaleret række</option>
+			        </select>
+			  		<div class="row">
+			  		{{#each wods}}
+			  			<div class="col-sm-3">
+			  				<button class="btn--primary btn--black {{#if @first}}active{{/if}}" {{#unless rx}}disabled{{/unless}} data-action="wod-selector" data-target="{{@index}}">
+				  				{{#if finisher}}
+				  					Finisher
+				  				{{else}}
+				  					#{{math @index "+" 1}}
+				  				{{/if}}
+			  					<br/>
+			  					{{#if released}}{{name}}{{else}}?{{/if}}
+			  				</button>
+			  			</div>
+			  		{{/each}}
+			  		</div>
+			  		<hr>
+			  		{{#each wods}}
+			  			{{#if @first}}
+					  		<article class="workout-desc {{#if @last}}inverse{{/if}}" {{#if @last}}style="background-image:url('images/overhead.jpg');"{{/if}}>
+						  		<div>
+						  			{{{rx}}}
+						  		</div>	
+					  		</article>
+					  	{{/if}}
+				  	{{/each}}
+			  	</div>
+	  		</div>
+	  	</section>
+	  	<section class="teams-section" id="teams">
 	  		<div class="container">
 		  		<h1>TEAMS</h1>
 				<div class="row">
@@ -165,43 +202,6 @@
 						{{/if}}
 					</div>
 				</div>
-	  		</div>
-	  	</section>
-	  	<section class="wods-section" id="wods">
-	  		<div class="container">
-		  		<h1>WODS</h1>
-		  		<form class="wod-control">
-		  			<h3>Vælg en række:</h3>
-		  			<select data-action="division-select">
-			            <option value="rx" selected>RX række</option>
-			            <option value="scaled">Skaleret række</option>
-			        </select>
-			  		<div class="row">
-			  		{{#each wods}}
-			  			<div class="col-sm-3">
-			  				<button class="btn--primary btn--black {{#if @first}}active{{/if}}" {{#unless rx}}disabled{{/unless}} data-action="wod-selector" data-target="{{@index}}">
-				  				{{#if finisher}}
-				  					Finisher
-				  				{{else}}
-				  					#{{math @index "+" 1}}
-				  				{{/if}}
-			  					<br/>
-			  					{{#if released}}{{name}}{{else}}?{{/if}}
-			  				</button>
-			  			</div>
-			  		{{/each}}
-			  		</div>
-			  		<hr>
-			  		{{#each wods}}
-			  			{{#if @first}}
-					  		<article class="workout-desc {{#if @last}}inverse{{/if}}" {{#if @last}}style="background-image:url('images/overhead.jpg');"{{/if}}>
-						  		<div>
-						  			{{{rx}}}
-						  		</div>	
-					  		</article>
-					  	{{/if}}
-				  	{{/each}}
-			  	</div>
 	  		</div>
 	  	</section>
 	  	<section class="p-0">
