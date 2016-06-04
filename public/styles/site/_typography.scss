@@ -24,6 +24,17 @@ p {
     display: none !important
 }
 
+.hide-xs {
+    @media (max-width: 768px) {
+       display: none !important 
+    }
+}
+.show-xs {
+    @media (min-width: 769px) {
+       display: none !important 
+    }
+}
+
 .gray {
     color: #b9b8b8 !important
 }

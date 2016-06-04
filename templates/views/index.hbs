@@ -77,7 +77,6 @@
 	  		<div class="container">
 		  		<h1>INFO</h1>
 		  		{{{competition.description}}}
-		  		<p><em>Der er desværre ikke flere pladser i RX rækken.</em></p>
 		  		<div class="center">
 		  			<a href="javascript:void(0)" class="btn--primary btn--static register-now" style="width: 300px;">TILMELD DIG VENTELISTEN</a>
 		    	</div>
@@ -203,6 +202,17 @@
 				</div>
 	  		</div>
 	  	</section>
+	  	<section class="gray-section hide-xs">
+  			<div class="container container-aside">
+		  		<h1>I partnerskab med</h1>
+			</div>
+			<a href="http://www.bodylab.dk/" target="_blank">
+	  			<div class="background-cover background-cover-aside highlight" style="background-image:url('/images/bodylab.jpg');"></div>
+	  		</a>
+	  	</section>
+	  	<section class="p-0 show-xs">
+	  		<div class="background-cover" style="background-image:url('/images/bodylab-mobile.jpg')"></div>
+	  	</section>
 	  	<section class="p-0">
 	  		<div class="map">
 				<div id="map"></div>
@@ -269,7 +279,7 @@
 
 			var mapOptions = {
 				zoom: 14,
-				center: new google.maps.LatLng(coords[0]-0.0025, coords[1]+0.015),
+				center: new google.maps.LatLng(coords[0]-0.0025, coords[1]+0.01),
 				scrollwheel: false,
 				zoomControl: false,
 				mapTypeControl: false,

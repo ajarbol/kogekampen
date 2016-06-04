@@ -8790,6 +8790,14 @@ p, .workout-desc ul li {
 .hide {
   display: none !important; }
 
+@media (max-width: 768px) {
+  .hide-xs {
+    display: none !important; } }
+
+@media (min-width: 769px) {
+  .show-xs {
+    display: none !important; } }
+
 .gray {
   color: #b9b8b8 !important; }
 
@@ -9801,11 +9809,14 @@ section.gray-section {
 
 .container-aside {
   width: 50%;
-  margin: 0; }
+  margin: 0;
+  padding: 0 50px; }
 
-@media (max-width: 992px) {
+@media (max-width: 768px) {
   .container {
-    width: 100%; }
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px; }
   section {
     padding: 50px 0; }
   section h5 {
@@ -10302,9 +10313,7 @@ input[type="checkbox"]:checked + .check-box-item {
 
 .workout-desc {
   position: relative;
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  background-size: cover;
+  background-color: #337ab7;
   width: 600px;
   padding: 45px;
   border: 3px solid #ebebeb;
@@ -10327,15 +10336,6 @@ input[type="checkbox"]:checked + .check-box-item {
     .workout-desc ul li {
       margin: 0;
       color: #fff !important; }
-  .workout-desc:after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    content: "";
-    z-index: 1;
-    background-color: rgba(0, 0, 0, 0.7); }
   .workout-desc > div {
     position: relative;
     z-index: 2; }
@@ -10372,14 +10372,37 @@ section {
   section:not(:last-child) {
     border-bottom: 1px solid #e3e3e3; }
   section .background-cover {
-    height: 300px;
     background-size: cover;
+    background-repeat: none;
     background-position: center;
-    width: 100%; }
+    width: 100%;
+    height: 500px; }
     @media (max-width: 768px) {
       section .background-cover {
-        height: 200px; } }
-    section .background-cover:before {
+        height: 300px; } }
+    section .background-cover.highlight:before {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      content: "";
+      background-color: transparent;
+      transition: all .2s ease-in-out; }
+    section .background-cover.highlight:hover:before {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      content: "";
+      background-color: rgba(51, 122, 183, 0.3); }
+    section .background-cover.slim {
+      height: 300px; }
+      @media (max-width: 768px) {
+        section .background-cover.slim {
+          height: 200px; } }
+    section .background-cover.darkend:before {
       position: absolute;
       left: 0;
       top: 0;
@@ -10393,6 +10416,6 @@ section {
       right: 0;
       width: 50%;
       height: 100%; }
-      @media (max-width: 992px) {
+      @media (max-width: 768px) {
         section .background-cover.background-cover-aside {
           display: none; } }
