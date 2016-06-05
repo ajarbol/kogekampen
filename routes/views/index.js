@@ -4,6 +4,7 @@ var _ = require('underscore');
 var Event = keystone.list('Event');
 var Wod = keystone.list('Wod');
 var Athlete = keystone.list('Athlete');
+var Team = keystone.list('Team');
 
 exports = module.exports = function(req, res) {
 	
@@ -69,36 +70,61 @@ exports = module.exports = function(req, res) {
 	};
 
 	view.on('init', function(next) {
-		Athlete.model.find()
-			.where('competition', locals.competition)
-			.where('accepted', true)
-			.sort('timestamp')
-			.exec(function (err, athletes) {
-				var rxAthletes = { male: [], female: [] };
-				var scaledAthletes = { male: [], female: [] };
-				_.each(athletes, function (athlete) {
-					if (athlete.division === 'rx') {
-						rxAthletes[athlete.gender].push(athlete);
-					}
-					else if (athlete.division === 'scaled') {
-						scaledAthletes[athlete.gender].push(athlete);
-					}
+		if (locals.competition.showTeams) {
+			Team.model.find()
+				.where('competition', locals.competition)
+				.populate('athletes')
+				.exec(function (err, teams) {
+					var rxTeams = [];
+					var scaledTeams = [];
+					_.each(teams, function (team) {
+						if (team.athletes.length) {
+							if (team.division === 'rx') {
+								rxTeams.push(team);
+							}
+							else if (team.division === 'scaled') {
+								scaledTeams.push(team);
+							}
+						}
+					});
+					locals.rxTeams = rxTeams;
+					locals.scaledTeams = scaledTeams;
+					console.log(locals.scaledTeams);
+					next();
 				});
+		}
+		else {
+			Athlete.model.find()
+				.where('competition', locals.competition)
+				.where('accepted', true)
+				.sort('timestamp')
+				.exec(function (err, athletes) {
+					var rxAthletes = { male: [], female: [] };
+					var scaledAthletes = { male: [], female: [] };
+					_.each(athletes, function (athlete) {
+						if (athlete.division === 'rx') {
+							rxAthletes[athlete.gender].push(athlete);
+						}
+						else if (athlete.division === 'scaled') {
+							scaledAthletes[athlete.gender].push(athlete);
+						}
+					});
 
-				var nonWaitlistRx = rxAthletes.male.slice(0, 18).concat(rxAthletes.female.slice(0, 9)).sort(sortByTime);
-				var nonWaitlistScaled = scaledAthletes.male.slice(0, 18).concat(scaledAthletes.female.slice(0, 9)).sort(sortByTime);
+					var nonWaitlistRx = rxAthletes.male.slice(0, 18).concat(rxAthletes.female.slice(0, 9)).sort(sortByTime);
+					var nonWaitlistScaled = scaledAthletes.male.slice(0, 18).concat(scaledAthletes.female.slice(0, 9)).sort(sortByTime);
 
-				locals.rxAthletes = splitInHalf(nonWaitlistRx);
-				locals.scaledAthletes = splitInHalf(nonWaitlistScaled);
-				
-				var waitlistRx = rxAthletes.male.slice(18, rxAthletes.male.length).concat(rxAthletes.female.slice(9, rxAthletes.female.length)).sort(sortByTime);
-				var waitlistScaled = scaledAthletes.male.slice(18, scaledAthletes.male.length).concat(scaledAthletes.female.slice(9, scaledAthletes.female.length)).sort(sortByTime);
+					locals.rxAthletes = splitInHalf(nonWaitlistRx);
+					locals.scaledAthletes = splitInHalf(nonWaitlistScaled);
+					
+					var waitlistRx = rxAthletes.male.slice(18, rxAthletes.male.length).concat(rxAthletes.female.slice(9, rxAthletes.female.length)).sort(sortByTime);
+					var waitlistScaled = scaledAthletes.male.slice(18, scaledAthletes.male.length).concat(scaledAthletes.female.slice(9, scaledAthletes.female.length)).sort(sortByTime);
 
-				if (waitlistRx.length) locals.rxWaitlist = splitInHalf(waitlistRx);
-				if (waitlistScaled.length) locals.scaledWaitlist = splitInHalf(waitlistScaled);
+					if (waitlistRx.length) locals.rxWaitlist = splitInHalf(waitlistRx);
+					if (waitlistScaled.length) locals.scaledWaitlist = splitInHalf(waitlistScaled);
 
-				next();
-			});
+					next();
+				});
+		}
 	});
 	
 	// Render the view

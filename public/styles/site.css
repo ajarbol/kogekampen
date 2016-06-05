@@ -10340,7 +10340,7 @@ input[type="checkbox"]:checked + .check-box-item {
     position: relative;
     z-index: 2; }
 
-.teams-section h3 {
+.teams-section h2, .teams-section h3 {
   text-align: center; }
 
 .teams-section .right-rule {
@@ -10366,6 +10366,28 @@ input[type="checkbox"]:checked + .check-box-item {
         .teams-section ul li span {
           display: block;
           margin-left: 0; } }
+
+.teams-section .teams-box {
+  border: 2px #ebebeb solid;
+  background-color: #F2F2F2;
+  margin: 0 20px; }
+  @media (max-width: 992px) {
+    .teams-section .teams-box {
+      margin: 0; } }
+  .teams-section .teams-box:not(:first-child) {
+    margin-top: 30px; }
+  .teams-section .teams-box h3 {
+    text-align: left !important; }
+  .teams-section .teams-box ul {
+    text-align: center; }
+    .teams-section .teams-box ul li {
+      margin: 10px;
+      max-width: 150px;
+      display: inline-block;
+      text-align: center; }
+    .teams-section .teams-box ul span {
+      display: block;
+      margin-left: 0; }
 
 section {
   position: relative; }

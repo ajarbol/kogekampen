@@ -95,10 +95,14 @@ $(function() {
     	if ($('nav').hasClass('active')) {
     		$('nav.active a').unbind('click');
     		$('nav').removeClass('active');
+            if ($(window).scrollTop() <= num) {
+                $('.header-main').removeClass('change');
+            }
     	}
     	else {
     		$('nav').addClass('active');
     		$('nav.active a').bind('click', toggleNav);
+            $('.header-main').addClass('change');
     	}
     }
 
