@@ -60,7 +60,8 @@ keystone.set('nav', {
 	'admins': 'admins',
 	'events': 'events',
 	'wods': 'wods',
-	'signups': ['athletes', 'rsvps']
+	'results': 'results',
+	'signups': ['athletes', 'rsvps', 'teams']
 });
 
 // Start Keystone to connect to your database and initialise the web server

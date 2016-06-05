@@ -16,10 +16,5 @@ Rsvp.add({
 	timestamp: { type: Types.Datetime, default: Date.now, noedit: true }
 });
 
-
-/**
- * Registration
- */
-
 Rsvp.defaultColumns = 'name, phone, paid, event, timestamp';
 Rsvp.register();

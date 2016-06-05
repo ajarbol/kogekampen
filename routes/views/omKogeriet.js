@@ -1,5 +1,4 @@
 var keystone = require('keystone');
-var _ = require('underscore');
 
 exports = module.exports = function(req, res) {
 	

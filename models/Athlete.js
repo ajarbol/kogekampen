@@ -18,11 +18,6 @@ Athlete.add({
 	timestamp: { type: Types.Datetime, default: Date.now, noedit: true }
 });
 
-
-/**
- * Registration
- */
-
 Athlete.defaultColumns = 'name, division, competition, accepted, timestamp';
 Athlete.defaultSort = '-timestamp';
 Athlete.register();

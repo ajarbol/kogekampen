@@ -21,10 +21,5 @@ Admin.schema.virtual('canAccessKeystone').get(function() {
 	return this.isAdmin;
 });
 
-
-/**
- * Registration
- */
-
 Admin.defaultColumns = 'name, email, isAdmin';
 Admin.register();

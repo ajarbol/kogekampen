@@ -58,15 +58,15 @@ exports = module.exports = function(req, res) {
 	var splitInHalf = function(arr) {
 		var splitArr = [[],[]];
 		_.each(arr, function (e, i){
-			if (i % 2) splitArr[1].push(e)
+			if (i % 2) splitArr[1].push(e);
 			else splitArr[0].push(e);
 		});
 		return splitArr;
-	}
+	};
 
 	var sortByTime = function(a, b){
 		return new Date(a.timestamp) - new Date(b.timestamp);
-	}
+	};
 
 	view.on('init', function(next) {
 		Athlete.model.find()

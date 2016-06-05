@@ -19,13 +19,9 @@ Event.add({
 	description: { type: Types.Html, wysiwyg: true },
 	location: { type: Types.Location },
 	rxRequirements: { type: Types.Html, wysiwyg: true },
-	scaledRequirements: { type: Types.Html, wysiwyg: true }
+	scaledRequirements: { type: Types.Html, wysiwyg: true },
+	showTeams: { type: Types.Boolean, default: false }
 });
-
-
-/**
- * Registration
- */
 
 Event.defaultColumns = 'name, startTime';
 Event.register();
