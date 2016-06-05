@@ -89,7 +89,6 @@ exports = module.exports = function(req, res) {
 					});
 					locals.rxTeams = rxTeams;
 					locals.scaledTeams = scaledTeams;
-					console.log(locals.scaledTeams);
 					next();
 				});
 		}

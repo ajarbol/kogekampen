@@ -9867,7 +9867,7 @@ section.gray-section {
 
 .header-main.change,
 .header-main.black-header {
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: white;
   border-bottom: 1px solid #e3e3e3; }
 
 .header-main.change .bars,
