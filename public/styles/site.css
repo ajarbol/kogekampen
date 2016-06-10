@@ -8787,16 +8787,23 @@ p, .workout-desc ul li {
 .left {
   float: left; }
 
+@media (max-width: 768px) {
+  .show-table-xs {
+    display: table !important; } }
+
+.show {
+  display: block !important; }
+
 .hide {
   display: none !important; }
 
 @media (max-width: 768px) {
   .hide-xs {
-    display: none !important; } }
+    display: none; } }
 
 @media (min-width: 769px) {
   .show-xs {
-    display: none !important; } }
+    display: none; } }
 
 .gray {
   color: #b9b8b8 !important; }

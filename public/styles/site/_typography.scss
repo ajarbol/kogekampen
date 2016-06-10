@@ -20,18 +20,28 @@ p {
     float: left
 }
 
+.show-table-xs {
+    @media (max-width: 768px) {
+        display: table !important;
+    }
+}
+
+.show {
+    display: block !important;
+}
+
 .hide {
-    display: none !important
+    display: none !important;
 }
 
 .hide-xs {
     @media (max-width: 768px) {
-       display: none !important 
+       display: none; 
     }
 }
 .show-xs {
     @media (min-width: 769px) {
-       display: none !important 
+       display: none;
     }
 }
 

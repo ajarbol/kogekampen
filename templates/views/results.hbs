@@ -3,13 +3,16 @@
 	  	<section>
 	  		<div class="container">
 		  		<h1>Resultater</h1>
-	  			<h3>Vælg en række:</h3>
-	  			<form>
-		  			<select data-action="division-select">
-			            <option value="rx" selected>RX række</option>
-			            <option value="scaled">Skaleret række</option>
-			        </select>
-			    </form>
+		  		<div class="show-xs">
+		  			<h3>Vælg en række:</h3>
+		  			<form>
+			  			<select data-action="division-select">
+				            <option value="rx" selected>RX række</option>
+				            <option value="scaled">Skaleret række</option>
+				        </select>
+				    </form>
+				</div>
+				<h3 class="hide-xs">RX række</h3>
 				<table data-role="results" data-target="rx">
 					<thead>
 			  			<tr>
@@ -40,7 +43,8 @@
 				  		{{/each}}
 			  		</tbody>
 		  		</table>
-		  		<table data-role="results" data-target="scaled" style="display:none;">
+		  		<h3 class="hide-xs">Skaleret række</h3>
+		  		<table data-role="results" data-target="scaled" class="hide-xs">
 		  			<thead>
 			  			<tr>
 			  				<th></th>
@@ -77,8 +81,8 @@
 		$('[data-action="division-select"]').change(function(e){
 			e.preventDefault();
 			var division = $(this).val();
-			$('[data-role="results"]').hide();
-			$('[data-target="'+division+'"]').show();
+			$('table[data-role="results"]').removeClass('show-table-xs');
+			$('table[data-target="'+division+'"]').addClass('show-table-xs');
 		});
 
 	    var addData = function (headers, body) {
