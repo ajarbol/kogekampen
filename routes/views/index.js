@@ -79,6 +79,7 @@ exports = module.exports = function(req, res) {
 			Team.model.find()
 				.where('competition', locals.competition)
 				.populate('athletes')
+				.sort('name')
 				.exec(function (err, teams) {
 					var rxTeams = [];
 					var scaledTeams = [];

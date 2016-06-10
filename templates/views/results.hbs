@@ -1,0 +1,99 @@
+{{!< default}}
+  	<main>
+	  	<section>
+	  		<div class="container">
+		  		<h1>Resultater</h1>
+	  			<h3>Vælg en række:</h3>
+	  			<form>
+		  			<select data-action="division-select">
+			            <option value="rx" selected>RX række</option>
+			            <option value="scaled">Skaleret række</option>
+			        </select>
+			    </form>
+				<table data-role="results" data-target="rx">
+					<thead>
+			  			<tr>
+			  				<th></th>
+			  			{{#each wods}}
+				  			<th>
+				  				{{this.name}}
+				  			</th>
+				  		{{/each}}
+				  		</tr>
+				  	</thead>
+			  		<tbody>
+				  		{{#each masterOrder.rx}}
+				  			<tr>
+				  				<td>{{@key}}</td>
+				  				{{#each ../wods}}
+				  					{{#each this.results.rx}}
+				  						{{#ifEq this.name @../../key}}
+				  							{{#if this.score}}
+				  								<td><b>{{this.position}}</b> ({{this.text}})</td>
+				  							{{else}}
+				  								<td>-</td>
+				  							{{/if}}
+				  						{{/ifEq}}
+				  					{{/each}}
+				  				{{/each}}
+				  			</tr>
+				  		{{/each}}
+			  		</tbody>
+		  		</table>
+		  		<table data-role="results" data-target="scaled" style="display:none;">
+		  			<thead>
+			  			<tr>
+			  				<th></th>
+			  			{{#each wods}}
+				  			<th>
+				  				{{this.name}}
+				  			</th>
+				  		{{/each}}
+				  		</tr>
+				  	</thead>
+			  		<tbody>
+				  		{{#each masterOrder.scaled}}
+				  			<tr>
+				  				<td>{{@key}}</td>
+				  				{{#each ../wods}}
+				  					{{#each this.results.scaled}}
+				  						{{#ifEq this.name @../../key}}
+				  							{{#if this.score}}
+				  								<td><b>{{this.position}}</b> ({{this.text}})</td>
+				  							{{else}}
+				  								<td>-</td>
+				  							{{/if}}
+				  						{{/ifEq}}
+				  					{{/each}}
+				  				{{/each}}
+				  			</tr>
+				  		{{/each}}
+				  	</tbody>
+		  		</table>
+	  		</div>
+	  	</section>
+	</main>
+	<script>
+		$('[data-action="division-select"]').change(function(e){
+			e.preventDefault();
+			var division = $(this).val();
+			$('[data-role="results"]').hide();
+			$('[data-target="'+division+'"]').show();
+		});
+
+	    var addData = function (headers, body) {
+	    	var headertext = []
+		    for(var i = 0; i < headers.length; i++) {
+		      var current = headers[i];
+		      headertext.push(current.textContent.replace(/\r?\n|\r/,""));
+		    } 
+		    for (var i = 0, row; row = body.rows[i]; i++) {
+		      for (var j = 0, col; col = row.cells[j]; j++) {
+		        col.setAttribute("data-th", headertext[j]);
+		      } 
+		    }
+	    };
+	    addData(document.querySelectorAll('[data-target="rx"] th'), document.querySelector('[data-target="rx"] tbody'));	    
+	    addData(document.querySelectorAll('[data-target="scaled"] th'), document.querySelector('[data-target="scaled"] tbody'));
+
+	</script>

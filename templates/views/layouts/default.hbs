@@ -61,32 +61,32 @@
 	        <button data-action="popup-flash-close" class="btn--primary" type="button">OK</button>
 	      </div>
 	    </div>
-	  	<header class="header-main">
+	  	<header class="header-main {{#if showHeaderInitial}}black-header{{/if}}">
 			<div class="container">
 				{{#if showBackToHome}}
 				<a href="/" class="back-to-home">
 					<svg xmlns="http://www.w3.org/2000/svg" width="12" height="30" viewBox="250 246 12 20"><path fill="#FFF" d="M262 264.787L260.706 266 250 256l10.706-10 1.294 1.206-9.406 8.794z"/></svg>
 				</a>
 				{{/if}}
-				<a href="javascript:void(0)" class="right bars"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
-				<nav class="right">
-					<ul class="list-unstyled">
-						{{#unless showBackToHome}}
-						<li>
-							<a href="#wods">WODS</a>
-						</li>
-						<li>
-							<a href="#teams">TEAMS</a>
-						</li>
-						{{/unless}}
-						<li>
-							<a href="/om-kogeriet">Om kogeriet</a>
-						</li>
-						<li>
-							<a href="#resultater" data-action="comming-soon">resultater</a>
-						</li>
-					</ul>
-				</nav>
+				{{#unless showBackToHome}}
+					<a href="javascript:void(0)" class="right bars"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+					<nav class="right">
+						<ul class="list-unstyled">
+								<li>
+									<a href="#wods">WODS</a>
+								</li>
+								<li>
+									<a href="#teams">TEAMS</a>
+								</li>
+								<li>
+									<a href="/{{competition._id}}/resultater">resultater</a>
+								</li>
+								<li>
+									<a href="/om-kogeriet">Om kogeriet</a>
+								</li>
+						</ul>
+					</nav>
+				{{/unless}}
 			</div>
 		</header>
 		<script src="/js/jquery/jquery-2.1.4.min.js"></script>

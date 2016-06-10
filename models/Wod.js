@@ -15,9 +15,11 @@ Wod.add({
 	rxDescription: { type: Types.Html, wysiwyg: true },
 	scaledDescription: { type: Types.Html, wysiwyg: true },
 	finisher: { type: Types.Boolean, default: false }, 
-	released: { type: Types.Boolean, default: false }
+	released: { type: Types.Boolean, default: false },
+	type: { type: Types.Select, initial: true, options: ['forTime', 'forLoad', 'amrap', 'multi'], required: true }
+
 });
 
-Wod.defaultColumns = 'competition, division, order, name, released';
+Wod.defaultColumns = 'competition, division, order, name, type, released';
 Wod.defaultSort = 'competition, order';
 Wod.register();

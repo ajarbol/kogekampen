@@ -365,6 +365,13 @@ module.exports = function() {
 	_helpers.json = function(context) {
     	return JSON.stringify(context);
     };
+
+    _helpers.ifEq = function(a, b, opts) {
+	    if(a == b)
+	        return opts.fn(this);
+	    else
+	        return opts.inverse(this);
+	};
 	
 	return _helpers;
 };

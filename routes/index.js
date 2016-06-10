@@ -38,6 +38,7 @@ exports = module.exports = function(app) {
 	// Views
 	app.get('/', routes.views.index);
 	app.get('/om-kogeriet', routes.views.omKogeriet);
+	app.get('/:competition/resultater', routes.views.results);
 	//app.get('/gallery', routes.views.gallery);
 
 	// API
