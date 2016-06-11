@@ -27,7 +27,7 @@
 			  		<tbody>
 				  		{{#each masterOrder.rx}}
 				  			<tr>
-				  				<td>{{name}}</td>
+				  				<td>{{name}} ({{value}}p)</td>
 				  				{{#each ../wods}}
 				  					{{#each this.results.rx}}
 				  						{{#ifEq this.name ../../name}}
@@ -58,7 +58,7 @@
 			  		<tbody>
 				  		{{#each masterOrder.scaled}}
 				  			<tr>
-				  				<td>{{name}}</td>
+				  				<td>{{name}} ({{value}}p)</td>
 				  				{{#each ../wods}}
 				  					{{#each this.results.scaled}}
 				  						{{#ifEq this.name ../../name}}
