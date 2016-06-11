@@ -809,16 +809,20 @@ input[type="checkbox"]:checked+.check-box-item {
             text-align: left !important;
         }
         ul {
-            text-align: center;
             li {
-                margin: 10px;
-                max-width: 150px;
+                margin-left: 25px;
                 display: inline-block;
-                text-align: center;
+                text-align: left;
+                @media (max-width: 992px) {
+                    display: block;
+                }
             }
             span {
-                display: block;
-                margin-left: 0;
+                @media (max-width: 992px) {
+                    display: inline-block;
+                }
+                margin-left: 10px;
+
             }
         }
     }

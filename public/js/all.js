@@ -59,11 +59,12 @@ $(function() {
 	/*-------------------------------------------------*/
     /* =  POPUPs
     /*-------------------------------------------------*/
-    window.addPopup = function ($popup, $trigger) {
+    window.addPopup = function ($popup, $trigger, onBeforeTrigger) {
     	$trigger.on('click' , function() {
             var offset = $(window).width() <= 480 ? 0 : 100;
             var height = $(window).scrollTop() + offset;
             $popup.find('.content-popup').css('margin', height + 'px auto');
+            if (onBeforeTrigger) onBeforeTrigger($trigger);
             $popup.toggleClass('active');
         });
         $popup.find('.close-popup').on('click' , function() {
@@ -77,10 +78,9 @@ $(function() {
     /*-------------------------------------------------*/
     /* =  NAV BAR VISIBILITY AND RESPONSIVENESS
     /*-------------------------------------------------*/ 
-    var num = $('.header-main').offset().top; 
+    var num = $('.header-main').offset().top;
 
-    $(window).bind('scroll', function() {
-
+    var handleScroll = function() {
         if ($(window).scrollTop() > num) {
             $('.header-main').addClass('change');
         }
@@ -89,7 +89,9 @@ $(function() {
             $('.header-main').removeClass('change');
 
         }
-    });
+    };
+
+    $(window).bind('scroll', handleScroll);
 
     var toggleNav = function () {
     	if ($('nav').hasClass('active')) {
@@ -114,6 +116,7 @@ $(function() {
 
     $('[data-action="comming-soon"]').click(function(){
         showNotification("404 🤓", "Denne side kommer snart!", "error");
-    })
+    });
+
 
 });

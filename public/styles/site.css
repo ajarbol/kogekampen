@@ -9795,7 +9795,7 @@ span.party-icon {
         display: block;
     }
 }*/
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
   table thead {
     display: none; }
   table tbody td {
@@ -10469,16 +10469,18 @@ input[type="checkbox"]:checked + .check-box-item {
     margin-top: 30px; }
   .teams-section .teams-box h3 {
     text-align: left !important; }
-  .teams-section .teams-box ul {
-    text-align: center; }
-    .teams-section .teams-box ul li {
-      margin: 10px;
-      max-width: 150px;
-      display: inline-block;
-      text-align: center; }
-    .teams-section .teams-box ul span {
-      display: block;
-      margin-left: 0; }
+  .teams-section .teams-box ul li {
+    margin-left: 25px;
+    display: inline-block;
+    text-align: left; }
+    @media (max-width: 992px) {
+      .teams-section .teams-box ul li {
+        display: block; } }
+  .teams-section .teams-box ul span {
+    margin-left: 10px; }
+    @media (max-width: 992px) {
+      .teams-section .teams-box ul span {
+        display: inline-block; } }
 
 section {
   position: relative; }

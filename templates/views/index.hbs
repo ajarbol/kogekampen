@@ -77,7 +77,7 @@
 			    			<ul>
 			    				{{#each schedules}}
 			    					<li>
-			    						<div class="schedule-up"><span>{{#if @first}}Lige nu:{{else}}Om {{this.minutes}} minutter:{{/if}}</span> {{this.text}}</div>
+			    						<div class="schedule-up"><span>{{#if @first}}Lige nu:{{else}}Om <span data-role="schedule-time">{{this.minutes}}</span> minutter:{{/if}}</span> {{this.text}}</div>
 			    					</li>
 			    				{{/each}}
 			    			</ul>
@@ -352,6 +352,25 @@
 		    	$('.countdown').hide();
 		    	$('.register-now').hide();
 		    });
+
+		    //timer
+		    var times = $('[data-role="schedule-time"]');
+		    if (times) {
+		    	var timeout = null;
+		    	var oneTheMinute = function () {
+		    		$.each(times, function(i, time){
+		    			var num = $(time).text() - 1;
+		    			if (num <= 0) {
+		    				window.location.reload();
+		    			}
+		    			else {
+		    				$(time).text(num);
+		    			}
+		    		});
+		    		timeout = setTimeout(oneTheMinute, 1000 * 60);
+		    	}
+		    	setTimeout(oneTheMinute(), 1000 * 60);
+		    }
 
 			// WOD CTRL
 			var wods = {{{json wods}}};
