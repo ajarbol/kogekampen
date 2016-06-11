@@ -81,8 +81,8 @@
 		$('[data-action="division-select"]').change(function(e){
 			e.preventDefault();
 			var division = $(this).val();
-			$('table[data-role="results"]').removeClass('show-table-xs');
-			$('table[data-target="'+division+'"]').addClass('show-table-xs');
+			$('table[data-role="results"]').hide().removeClass('show-table-xs');
+			$('table[data-target="'+division+'"]').show().addClass('show-table-xs');
 		});
 
 	    var addData = function (headers, body) {
