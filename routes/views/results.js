@@ -145,9 +145,7 @@ exports = module.exports = function(req, res) {
 									if (r.score !== wod.results[division][i-1].score) position++;
 								}
 								r.position = getOrdinal(position);
-								if (r.score !== 0) {
-									locals.masterOrder[division][r.name] = locals.masterOrder[division][r.name] ? locals.masterOrder[division][r.name] + i: i;
-								}
+								locals.masterOrder[division][r.name] = locals.masterOrder[division][r.name] ? locals.masterOrder[division][r.name] + i: i;
 							});
 						});
 					});
