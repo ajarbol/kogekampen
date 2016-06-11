@@ -149,8 +149,22 @@ exports = module.exports = function(req, res) {
 									locals.masterOrder[division][r.name] = locals.masterOrder[division][r.name] ? locals.masterOrder[division][r.name] + i: i;
 								}
 							});
-
 						});
+					});
+					_.each(locals.masterOrder, function(teams, division){
+						var ts = [];
+						_.each(teams, function(value, name){
+							ts.push({name: name, value: value});
+						});
+						ts.sort(function(a, b){
+							if (a.value < b.value)
+								return -1;
+							else if (a.value > b.value)
+								return 1;
+							else 
+								return 0;
+						});
+						locals.masterOrder[division] = ts;
 					});
 					next();
 				});
