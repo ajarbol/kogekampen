@@ -61,6 +61,7 @@ keystone.set('nav', {
 	'events': 'events',
 	'wods': 'wods',
 	'results': 'results',
+	'schedules': 'schedules',
 	'signups': ['athletes', 'rsvps', 'teams']
 });
 

@@ -48,28 +48,42 @@
 		    <article>
 		    	<div class="container counter-compensation">
 					<img src="images/kogekampen-logo.png" alt="" class="logo">
-		    	  	<a href="javascript:void(0)" class="btn--primary rsvp-now">TILMELD DIG FESTEN<span class="party-icon"></span></a>
+		    	  	<!--<a href="javascript:void(0)" class="btn--primary rsvp-now">TILMELD DIG FESTEN<span class="party-icon"></span></a>-->
 		    	</div>
-	    		<div class="counter">
-			    	<ul class="countdown">
-				        <li>
-				            <span class="days">--</span>
-				            <p class="days_ref">days</p>
-				        </li>
-				        <li>
-				            <span class="hours">--</span>
-				            <p class="hours_ref">hours</p>
-				        </li>
-				        <li>
-				            <span class="minutes">--</span>
-				            <p class="minutes_ref">minutes</p>
-				        </li>
-				        <li>
-				            <span class="seconds">--</span>
-				            <p class="seconds_ref">seconds</p>
-				        </li>
-				    </ul>
-			    </div>
+		    	{{#if hasCountdown}}
+		    		<div class="counter">
+				    	<ul class="countdown">
+					        <li>
+					            <span class="days">--</span>
+					            <p class="days_ref">days</p>
+					        </li>
+					        <li>
+					            <span class="hours">--</span>
+					            <p class="hours_ref">hours</p>
+					        </li>
+					        <li>
+					            <span class="minutes">--</span>
+					            <p class="minutes_ref">minutes</p>
+					        </li>
+					        <li>
+					            <span class="seconds">--</span>
+					            <p class="seconds_ref">seconds</p>
+					        </li>
+					    </ul>
+				    </div>
+				{{else}}
+					{{#if schedules.length}}
+			    		<div class="info-box">
+			    			<ul>
+			    				{{#each schedules}}
+			    					<li>
+			    						<div class="schedule-up"><span>{{#if @first}}Lige nu:{{else}}Om {{this.minutes}} minutter:{{/if}}</span> {{this.text}}</div>
+			    					</li>
+			    				{{/each}}
+			    			</ul>
+			    		</div>
+			    	{{/if}}
+				{{/if}}
 		    </article>
 	  	</div>
 
@@ -77,9 +91,11 @@
 	  		<div class="container">
 		  		<h1>INFO</h1>
 		  		{{{competition.description}}}
-		  		<div class="center">
-		  			<a href="javascript:void(0)" class="btn--primary btn--static register-now" style="width: 300px;">TILMELD DIG VENTELISTEN</a>
-		    	</div>
+		  		{{#unless hasCountdown}}
+			  		<div class="center">
+			  			<a href="javascript:void(0)" class="btn--primary btn--static register-now" style="width: 300px;">TILMELD DIG VENTELISTEN</a>
+			    	</div>
+			    {{/unless}}
 				<div class="row requirement-boxes">
 					<div class="col-sm-6">
 

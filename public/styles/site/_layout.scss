@@ -334,6 +334,41 @@ section.gray-section {
             }
         }
     }
+    .info-box {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        bottom: 0;
+        padding: 25px 0;
+        color: white;
+        font-size: 24px;
+        span {
+            font-size: 16px;
+            text-transform: uppercase;
+        }
+        @media (max-width: 667px) {
+            font-size: 16px;
+            border-top: 1px solid #e3e3e3;
+            background-color: rgba(51, 122, 183, 0.6);
+            span {
+                font-size: 12px;
+            }
+        }
+        @media (max-width: 320px) {
+            font-size: 14px;
+            span {
+                font-size: 10px;
+            }
+        }
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            li:not(:last-child) {
+                margin-bottom: 10px;
+            }
+        }
+    }
     .counter {
         position: absolute;
         width: 100%;
@@ -343,10 +378,11 @@ section.gray-section {
         text-align: center;
         z-index: 2;
         text-align: center;
+        font-weight: 700;
         ul {
             &.countdown {
                 list-style: none;
-                margin: 0 0;
+                margin: 0;
                 padding: 0;
                 display: block;
                 text-align: center;

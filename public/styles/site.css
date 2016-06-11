@@ -10051,6 +10051,35 @@ section.gray-section {
         margin: 10px auto;
         width: 280px;
         color: #fff; }
+  .subheader .info-box {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    padding: 25px 0;
+    color: white;
+    font-size: 24px; }
+    .subheader .info-box span {
+      font-size: 16px;
+      text-transform: uppercase; }
+    @media (max-width: 667px) {
+      .subheader .info-box {
+        font-size: 16px;
+        border-top: 1px solid #e3e3e3;
+        background-color: rgba(51, 122, 183, 0.6); }
+        .subheader .info-box span {
+          font-size: 12px; } }
+    @media (max-width: 320px) {
+      .subheader .info-box {
+        font-size: 14px; }
+        .subheader .info-box span {
+          font-size: 10px; } }
+    .subheader .info-box ul {
+      margin: 0;
+      padding: 0;
+      list-style: none; }
+      .subheader .info-box ul li:not(:last-child) {
+        margin-bottom: 10px; }
   .subheader .counter {
     position: absolute;
     width: 100%;
@@ -10059,10 +10088,11 @@ section.gray-section {
     margin-top: 30px;
     text-align: center;
     z-index: 2;
-    text-align: center; }
+    text-align: center;
+    font-weight: 700; }
     .subheader .counter ul.countdown {
       list-style: none;
-      margin: 0 0;
+      margin: 0;
       padding: 0;
       display: block;
       text-align: center; }

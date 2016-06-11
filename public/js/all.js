@@ -84,7 +84,7 @@ $(function() {
         if ($(window).scrollTop() > num) {
             $('.header-main').addClass('change');
         }
-        else {
+        else if(!$('nav').hasClass('active')) {
             num = $('.header-main').offset().top;
             $('.header-main').removeClass('change');
 

@@ -6,6 +6,8 @@ var Wod = keystone.list('Wod');
 var Athlete = keystone.list('Athlete');
 var Team = keystone.list('Team');
 
+var Schedule = keystone.list('Schedule');
+
 exports = module.exports = function(req, res) {
 	
 	var view = new keystone.View(req, res);
@@ -24,6 +26,9 @@ exports = module.exports = function(req, res) {
 				if (c.location && c.location.geo) {
 					c.location.geoOffset = [c.location.geo[0]+0.01, c.location.geo[1]+0.02];
 				}
+				var now = new Date();
+				var zoneAdjustedNow = (new Date()).setHours(now.getHours() - 2);
+				locals.hasCountdown = c.startTime - zoneAdjustedNow > 0 ? true : false;
 				locals.competition = c;
 				next();
 			});
@@ -124,6 +129,30 @@ exports = module.exports = function(req, res) {
 					next();
 				});
 		}
+	});
+
+	var minutesDiff = function(t1, t2) {
+		var diffMs = t1 - t2;
+		return diffMs > 0 ? Math.round((diffMs * 0.001) / 60) : 0;
+	};
+
+	view.on('init', function(next) {
+		var now = new Date();
+		Schedule.model.find()
+			.where('competition', locals.competition)
+			.where('endTime', {$gte : now})
+			.sort('endTime')
+			.limit(3)
+			.exec(function (err, schedules) {
+				locals.schedules = [];
+				_.each(schedules, function(schedule){
+					locals.schedules.push({
+						text: schedule.text,
+						minutes: minutesDiff(new Date(schedule.startTime), now)
+					});
+				});
+				next();
+			});
 	});
 	
 	// Render the view
