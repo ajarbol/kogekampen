@@ -164,7 +164,15 @@ exports = module.exports = function(req, res) {
 							else 
 								return 0;
 						});
+						var position = 1;
+						_.each(ts, function(t, i){
+							if (ts[i-1]) {
+								if (t.value !== ts[i-1].value) position++;
+							}
+							t.position = getOrdinal(position);
+						});
 						locals.masterOrder[division] = ts;
+						console.log(ts);
 					});
 					next();
 				});
