@@ -172,7 +172,6 @@ exports = module.exports = function(req, res) {
 							t.position = getOrdinal(position);
 						});
 						locals.masterOrder[division] = ts;
-						console.log(ts);
 					});
 					next();
 				});
