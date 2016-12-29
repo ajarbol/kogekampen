@@ -145,12 +145,31 @@ exports = module.exports = function(req, res) {
 									if (r.score !== wod.results[division][i-1].score) position++;
 								}
 								r.position = getOrdinal(position);
-								if (r.score !== 0) {
-									locals.masterOrder[division][r.name] = locals.masterOrder[division][r.name] ? locals.masterOrder[division][r.name] + i: i;
-								}
+								locals.masterOrder[division][r.name] = locals.masterOrder[division][r.name] ? locals.masterOrder[division][r.name] + i: i;
 							});
-
 						});
+					});
+					_.each(locals.masterOrder, function(teams, division){
+						var ts = [];
+						_.each(teams, function(value, name){
+							ts.push({name: name, value: value});
+						});
+						ts.sort(function(a, b){
+							if (a.value < b.value)
+								return -1;
+							else if (a.value > b.value)
+								return 1;
+							else 
+								return 0;
+						});
+						var position = 1;
+						_.each(ts, function(t, i){
+							if (ts[i-1]) {
+								if (t.value !== ts[i-1].value) position++;
+							}
+							t.position = getOrdinal(position);
+						});
+						locals.masterOrder[division] = ts;
 					});
 					next();
 				});
