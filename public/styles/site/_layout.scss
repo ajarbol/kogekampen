@@ -2,7 +2,7 @@ main {
     min-height: 100vh;
 }
 section {
-    padding: 140px 0;
+    padding: 50px 0;
     background-color: #fff
 }
 
@@ -24,6 +24,10 @@ section h1 {
         margin-top: 75px;
     }
 
+}
+
+section.extra-padding {
+    padding: 140px 0;
 }
 
 section p {
@@ -53,7 +57,7 @@ section.gray-section {
         padding-right: 15px;
     }
     section {
-        padding: 50px 0
+        padding: 50px 0 !important;
     }
     section h5 {
         margin-bottom: 25px
@@ -100,6 +104,9 @@ section.gray-section {
     width: 200px;
     height: 32px;
     margin-top: 10px;
+    @media (max-width: 600px) {
+        margin-top: 5px;
+    }
     background-image: url('/images/logo-only.png');
     background-size: cover;
 }
@@ -188,7 +195,7 @@ section.gray-section {
     color: #3CDCB9;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
     .header-main {
         padding: 10px 0
     }
@@ -237,7 +244,7 @@ section.gray-section {
 }
 .footer-main {
     background-color: #111111;
-    padding: 40px;
+    padding: 20px;
     small {
         position: relative;
         top: 9px;
@@ -318,6 +325,9 @@ section.gray-section {
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
+    &.reduced {
+        height: 75vh;
+    }
     &:before {
         position: absolute;
         left: 0;
@@ -452,7 +462,7 @@ section.gray-section {
 }
 
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
     .subheader {
         article {
             h3 {
@@ -754,14 +764,14 @@ input[type="checkbox"]:checked+.check-box-item {
 
 .workout-desc {
     position: relative;
-    background-color: rgb(51, 122, 183);
+    background-color: #3CDCB9;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.07);
     border: 1px solid #DEDFE3;
     border-radius: 5px;
     width: 600px;
     padding: 45px;
     font-size: 19px;
-    color: #fff;
+    color: #fff !important;
     @media (max-width: 768px) {
         width: 100%;
         font-size: 16px;  
@@ -773,7 +783,9 @@ input[type="checkbox"]:checked+.check-box-item {
         margin-bottom: 12px;
     }
     p {
+        color: #fff !important;
         line-height: inherit;
+        font-size: 18px;
     }
     ul {
         margin: 20px 0;

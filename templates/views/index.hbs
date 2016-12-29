@@ -1,6 +1,6 @@
 {{!< default}}
   <main>
-    <section class="black-section" style="height: 100vh;">
+    <section class="black-section" style="min-height: 100vh;">
       <div class="container">
         <div class="row">
           {{#each competitions}}
@@ -9,7 +9,7 @@
                 <div class="competition-card">
                   <div class="graphic-wrapper">
                     <div class="graphic-overlay"></div>
-                    <div class="graphic" style="background-image: url(/images/hero.jpg);"></div>
+                    <div class="graphic" style="background-image: url('/uploads/{{this.coverImage.filename}}');"></div>
                   </div>
                   <div class="info">
                     <h3>{{this.name}}</h3>

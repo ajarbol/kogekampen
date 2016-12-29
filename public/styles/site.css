@@ -9635,8 +9635,8 @@ input[type="checkbox"] {
   display: none; }
 
 .btn--primary:not(:disabled):hover {
-  background-color: #4a8fe7;
-  border-color: #4a8fe7;
+  background-color: #3CDCB9;
+  border-color: #3CDCB9;
   padding-right: 60px;
   color: #fff;
   cursor: pointer; }
@@ -9663,7 +9663,7 @@ input[type="checkbox"] {
   width: 100%;
   height: 75px;
   line-height: 75px;
-  background-color: #4a8fe7;
+  background-color: #3CDCB9;
   font-weight: 700;
   color: #fff;
   border: none;
@@ -9808,7 +9808,7 @@ span.party-icon {
     height: 25px;
     color: white; }
   table tbody tr td:first-child {
-    background-color: #4a8fe7;
+    background-color: #3CDCB9;
     font-weight: 700;
     color: #fff;
     font-size: 20px; }
@@ -9821,7 +9821,7 @@ span.party-icon {
     width: 6rem; } }
 
 table th {
-  background-color: #4a8fe7;
+  background-color: #3CDCB9;
   font-weight: 700;
   color: #fff;
   font-size: 16px; }
@@ -9844,19 +9844,12 @@ table tr:nth-of-type(odd) {
   cursor: pointer;
   transition: border-color 200ms ease-in-out;
   overflow: hidden;
-  margin: auto;
+  margin-top: 140px;
   background-clip: padding-box;
-  perspective: 1px;
-  width: 100%; }
-  @media only screen and (min-width: 768px) {
+  perspective: 1px; }
+  @media screen and (max-width: 768px) {
     .competition-card {
-      width: 345px; } }
-  @media only screen and (min-width: 992px) {
-    .competition-card {
-      width: 293px; } }
-  @media only screen and (min-width: 1200px) {
-    .competition-card {
-      width: 360px; } }
+      margin-top: 30px; } }
   .competition-card:hover {
     border-color: #3CDCB9; }
     .competition-card:hover .graphic {
@@ -9897,7 +9890,7 @@ main {
   min-height: 100vh; }
 
 section {
-  padding: 140px 0;
+  padding: 50px 0;
   background-color: #fff; }
 
 section h5 {
@@ -9915,6 +9908,9 @@ section h1 {
   @media (max-width: 768px) {
     section h1 {
       margin-top: 75px; } }
+
+section.extra-padding {
+  padding: 140px 0; }
 
 section p, section .workout-desc ul li, .workout-desc ul section li {
   font-size: 19px;
@@ -9938,7 +9934,7 @@ section.gray-section {
     padding-left: 15px;
     padding-right: 15px; }
   section {
-    padding: 50px 0; }
+    padding: 50px 0 !important; }
   section h5 {
     margin-bottom: 25px; }
   section h5 br {
@@ -9978,6 +9974,9 @@ section.gray-section {
   margin-top: 10px;
   background-image: url("/images/logo-only.png");
   background-size: cover; }
+  @media (max-width: 600px) {
+    .header-main .logo-top {
+      margin-top: 5px; } }
 
 .header-main .logo-default {
   display: inline-block; }
@@ -10045,7 +10044,7 @@ section.gray-section {
 .header-main nav a:hover {
   color: #3CDCB9; }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .header-main {
     padding: 10px 0; }
   .header-main .container {
@@ -10085,7 +10084,7 @@ section.gray-section {
 
 .footer-main {
   background-color: #111111;
-  padding: 40px; }
+  padding: 20px; }
   .footer-main small {
     position: relative;
     top: 9px;
@@ -10150,6 +10149,8 @@ section.gray-section {
   background-repeat: no-repeat;
   background-size: cover;
   position: relative; }
+  .subheader.reduced {
+    height: 75vh; }
   .subheader:before {
     position: absolute;
     left: 0;
@@ -10258,7 +10259,7 @@ section.gray-section {
           width: 1px;
           height: 28px; }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .subheader article h3 {
     font-size: 18px;
     margin-bottom: 18px; }
@@ -10481,14 +10482,14 @@ input[type="checkbox"]:checked + .check-box-item {
 
 .workout-desc {
   position: relative;
-  background-color: #337ab7;
+  background-color: #3CDCB9;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.07);
   border: 1px solid #DEDFE3;
   border-radius: 5px;
   width: 600px;
   padding: 45px;
   font-size: 19px;
-  color: #fff;
+  color: #fff !important;
   margin: 45px auto 0px auto; }
   @media (max-width: 768px) {
     .workout-desc {
@@ -10499,7 +10500,9 @@ input[type="checkbox"]:checked + .check-box-item {
     text-align: left;
     margin-bottom: 12px; }
   .workout-desc p, .workout-desc ul li {
-    line-height: inherit; }
+    color: #fff !important;
+    line-height: inherit;
+    font-size: 18px; }
   .workout-desc ul {
     margin: 20px 0;
     list-style: none; }

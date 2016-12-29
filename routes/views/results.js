@@ -4,6 +4,7 @@ var _ = require('underscore');
 var Result = keystone.list('Result');
 var Wod = keystone.list('Wod');
 var Team = keystone.list('Team');
+var Event = keystone.list('Event');
 
 var defaultResult = function (teams){
 	var obj = { rx: [], scaled: [] };
@@ -83,12 +84,25 @@ exports = module.exports = function(req, res) {
 
 	view.on('init', function(next) {
 		if (req.params.competition) {
+			Event.model.findOne()
+				.where('key', req.params.competition)
+				.exec(function(err, c){
+					if (err) return res.err(err);
+        	if (!c) return res.notfound('Sorry, this competition no longer exists (404)');
+					locals.competition = c;
+					next();
+				});
+		} else next();
+	});
+
+	view.on('init', function(next) {
+		if (locals.competition) {
 			Team.model.find()
-				.where('competition', req.params.competition)
+				.where('competition', locals.competition)
 				.sort('name')
 				.exec(function(err, teams){
 					Wod.model.find()
-						.where('competition', req.params.competition)
+						.where('competition', locals.competition)
 						.sort('order')
 						.exec(function(err, wods){
 							_.each(wods, function(wod, i){
@@ -125,7 +139,7 @@ exports = module.exports = function(req, res) {
 	view.on('init', function(next) {
 		if (!_.isEmpty(locals.wods)) {
 			Result.model.find()
-				.where('competition', req.params.competition)
+				.where('competition', locals.competition)
 				.exec(function(err, results){
 					_.each(results, function(result) {
 						_.each([result.wod, result.wod + 'a', result.wod + 'b'], function (id) {

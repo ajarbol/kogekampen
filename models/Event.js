@@ -10,6 +10,14 @@ var Event = new keystone.List('Event', {
 	autokey: { from: 'name', path: 'key', unique: true }
 });
 
+var localStorage = new keystone.Storage({
+  adapter: keystone.Storage.Adapters.FS,
+  fs: {
+    path: 'public/uploads',
+    publicPath: '/public',
+  },
+});
+
 Event.add({
 	name: { type: Types.Text, initial: true },
 	type: { type: Types.Select, initial: true, options: ['workout', 'social'] },
@@ -21,6 +29,9 @@ Event.add({
 	ticketUrl: { type: Types.Text },
 	description: { type: Types.Html, wysiwyg: true },
 	location: { type: Types.Location },
+	coverImage: { type: Types.File, storage: localStorage },
+	logoImage: { type: Types.File, storage: localStorage },
+	socialBanner: { type: Types.File, storage: localStorage },
 	rxRequirements: { type: Types.Html, wysiwyg: true },
 	scaledRequirements: { type: Types.Html, wysiwyg: true },
 	showResultSection: { type: Types.Boolean, default: false },

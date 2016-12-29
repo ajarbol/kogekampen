@@ -9,9 +9,9 @@ var Types = keystone.Field.Types;
 var Wod = new keystone.List('Wod');
 
 Wod.add({
+  name: { type: Types.Text, index: true },
 	competition: { type: Types.Relationship, ref: 'Event', initial: true, required: true },
-	order: { type: Types.Number, default: 0, required: true },
-	name: { type: Types.Text },
+	order: { type: Types.Number, default: 0, initial: true, required: true },
 	rxDescription: { type: Types.Html, wysiwyg: true },
 	scaledDescription: { type: Types.Html, wysiwyg: true },
 	finisher: { type: Types.Boolean, default: false }, 
@@ -20,6 +20,6 @@ Wod.add({
 
 });
 
-Wod.defaultColumns = 'competition, division, order, name, type, released';
+Wod.defaultColumns = 'name, competition, division, order, type, released';
 Wod.defaultSort = 'competition, order';
 Wod.register();

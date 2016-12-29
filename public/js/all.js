@@ -4,6 +4,9 @@ var $ = window.jQuery;
 
 $(function() {
 
+    /*-------------------------------------------------*/
+    /* =  Special history handling
+    /*-------------------------------------------------*/
     $('[data-action="historyBack"]').click(function(e){
         e.preventDefault();
         window.history.back();

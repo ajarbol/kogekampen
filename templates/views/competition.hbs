@@ -43,11 +43,11 @@
 			</div>
 	  	</div>
 
-	  	<div class="subheader" id="subheader-section" style="background-image:url('/images/hero.jpg')">
+	  	<div class="subheader" id="subheader-section" style="background-image:url('/uploads/{{competition.coverImage.filename}}')">
 
 		    <article>
 		    	<div class="container counter-compensation">
-					<img src="images/kogekampen-logo.png" alt="" class="logo">
+					<img src="/uploads/{{competition.logoImage.filename}}" alt="" class="logo">
 		    	  	<!--<a href="javascript:void(0)" class="btn--primary rsvp-now">TILMELD DIG FESTEN<span class="party-icon"></span></a>-->
 		    	  {{#if competition.ticketUrl}}
 			    	  {{#if hasCountdown}}
@@ -139,7 +139,7 @@
 			  			<div class="col-sm-3">
 			  				<button class="btn--primary btn--black {{#if @first}}active{{/if}}" {{#unless rx}}disabled{{/unless}} data-action="wod-selector" data-target="{{@index}}">
 				  				{{#if finisher}}
-				  					Finisher
+				  					Finale
 				  				{{else}}
 				  					#{{math @index "+" 1}}
 				  				{{/if}}
@@ -254,7 +254,7 @@
 		  	</section>
 		  {{/if}}
 	  	{{#if competition.bodyLabBanner}}
-		  	<section class="gray-section hide-xs">
+		  	<section class="gray-section hide-xs extra-padding">
 	  			<div class="container container-aside">
 			  		<h1>I partnerskab med</h1>
 				</div>
