@@ -24,6 +24,7 @@ var importRoutes = keystone.importer(__dirname);
 
 // Common Middleware
 keystone.pre('routes', middleware.initLocals);
+keystone.pre('routes', middleware.initErrorHandlers);
 keystone.pre('render', middleware.flashMessages);
 
 // Import Route Controllers
@@ -38,8 +39,8 @@ exports = module.exports = function(app) {
 	// Views
 	app.get('/', routes.views.index);
 	app.get('/om-kogeriet', routes.views.omKogeriet);
+	app.get('/:competition', routes.views.competition);
 	app.get('/:competition/resultater', routes.views.results);
-	//app.get('/gallery', routes.views.gallery);
 
 	// API
 	app.post('/api/athlete', routes.api.athletePost);

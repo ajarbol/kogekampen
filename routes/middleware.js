@@ -9,6 +9,7 @@
  */
 
 var _ = require('underscore');
+var keystone = require('keystone');
 
 
 /**
@@ -31,6 +32,23 @@ exports.initLocals = function(req, res, next) {
 	
 	next();
 	
+};
+
+/**
+    Inits the error handler functions into `res`
+*/
+exports.initErrorHandlers = function(req, res, next) {
+    
+    res.err = function(err, title, message) {
+        res.status(500).send(keystone.wrapHTMLError('Something went wrong!'));
+    }
+    
+    res.notfound = function(title, message) {
+        res.status(404).send(keystone.wrapHTMLError(title));
+    }
+    
+    next();
+    
 };
 
 

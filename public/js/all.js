@@ -4,6 +4,11 @@ var $ = window.jQuery;
 
 $(function() {
 
+    $('[data-action="historyBack"]').click(function(e){
+        e.preventDefault();
+        window.history.back();
+    });
+
     /*-------------------------------------------------*/
     /* =  Selector utils and styling
     /*-------------------------------------------------*/

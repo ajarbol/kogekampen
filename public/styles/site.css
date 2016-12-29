@@ -9836,6 +9836,63 @@ table td:first-child {
 table tr:nth-of-type(odd) {
   background-color: #ebebeb; }
 
+.competition-card {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.07);
+  border: 1px solid #DEDFE3;
+  border-radius: 5px;
+  background-color: white;
+  cursor: pointer;
+  transition: border-color 200ms ease-in-out;
+  overflow: hidden;
+  margin: auto;
+  background-clip: padding-box;
+  perspective: 1px;
+  width: 100%; }
+  @media only screen and (min-width: 768px) {
+    .competition-card {
+      width: 345px; } }
+  @media only screen and (min-width: 992px) {
+    .competition-card {
+      width: 293px; } }
+  @media only screen and (min-width: 1200px) {
+    .competition-card {
+      width: 360px; } }
+  .competition-card:hover {
+    border-color: #3CDCB9; }
+    .competition-card:hover .graphic {
+      transform: scale(1.03); }
+    .competition-card:hover .info h3 {
+      color: #3CDCB9; }
+  .competition-card .graphic-wrapper {
+    position: relative;
+    overflow: hidden; }
+  .competition-card .graphic {
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    width: 100%;
+    height: 250px;
+    opacity: 1;
+    transition: transform 200ms ease-in-out; }
+  .competition-card .graphic-overlay {
+    background-color: #1C1E23;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 50;
+    opacity: 0.3; }
+  .competition-card .info {
+    padding: 20px;
+    border-color: white; }
+    .competition-card .info h3 {
+      font-size: 18px;
+      font-weight: bold;
+      margin: 0;
+      color: #1C1E23;
+      text-transform: uppercase;
+      text-align: center;
+      transition: color 200ms ease-in-out; }
+
 main {
   min-height: 100vh; }
 
@@ -9863,6 +9920,9 @@ section p, section .workout-desc ul li, .workout-desc ul section li {
   font-size: 19px;
   color: #555555;
   line-height: 24px; }
+
+section.black-section {
+  background-color: #1C1E23; }
 
 section.gray-section {
   background-color: #f2f2f2; }
@@ -9911,6 +9971,14 @@ section.gray-section {
     margin-left: 10px;
     transition: fill .3s ease; }
 
+.header-main .logo-top {
+  display: inline-block;
+  width: 200px;
+  height: 32px;
+  margin-top: 10px;
+  background-image: url("/images/logo-only.png");
+  background-size: cover; }
+
 .header-main .logo-default {
   display: inline-block; }
 
@@ -9938,6 +10006,10 @@ section.gray-section {
 .header-main.change .back-to-home svg path,
 .header-main.black-header .back-to-home svg path {
   fill: #000; }
+
+.header-main.change .logo-top,
+.header-main.black-header .logo-top {
+  background-image: url("/images/logo-only-black.png"); }
 
 .header-main.change .logo-default,
 .header-main.black-header .logo-default {
@@ -9971,7 +10043,7 @@ section.gray-section {
   text-transform: uppercase; }
 
 .header-main nav a:hover {
-  opacity: .8; }
+  color: #3CDCB9; }
 
 @media (max-width: 480px) {
   .header-main {
@@ -10373,7 +10445,12 @@ input[type="checkbox"]:checked + .check-box-item {
   padding: 45px;
   margin: 45px 0;
   position: relative;
-  border: 3px solid #ebebeb; }
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.07);
+  border: 1px solid #DEDFE3;
+  border-radius: 5px;
+  background-clip: padding-box;
+  perspective: 1px;
+  overflow: hidden; }
   .requirement-boxes article h5 {
     margin-bottom: 10px; }
   .requirement-boxes article h3, .requirement-boxes article h5, .requirement-boxes article a {
@@ -10405,9 +10482,11 @@ input[type="checkbox"]:checked + .check-box-item {
 .workout-desc {
   position: relative;
   background-color: #337ab7;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.07);
+  border: 1px solid #DEDFE3;
+  border-radius: 5px;
   width: 600px;
   padding: 45px;
-  border: 3px solid #ebebeb;
   font-size: 19px;
   color: #fff;
   margin: 45px auto 0px auto; }
@@ -10441,10 +10520,8 @@ input[type="checkbox"]:checked + .check-box-item {
   padding: 0;
   list-style: none; }
   .teams-section ul li {
+    text-align: center;
     padding: 5px 0; }
-    @media (max-width: 992px) {
-      .teams-section ul li {
-        text-align: center; } }
     .teams-section ul li img {
       border-radius: 5px;
       width: 50px;
@@ -10452,35 +10529,40 @@ input[type="checkbox"]:checked + .check-box-item {
     .teams-section ul li span {
       margin-left: 20px;
       font-size: 16px;
-      vertical-align: middle; }
-      @media (max-width: 992px) {
-        .teams-section ul li span {
-          display: block;
-          margin-left: 0; } }
+      vertical-align: middle;
+      display: block;
+      margin-left: 0; }
 
 .teams-section .teams-box {
-  border: 2px #ebebeb solid;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.07);
+  border: 1px solid #DEDFE3;
+  border-radius: 5px;
   background-color: #F2F2F2;
-  margin: 0 20px; }
-  @media (max-width: 992px) {
-    .teams-section .teams-box {
-      margin: 0; } }
+  background-clip: padding-box;
+  perspective: 1px;
+  overflow: hidden;
+  margin: 0;
+  padding: 0; }
   .teams-section .teams-box:not(:first-child) {
     margin-top: 30px; }
   .teams-section .teams-box h3 {
-    text-align: left !important; }
+    text-align: left !important;
+    margin: 0;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: red;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: white;
+    background-color: #1C1E23; }
   .teams-section .teams-box ul li {
     margin-left: 25px;
     display: inline-block;
-    text-align: left; }
-    @media (max-width: 992px) {
-      .teams-section .teams-box ul li {
-        display: block; } }
+    text-align: left;
+    display: block; }
   .teams-section .teams-box ul span {
+    display: inline-block;
     margin-left: 10px; }
-    @media (max-width: 992px) {
-      .teams-section .teams-box ul span {
-        display: inline-block; } }
 
 section {
   position: relative; }

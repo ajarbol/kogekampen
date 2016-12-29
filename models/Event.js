@@ -6,7 +6,9 @@ var Types = keystone.Field.Types;
  * ==========
  */
 
-var Event = new keystone.List('Event');
+var Event = new keystone.List('Event', {
+	autokey: { from: 'name', path: 'key', unique: true }
+});
 
 Event.add({
 	name: { type: Types.Text, initial: true },
@@ -16,11 +18,15 @@ Event.add({
 	endTime: { type: Types.Datetime, default: Date.now },
 	googleFormId: { type: Types.Text },
 	googleMapsApi: { type: Types.Text },
+	ticketUrl: { type: Types.Text },
 	description: { type: Types.Html, wysiwyg: true },
 	location: { type: Types.Location },
 	rxRequirements: { type: Types.Html, wysiwyg: true },
 	scaledRequirements: { type: Types.Html, wysiwyg: true },
-	showTeams: { type: Types.Boolean, default: false }
+	showResultSection: { type: Types.Boolean, default: false },
+	showAthleteSection: { type: Types.Boolean, default: false },
+	showTeams: { type: Types.Boolean, default: false },
+	bodyLabBanner: { type: Types.Boolean, default: false }
 });
 
 Event.defaultColumns = 'name, startTime';

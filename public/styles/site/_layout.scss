@@ -32,6 +32,10 @@ section p {
     line-height: 24px
 }
 
+section.black-section {
+    background-color: #1C1E23
+}
+
 section.gray-section {
     background-color: #f2f2f2
 }
@@ -91,8 +95,17 @@ section.gray-section {
     }
 }
 
+.header-main .logo-top {
+    display: inline-block;
+    width: 200px;
+    height: 32px;
+    margin-top: 10px;
+    background-image: url('/images/logo-only.png');
+    background-size: cover;
+}
+
 .header-main .logo-default {
-    display: inline-block
+    display: inline-block;
 }
 
 .header-main .logo-second {
@@ -128,6 +141,11 @@ section.gray-section {
             fill: #000;
         }
     }
+}
+
+.header-main.change .logo-top,
+.header-main.black-header .logo-top {
+    background-image: url('/images/logo-only-black.png');
 }
 
 .header-main.change .logo-default,
@@ -167,7 +185,7 @@ section.gray-section {
 }
 
 .header-main nav a:hover {
-    opacity: .8
+    color: #3CDCB9;
 }
 
 @media (max-width: 480px) {
@@ -692,7 +710,12 @@ input[type="checkbox"]:checked+.check-box-item {
         padding: 45px;
         margin: 45px 0;
         position: relative;
-        border: 3px solid #ebebeb;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.07);
+        border: 1px solid #DEDFE3;
+        border-radius: 5px;
+        background-clip: padding-box;
+        perspective: 1px;
+        overflow: hidden;
         h5 {
             margin-bottom: 10px;
         }
@@ -732,9 +755,11 @@ input[type="checkbox"]:checked+.check-box-item {
 .workout-desc {
     position: relative;
     background-color: rgb(51, 122, 183);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.07);
+    border: 1px solid #DEDFE3;
+    border-radius: 5px;
     width: 600px;
     padding: 45px;
-    border: 3px solid #ebebeb;
     font-size: 19px;
     color: #fff;
     @media (max-width: 768px) {
@@ -775,9 +800,7 @@ input[type="checkbox"]:checked+.check-box-item {
         padding: 0;
         list-style: none;
         li {
-            @media (max-width: 992px) {
-                text-align: center;
-            }
+            text-align: center;
             padding: 5px 0;
             img {
                 border-radius: 5px;
@@ -788,39 +811,44 @@ input[type="checkbox"]:checked+.check-box-item {
                 margin-left: 20px;
                 font-size: 16px;
                 vertical-align: middle;
-                @media (max-width: 992px) {
-                    display: block;
-                    margin-left: 0;
-                }
+                display: block;
+                margin-left: 0;
             }
         }
     }
     .teams-box {
-        border: 2px #ebebeb solid;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.07);
+        border: 1px solid #DEDFE3;
+        border-radius: 5px;
         background-color: #F2F2F2;
-        margin: 0 20px;
-        @media (max-width: 992px) {
-            margin: 0;
-        }
+        background-clip: padding-box;
+        perspective: 1px;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
         &:not(:first-child) {
             margin-top: 30px;
         }
         h3 {
             text-align: left !important;
+            margin: 0;
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: red;
+            text-transform: uppercase;
+            font-weight: bold;
+            color: white;
+            background-color: #1C1E23;
         }
         ul {
             li {
                 margin-left: 25px;
                 display: inline-block;
                 text-align: left;
-                @media (max-width: 992px) {
-                    display: block;
-                }
+                display: block;
             }
             span {
-                @media (max-width: 992px) {
-                    display: inline-block;
-                }
+                display: inline-block;
                 margin-left: 10px;
 
             }
