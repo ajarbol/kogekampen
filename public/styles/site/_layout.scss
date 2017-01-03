@@ -763,42 +763,60 @@ input[type="checkbox"]:checked+.check-box-item {
 }
 
 .workout-desc {
-    position: relative;
-    background-color: #3CDCB9;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.07);
-    border: 1px solid #DEDFE3;
-    border-radius: 5px;
     width: 600px;
-    padding: 45px;
-    font-size: 19px;
-    color: #fff !important;
+    margin: 0 auto;
     @media (max-width: 768px) {
         width: 100%;
         font-size: 16px;  
     }
-    margin: 45px auto 0px auto;
-    h4, h5, h6 {
-        color: #fff;
-        text-align: left;
-        margin-bottom: 12px;
-    }
-    p {
+    .desc-wrap {
+        position: relative;
+        background-color: #3CDCB9;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.07);
+        border: 1px solid #DEDFE3;
+        border-radius: 5px;
+        padding: 45px;
+        font-size: 19px;
         color: #fff !important;
-        line-height: inherit;
-        font-size: 18px;
-    }
-    ul {
-        margin: 20px 0;
-        list-style: none;
-        li {
-            @extend p;
-            margin: 0;
+        margin-top: 45px;
+        h4, h5, h6 {
+            color: #fff;
+            text-align: left;
+            margin-bottom: 12px;
+        }
+        p {
             color: #fff !important;
+            line-height: inherit;
+            font-size: 18px;
+        }
+        ul {
+            margin: 20px 0;
+            list-style: none;
+            li {
+                @extend p;
+                margin: 0;
+                color: #fff !important;
+            }
         }
     }
-    &>div {
+    .video-wrap {
         position: relative;
-        z-index: 2;
+        height: 340px;
+        margin-top: 45px;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.07);
+        border: 1px solid #DEDFE3;
+        border-radius: 5px;
+        background-clip: padding-box;
+        perspective: 1px;
+        overflow: hidden;
+        iframe {
+            position: absolute;
+            width: 600px;
+            height: 340px;
+            @media (max-width: 768px) {
+                width: 100%;
+            }
+        }
     }
 }
 .teams-section {

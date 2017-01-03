@@ -213,7 +213,7 @@ th {
     page-break-inside: avoid; }
   img {
     max-width: 100% !important; }
-  p, .workout-desc ul li,
+  p, .workout-desc .desc-wrap ul li,
   h2,
   h3 {
     orphans: 3;
@@ -1212,7 +1212,7 @@ h5, .h5 {
 h6, .h6 {
   font-size: 12px; }
 
-p, .workout-desc ul li {
+p, .workout-desc .desc-wrap ul li {
   margin: 0 0 10px; }
 
 .lead {
@@ -1407,7 +1407,7 @@ blockquote {
   margin: 0 0 20px;
   font-size: 17.5px;
   border-left: 5px solid #eeeeee; }
-  blockquote p:last-child, blockquote .workout-desc ul li:last-child, .workout-desc ul blockquote li:last-child,
+  blockquote p:last-child, blockquote .workout-desc .desc-wrap ul li:last-child, .workout-desc .desc-wrap ul blockquote li:last-child,
   blockquote ul:last-child,
   blockquote ol:last-child {
     margin-bottom: 0; }
@@ -4304,7 +4304,7 @@ a.badge:hover, a.badge:focus {
   .jumbotron h1,
   .jumbotron .h1 {
     color: inherit; }
-  .jumbotron p, .jumbotron .workout-desc ul li, .workout-desc ul .jumbotron li {
+  .jumbotron p, .jumbotron .workout-desc .desc-wrap ul li, .workout-desc .desc-wrap ul .jumbotron li {
     margin-bottom: 15px;
     font-size: 21px;
     font-weight: 200; }
@@ -4364,10 +4364,10 @@ a.thumbnail.active {
     color: inherit; }
   .alert .alert-link {
     font-weight: bold; }
-  .alert > p, .workout-desc ul .alert > li,
+  .alert > p, .workout-desc .desc-wrap ul .alert > li,
   .alert > ul {
     margin-bottom: 0; }
-  .alert > p + p, .workout-desc ul .alert > li + p, .workout-desc ul .alert > p + li, .workout-desc ul .alert > li + li {
+  .alert > p + p, .workout-desc .desc-wrap ul .alert > li + p, .workout-desc .desc-wrap ul .alert > p + li, .workout-desc .desc-wrap ul .alert > li + li {
     margin-top: 5px; }
 
 .alert-dismissable,
@@ -8773,7 +8773,7 @@ textarea {
 ul {
   margin: 0; }
 
-p, .workout-desc ul li {
+p, .workout-desc .desc-wrap ul li {
   font-size: 16px;
   line-height: 1.2;
   color: #000; }
@@ -9236,7 +9236,7 @@ ol,
 dl,
 blockquote,
 p,
-.workout-desc ul li,
+.workout-desc .desc-wrap ul li,
 address,
 hr,
 table,
@@ -9350,7 +9350,7 @@ hr {
 
 .typography img:not(:last-child),
 .typography p:not(:last-child),
-.typography .workout-desc ul li:not(:last-child), .workout-desc ul
+.typography .workout-desc .desc-wrap ul li:not(:last-child), .workout-desc .desc-wrap ul
 .typography li:not(:last-child),
 .typography ul:not(:last-child),
 .typography ol:not(:last-child),
@@ -9576,12 +9576,12 @@ input[type="checkbox"] {
     border-radius: 4px;
     text-align: center;
     padding: 10px; }
-    .popup-flash .element p, .popup-flash .element .workout-desc ul li, .workout-desc ul .popup-flash .element li, .popup-flash .element h3 {
+    .popup-flash .element p, .popup-flash .element .workout-desc .desc-wrap ul li, .workout-desc .desc-wrap ul .popup-flash .element li, .popup-flash .element h3 {
       color: #000;
       margin-bottom: 20px; }
-      .popup-flash .element p.success, .popup-flash .element .workout-desc ul li.success, .workout-desc ul .popup-flash .element li.success, .popup-flash .element h3.success {
+      .popup-flash .element p.success, .popup-flash .element .workout-desc .desc-wrap ul li.success, .workout-desc .desc-wrap ul .popup-flash .element li.success, .popup-flash .element h3.success {
         color: #15ad9e; }
-      .popup-flash .element p.error, .popup-flash .element .workout-desc ul li.error, .workout-desc ul .popup-flash .element li.error, .popup-flash .element h3.error {
+      .popup-flash .element p.error, .popup-flash .element .workout-desc .desc-wrap ul li.error, .workout-desc .desc-wrap ul .popup-flash .element li.error, .popup-flash .element h3.error {
         color: #ea5555; }
     .popup-flash .element button {
       margin: 0 auto 10px;
@@ -9725,7 +9725,7 @@ input[type="checkbox"] {
         color: #fff; }
       .map .map-info-box .map-info a {
         color: #fff; }
-      .map .map-info-box .map-info p, .map .map-info-box .map-info .workout-desc ul li, .workout-desc ul .map .map-info-box .map-info li {
+      .map .map-info-box .map-info p, .map .map-info-box .map-info .workout-desc .desc-wrap ul li, .workout-desc .desc-wrap ul .map .map-info-box .map-info li {
         margin-bottom: 5px;
         color: #fff; }
     .map .map-info-box.active .map-info {
@@ -9912,7 +9912,7 @@ section h1 {
 section.extra-padding {
   padding: 140px 0; }
 
-section p, section .workout-desc ul li, .workout-desc ul section li {
+section p, section .workout-desc .desc-wrap ul li, .workout-desc .desc-wrap ul section li {
   font-size: 19px;
   color: #555555;
   line-height: 24px; }
@@ -9942,10 +9942,10 @@ section.gray-section {
   section h2 {
     margin-bottom: 40px;
     line-height: 1.2; }
-  section p, section .workout-desc ul li, .workout-desc ul section li {
+  section p, section .workout-desc .desc-wrap ul li, .workout-desc .desc-wrap ul section li {
     font-size: 16px;
     line-height: 1.4; }
-  section p br, section .workout-desc ul li br, .workout-desc ul section li br {
+  section p br, section .workout-desc .desc-wrap ul li br, .workout-desc .desc-wrap ul section li br {
     display: none; } }
 
 .header-main {
@@ -10238,7 +10238,7 @@ section.gray-section {
           font-weight: 700;
           line-height: 33px;
           color: #fff; }
-        .subheader .counter ul.countdown li p, .subheader .counter .workout-desc ul.countdown li li, .workout-desc .subheader .counter ul.countdown li li {
+        .subheader .counter ul.countdown li p, .subheader .counter .workout-desc .desc-wrap ul.countdown li li, .workout-desc .desc-wrap .subheader .counter ul.countdown li li {
           color: #e8e8e8;
           font-size: 17px;
           margin-bottom: 0;
@@ -10387,7 +10387,7 @@ form {
   form input.notify:-ms-input-placeholder,
   form textarea.notify:-ms-input-placeholder {
     color: red; }
-  form p.notify, form .workout-desc ul li.notify, .workout-desc ul form li.notify {
+  form p.notify, form .workout-desc .desc-wrap ul li.notify, .workout-desc .desc-wrap ul form li.notify {
     position: absolute;
     left: 0;
     top: 100%;
@@ -10481,37 +10481,53 @@ input[type="checkbox"]:checked + .check-box-item {
   margin-bottom: 10px; }
 
 .workout-desc {
-  position: relative;
-  background-color: #3CDCB9;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.07);
-  border: 1px solid #DEDFE3;
-  border-radius: 5px;
   width: 600px;
-  padding: 45px;
-  font-size: 19px;
-  color: #fff !important;
-  margin: 45px auto 0px auto; }
+  margin: 0 auto; }
   @media (max-width: 768px) {
     .workout-desc {
       width: 100%;
       font-size: 16px; } }
-  .workout-desc h4, .workout-desc h5, .workout-desc h6 {
-    color: #fff;
-    text-align: left;
-    margin-bottom: 12px; }
-  .workout-desc p, .workout-desc ul li {
-    color: #fff !important;
-    line-height: inherit;
-    font-size: 18px; }
-  .workout-desc ul {
-    margin: 20px 0;
-    list-style: none; }
-    .workout-desc ul li {
-      margin: 0;
-      color: #fff !important; }
-  .workout-desc > div {
+  .workout-desc .desc-wrap {
     position: relative;
-    z-index: 2; }
+    background-color: #3CDCB9;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.07);
+    border: 1px solid #DEDFE3;
+    border-radius: 5px;
+    padding: 45px;
+    font-size: 19px;
+    color: #fff !important;
+    margin-top: 45px; }
+    .workout-desc .desc-wrap h4, .workout-desc .desc-wrap h5, .workout-desc .desc-wrap h6 {
+      color: #fff;
+      text-align: left;
+      margin-bottom: 12px; }
+    .workout-desc .desc-wrap p, .workout-desc .desc-wrap ul li {
+      color: #fff !important;
+      line-height: inherit;
+      font-size: 18px; }
+    .workout-desc .desc-wrap ul {
+      margin: 20px 0;
+      list-style: none; }
+      .workout-desc .desc-wrap ul li {
+        margin: 0;
+        color: #fff !important; }
+  .workout-desc .video-wrap {
+    position: relative;
+    height: 340px;
+    margin-top: 45px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.07);
+    border: 1px solid #DEDFE3;
+    border-radius: 5px;
+    background-clip: padding-box;
+    perspective: 1px;
+    overflow: hidden; }
+    .workout-desc .video-wrap iframe {
+      position: absolute;
+      width: 600px;
+      height: 340px; }
+      @media (max-width: 768px) {
+        .workout-desc .video-wrap iframe {
+          width: 100%; } }
 
 .teams-section h2, .teams-section h3 {
   text-align: center; }

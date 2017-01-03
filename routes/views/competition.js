@@ -43,8 +43,14 @@ exports = module.exports = function(req, res) {
           if (wod.released) {
             return {
               name: wod.name,
-              rx: wod.rxDescription,
-              scaled: wod.scaledDescription,
+              rx: {
+                desc: wod.rxDescription,
+                embedUrl: wod.rxVideoEmbedUrl || false
+              },
+              scaled: {
+                desc: wod.scaledDescription,
+                embedUrl: wod.scaledVideoEmbedUrl || false
+              },
               finisher: wod.finisher,
               released: wod.released
             };

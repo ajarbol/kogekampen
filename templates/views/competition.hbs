@@ -153,9 +153,14 @@
 			  		{{#each wods}}
 			  			{{#if @first}}
 					  		<article class="workout-desc {{#if @last}}inverse{{/if}}" {{#if @last}}style="background-image:url('images/overhead.jpg');"{{/if}}>
-						  		<div>
-						  			{{{rx}}}
+						  		<div class="desc-wrap">
+						  			{{{rx.desc}}}
 						  		</div>	
+					  			{{#if rx.embedUrl}}
+					  				<div class="video-wrap">
+					  					<iframe src="{{rx.embedUrl}}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+					  				</div>
+					  			{{/if}}
 					  		</article>
 					  	{{/if}}
 				  	{{/each}}
@@ -388,8 +393,10 @@
 			var wodIndex = 0;
 			var wodDivision = 'rx';
 
-			var setWod = function(template){
-				$('.workout-desc div').html(template);
+			var setWod = function(wod){
+				var wodHtml = '<div class="desc-wrap">'+wod.desc+'</div>';
+				if (wod.embedUrl) wodHtml += '<div class="video-wrap"><iframe src="'+wod.embedUrl+'" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>';
+				$('.workout-desc').html(wodHtml);
 			}
 
 			$('[data-action="division-select"]').change(function(e){

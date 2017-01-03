@@ -14,6 +14,8 @@ Wod.add({
 	order: { type: Types.Number, default: 0, initial: true, required: true },
 	rxDescription: { type: Types.Html, wysiwyg: true },
 	scaledDescription: { type: Types.Html, wysiwyg: true },
+  rxVideoEmbedUrl: { type: Types.Url },
+  scaledVideoEmbedUrl: { type: Types.Url },
 	finisher: { type: Types.Boolean, default: false }, 
 	released: { type: Types.Boolean, default: false },
 	type: { type: Types.Select, initial: true, options: ['forTime', 'forLoad', 'amrap', 'multi'], required: true }
