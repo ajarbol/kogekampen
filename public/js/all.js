@@ -86,8 +86,7 @@ $(function() {
     /*-------------------------------------------------*/
     /* =  NAV BAR VISIBILITY AND RESPONSIVENESS
     /*-------------------------------------------------*/ 
-    var num = $('.header-main').offset().top;
-
+    var num = 0;
     var handleScroll = function() {
         if ($(window).scrollTop() > num) {
             $('.header-main').addClass('change');
