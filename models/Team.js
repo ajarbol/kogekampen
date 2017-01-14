@@ -15,5 +15,5 @@ Team.add({
 	athletes: { type: Types.Relationship, ref: 'Athlete', filters: { competition: ':competition', division: ':division'  }, many: true }
 });
 
-Team.defaultColumns = 'event, name, division';
+Team.defaultColumns = 'name, competition, division';
 Team.register();
