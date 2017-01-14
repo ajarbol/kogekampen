@@ -167,107 +167,51 @@
 			  	</div>
 	  		</div>
 	  	</section>
-	  	{{#if competition.showAthleteSection}}
-		  	<section class="teams-section" id="teams">
-		  		<div class="container">
-			  		<h1>TEAMS</h1>
-					<div class="row">
-						<div class="col-sm-6 right-rule">
-							<h2>RX Række</h2>
-							{{#if competition.showTeams}}
-								{{#each rxTeams}}
-									<div class="teams-box col-xs-12">
-										<h3 class="text-center">{{name}}</h3>
-										<ul>
-											{{#each athletes}}
-												<li><img src="{{#if customImage}}https://graph.facebook.com/v2.6/{{customImage}}/picture{{else}}/images/default_{{gender}}.png{{/if}}"><span>{{name}}</span></li>
-											{{/each}}
-										</ul>
-									</div>
-								{{/each}}
-							{{else}}
-								<div class="row">
-									{{#each rxAthletes}}
-									<div class="col-xs-6">
-										<ul>
-											{{#each this}}
-												<li><img src="{{#if customImage}}https://graph.facebook.com/v2.6/{{customImage}}/picture{{else}}/images/default_{{gender}}.png{{/if}}"><span>{{name}}</span></li>
-											{{/each}}
-										</ul>
-									</div>
-									{{/each}}
-								</div>
-								{{#if rxWaitlist}}
-									<h4>På venteliste</h4>
-									<div class="row">
-										{{#each rxWaitlist}}
-										<div class="col-xs-6">
-											<ul>
-												{{#each this}}
-													<li><img src="{{#if customImage}}https://graph.facebook.com/v2.6/{{customImage}}/picture{{else}}/images/default_{{gender}}.png{{/if}}"><span>{{name}}</span></li>
-												{{/each}}
-											</ul>
-										</div>
-										{{/each}}
-									</div>
-								{{/if}}
-							{{/if}}
-						</div>
-						<div class="col-sm-6 container">
-							<h2>Skaleret Række</h2>
-							{{#if competition.showTeams}}
-								{{#each scaledTeams}}
-									<div class="teams-box col-xs-12">
-										<h3 class="text-center">{{name}}</h3>
-										<ul>
-											{{#each athletes}}
-												<li><img src="{{#if customImage}}https://graph.facebook.com/v2.6/{{customImage}}/picture{{else}}/images/default_{{gender}}.png{{/if}}"><span>{{name}}</span></li>
-											{{/each}}
-										</ul>
-									</div>
-								{{/each}}
-							{{else}}
-								<div class="row">
-									{{#each scaledAthletes}}
-									<div class="col-xs-6">
-										<ul>
-											{{#each this}}
-												<li><img src="{{#if customImage}}https://graph.facebook.com/v2.6/{{customImage}}/picture{{else}}/images/default_{{gender}}.png{{/if}}"><span>{{name}}</span></li>
-											{{/each}}
-										</ul>
-									</div>
-									{{/each}}
-								</div>
-								{{#if scaledWaitlist}}
-									<h4>På venteliste</h4>
-									<div class="row">
-										{{#each scaledWaitlist}}
-										<div class="col-xs-6">
-											<ul>
-												{{#each this}}
-													<li><img src="{{#if customImage}}https://graph.facebook.com/v2.6/{{customImage}}/picture{{else}}/images/default_{{gender}}.png{{/if}}"><span>{{name}}</span></li>
-												{{/each}}
-											</ul>
-										</div>
-										{{/each}}
-									</div>
-								{{/if}}
-							{{/if}}
-						</div>
-					</div>
-		  		</div>
-		  	</section>
-		  {{/if}}
-	  	{{#if competition.bodyLabBanner}}
-		  	<section class="gray-section hide-xs extra-padding">
-	  			<div class="container container-aside">
-			  		<h1>I partnerskab med</h1>
-				</div>
-				<a href="http://www.bodylab.dk/" target="_blank">
-		  			<div class="background-cover background-cover-aside highlight" style="background-image:url('/images/bodylab.jpg');"></div>
-		  		</a>
-		  	</section>
-		  {{/if}}
+		  {{#if competition.hasSponsor}}
+			  <section>
+			    <div class="container">
+			    	<h1>I partnerskab med</h1>
+		        <div class="row">
+		        	{{#if competition.bodyLabBanner}}
+			        	<div class="col-xs-12 col-md-6">
+							  	<a href="https://www.bodylab.dk/" target="_blank">
+					          <div class="sponsor-card">
+					            <div class="graphic-wrapper">
+					              <div class="graphic-overlay"></div>
+					              <div class="graphic" style="background-image: url('/images/bodylab.jpg');"></div>
+					            </div>
+					          </div>
+					        </a>
+					      </div>
+					    {{/if}}
+					    {{#if competition.noccoBanner}}
+			        	<div class="col-xs-12 col-md-6">
+							  	<a href="https://nocco.dk/" target="_blank">
+					          <div class="sponsor-card">
+					            <div class="graphic-wrapper">
+					              <div class="graphic-overlay"></div>
+					              <div class="graphic" style="background-image: url('/images/nocco.jpg');"></div>
+					            </div>
+					          </div>
+					        </a>
+					      </div>
+					    {{/if}}
+					    {{#if competition.barebellsBanner}}
+					      <div class="col-xs-12 col-md-6">
+									<a href="https://barebells.dk/" target="_blank">
+					          <div class="sponsor-card">
+					            <div class="graphic-wrapper">
+					              <div class="graphic-overlay"></div>
+					              <div class="graphic" style="background-image: url('/images/barebells.jpg');"></div>
+					            </div>
+					          </div>
+					        </a>
+					      </div>
+					    {{/if}}
+			      </div>
+			    </div>
+			  </section>
+			{{/if}}
 	  	<section class="p-0 show-xs">
 	  		<a href="http://www.bodylab.dk/" target="_blank">
 	  			<div class="background-cover" style="background-image:url('/images/bodylab-mobile.jpg')"></div>

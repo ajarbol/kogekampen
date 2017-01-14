@@ -1,10 +1,92 @@
 {{!< default}}
-  	<main>
-	  	<div class="subheader" id="subheader-section" style="background-image:url('/images/kogeriet.jpg')">
-		    <article>
-		    	<div class="container">
-					<h1 style="font-size:50px;">TEAMS</h1>
-		    	</div>
-		    </article>
-	  	</div>
+  <main>
+    <section class="teams-section">
+      <div class="container header-compensation">
+      <h1>TEAMS</h1>
+      <div class="row">
+        <div class="col-sm-6 right-rule">
+          <h2>RX Række</h2>
+          {{#if competition.showTeams}}
+            {{#each rxTeams}}
+              <div class="teams-box col-xs-12">
+                <h3 class="text-center">{{name}}</h3>
+                <ul>
+                  {{#each athletes}}
+                    <li><img src="{{#if customImage}}https://graph.facebook.com/v2.6/{{customImage}}/picture{{else}}/images/default_{{gender}}.png{{/if}}"><span>{{name}}</span></li>
+                  {{/each}}
+                </ul>
+              </div>
+            {{/each}}
+          {{else}}
+            <div class="row">
+              {{#each rxAthletes}}
+              <div class="col-xs-6">
+                <ul>
+                  {{#each this}}
+                    <li><img src="{{#if customImage}}https://graph.facebook.com/v2.6/{{customImage}}/picture{{else}}/images/default_{{gender}}.png{{/if}}"><span>{{name}}</span></li>
+                  {{/each}}
+                </ul>
+              </div>
+              {{/each}}
+            </div>
+            {{#if rxWaitlist}}
+              <h4>På venteliste</h4>
+              <div class="row">
+                {{#each rxWaitlist}}
+                <div class="col-xs-6">
+                  <ul>
+                    {{#each this}}
+                      <li><img src="{{#if customImage}}https://graph.facebook.com/v2.6/{{customImage}}/picture{{else}}/images/default_{{gender}}.png{{/if}}"><span>{{name}}</span></li>
+                    {{/each}}
+                  </ul>
+                </div>
+                {{/each}}
+              </div>
+            {{/if}}
+          {{/if}}
+        </div>
+        <div class="col-sm-6 container">
+          <h2>Skaleret Række</h2>
+          {{#if competition.showTeams}}
+            {{#each scaledTeams}}
+              <div class="teams-box col-xs-12">
+                <h3 class="text-center">{{name}}</h3>
+                <ul>
+                  {{#each athletes}}
+                    <li><img src="{{#if customImage}}https://graph.facebook.com/v2.6/{{customImage}}/picture{{else}}/images/default_{{gender}}.png{{/if}}"><span>{{name}}</span></li>
+                  {{/each}}
+                </ul>
+              </div>
+            {{/each}}
+          {{else}}
+            <div class="row">
+              {{#each scaledAthletes}}
+              <div class="col-xs-6">
+                <ul>
+                  {{#each this}}
+                    <li><img src="{{#if customImage}}https://graph.facebook.com/v2.6/{{customImage}}/picture{{else}}/images/default_{{gender}}.png{{/if}}"><span>{{name}}</span></li>
+                  {{/each}}
+                </ul>
+              </div>
+              {{/each}}
+            </div>
+            {{#if scaledWaitlist}}
+              <h4>På venteliste</h4>
+              <div class="row">
+                {{#each scaledWaitlist}}
+                <div class="col-xs-6">
+                  <ul>
+                    {{#each this}}
+                      <li><img src="{{#if customImage}}https://graph.facebook.com/v2.6/{{customImage}}/picture{{else}}/images/default_{{gender}}.png{{/if}}"><span>{{name}}</span></li>
+                    {{/each}}
+                  </ul>
+                </div>
+                {{/each}}
+              </div>
+            {{/if}}
+          {{/if}}
+        </div>
+      </div>
+      </div>
+    </section>
 	</main>

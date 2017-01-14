@@ -9836,6 +9836,39 @@ table td:first-child {
 table tr:nth-of-type(odd) {
   background-color: #ebebeb; }
 
+.sponsor-card {
+  max-width: 600px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.07);
+  border: 1px solid #DEDFE3;
+  border-radius: 5px;
+  background-color: white;
+  cursor: pointer;
+  transition: border-color 200ms ease-in-out;
+  overflow: hidden;
+  margin: 30px auto 0;
+  background-clip: padding-box;
+  perspective: 1px; }
+  @media screen and (max-width: 768px) {
+    .sponsor-card {
+      margin-top: 30px; } }
+  .sponsor-card:hover {
+    border-color: #3CDCB9; }
+    .sponsor-card:hover .graphic {
+      transform: scale(1.03); }
+    .sponsor-card:hover .info h3 {
+      color: #3CDCB9; }
+  .sponsor-card .graphic-wrapper {
+    position: relative;
+    overflow: hidden; }
+  .sponsor-card .graphic {
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    width: 100%;
+    height: 400px;
+    opacity: 1;
+    transition: transform 200ms ease-in-out; }
+
 .competition-card {
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.07);
   border: 1px solid #DEDFE3;
@@ -9923,6 +9956,9 @@ section.black-section {
 section.gray-section {
   background-color: #f2f2f2; }
 
+.header-compensation {
+  margin-top: 50px; }
+
 .container-aside {
   width: 50%;
   margin: 0;
@@ -9977,6 +10013,11 @@ section.gray-section {
   @media (max-width: 600px) {
     .header-main .logo-top {
       margin-top: 5px; } }
+
+.header-main .logo-center {
+  position: absolute;
+  left: 50%;
+  margin-left: -100px; }
 
 .header-main .logo-default {
   display: inline-block; }

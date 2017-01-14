@@ -40,6 +40,7 @@ exports = module.exports = function(app) {
 	app.get('/', routes.views.index);
 	app.get('/om-kogeriet', routes.views.omKogeriet);
 	app.get('/:competition', routes.views.competition);
+	app.get('/:competition/teams', routes.views.teams);
 	app.get('/:competition/resultater', routes.views.results);
 
 	// API

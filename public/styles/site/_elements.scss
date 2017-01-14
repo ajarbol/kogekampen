@@ -386,6 +386,46 @@ table {
     }
 }
 
+.sponsor-card {
+    max-width: 600px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.07);
+    border: 1px solid #DEDFE3;
+    border-radius: 5px;
+    background-color: white;
+    cursor: pointer;
+    transition: border-color 200ms ease-in-out;
+    overflow: hidden;
+    margin: 30px auto 0;
+    background-clip: padding-box;
+    perspective: 1px;
+    @media screen and (max-width: 768px) {
+        margin-top: 30px;
+    }
+    &:hover {
+        border-color: #3CDCB9;
+        .graphic {
+            transform: scale(1.03);
+        }
+        .info h3 {
+            color: #3CDCB9;
+        }
+    }
+    .graphic-wrapper {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .graphic {
+        background-size: cover;
+        background-position: center;
+        text-align: center;
+        width: 100%;
+        height: 400px;
+        opacity: 1;
+        transition: transform 200ms ease-in-out;
+    }
+}
+
 .competition-card {
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.07);
     border: 1px solid #DEDFE3;

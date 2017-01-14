@@ -37,7 +37,9 @@ Event.add({
 	showResultSection: { type: Types.Boolean, default: false },
 	showAthleteSection: { type: Types.Boolean, default: false },
 	showTeams: { type: Types.Boolean, default: false },
-	bodyLabBanner: { type: Types.Boolean, default: false }
+	bodyLabBanner: { type: Types.Boolean, default: false },
+	noccoBanner: { type: Types.Boolean, default: false },
+	barebellsBanner: { type: Types.Boolean, default: false }
 });
 
 Event.defaultColumns = 'name, startTime';
