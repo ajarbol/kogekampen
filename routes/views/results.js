@@ -37,8 +37,8 @@ var scoreTeam = function (type, result, _variation) {
       if (result.time) {
         return scoreForTime(result);
       }
-      else if (result.triplet.length) {
-        return scoreForTime(result.triplet[_variation]);
+      else if (result.score.length) {
+        return scoreForTime(result.score[_variation]);
       } 
       else return 0;
       break;
@@ -60,8 +60,8 @@ var resultText = function (type, result, _variation) {
         var res = {};
         if (result.time) {
           res = result;
-        } else if (result.triplet.length) {
-          res = result.triplet[_variation];
+        } else if (result.score.length) {
+          res = result.score[_variation];
         }
         return res.hasCap ? 'cap' + (res.capReps && res.capReps !== 0 ? ' +' + res.capReps : '' ) : res.time;
       case 'forReps':
@@ -199,10 +199,11 @@ exports = module.exports = function(req, res) {
 									if (r.score !== wod.results[division][i-1].score) position++;
 								}
 								r.position = getOrdinal(position);
-								locals.masterOrder[division][r.name] = locals.masterOrder[division][r.name] ? locals.masterOrder[division][r.name] + i: i;
+								locals.masterOrder[division][r.name] = locals.masterOrder[division][r.name] ? locals.masterOrder[division][r.name] + position : position;
 							});
 						});
 					});
+					console.log(locals.masterOrder);
 					_.each(locals.masterOrder, function(teams, division){
 						var ts = [];
 						_.each(teams, function(value, name){
