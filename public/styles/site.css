@@ -9836,6 +9836,9 @@ table td:first-child {
 table tr:nth-of-type(odd) {
   background-color: #ebebeb; }
 
+table a:hover {
+  color: #3CDCB9; }
+
 .sponsor-card {
   max-width: 600px;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.07);
