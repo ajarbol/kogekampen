@@ -10581,7 +10581,7 @@ input[type="checkbox"]:checked + .check-box-item {
   list-style: none; }
   .teams-section ul li {
     text-align: center;
-    padding: 5px 0; }
+    padding: 15px 0; }
     .teams-section ul li img {
       border-radius: 5px;
       width: 50px;
@@ -10593,18 +10593,32 @@ input[type="checkbox"]:checked + .check-box-item {
       display: block;
       margin-left: 0; }
 
-.teams-section .teams-box {
+.teams-section .athletes-box {
+  background-color: #FFF;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.07);
   border: 1px solid #DEDFE3;
   border-radius: 5px;
-  background-color: #F2F2F2;
+  padding: 0 30px; }
+  .teams-section .athletes-box h2 {
+    margin: 40px 0; }
+  .teams-section .athletes-box h4 {
+    text-align: center; }
+  @media (max-width: 768px) {
+    .teams-section .athletes-box {
+      margin-bottom: 50px; } }
+
+.teams-section .teams-box {
+  position: relative;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.07);
+  border: 1px solid #DEDFE3;
+  border-radius: 5px;
+  background-color: #FFF;
   background-clip: padding-box;
   perspective: 1px;
   overflow: hidden;
   margin: 0;
+  margin-bottom: 30px;
   padding: 0; }
-  .teams-section .teams-box:not(:first-child) {
-    margin-top: 30px; }
   .teams-section .teams-box h3 {
     text-align: left !important;
     margin: 0;
@@ -10614,7 +10628,11 @@ input[type="checkbox"]:checked + .check-box-item {
     text-transform: uppercase;
     font-weight: bold;
     color: white;
-    background-color: #1C1E23; }
+    background-color: #1C1E23;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
   .teams-section .teams-box ul li {
     margin-left: 25px;
     display: inline-block;
@@ -10623,6 +10641,18 @@ input[type="checkbox"]:checked + .check-box-item {
   .teams-section .teams-box ul span {
     display: inline-block;
     margin-left: 10px; }
+  .teams-section .teams-box span.badge {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    opacity: 0.5;
+    letter-spacing: 1px;
+    padding: 5px 8px; }
+  .teams-section .teams-box a.anchor {
+    display: block;
+    position: relative;
+    top: -200px;
+    visibility: hidden; }
 
 section {
   position: relative; }

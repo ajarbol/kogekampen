@@ -27,7 +27,11 @@
 			  		<tbody>
 				  		{{#each masterOrder.rx}}
 				  			<tr>
-				  				<td>{{name}} ({{position}})</td>
+				  				<td>
+				  					<a href="teams#{{name}}">
+				  						{{name}} ({{position}})
+				  					</a>
+				  				</td>
 				  				{{#each ../wods}}
 				  					{{#each this.results.rx}}
 				  						{{#ifEq this.name ../../name}}
@@ -58,7 +62,11 @@
 			  		<tbody>
 				  		{{#each masterOrder.scaled}}
 				  			<tr>
-				  				<td>{{name}} ({{position}})</td>
+				  				<td>
+				  					<a href="teams#{{id}}">
+				  						{{name}} ({{position}})
+				  					</a>
+				  				</td>
 				  				{{#each ../wods}}
 				  					{{#each this.results.scaled}}
 				  						{{#ifEq this.name ../../name}}
