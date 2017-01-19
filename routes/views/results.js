@@ -18,57 +18,69 @@ var defaultResult = function (teams){
 	return obj;
 };
 
-var scoreTeam = function (type, result) {
-	switch (type) {
-		case 'forTime':
-			if (result.time) {
-				var split = result.time.split(':');
-				if (split.length === 2) {
-					var sec = ((+split[0]) * 60) + (+split[1]);
-					if (result.hasCap) {
-						sec = result.capReps ? sec + Math.pow(result.capReps + 1, -1)  : sec + 1;
-					}
-					return Math.pow(sec, -1);
-				}
-				else return 0;
-			}
-			else return 0;
-			break;
-		case 'forReps':
-			return result.reps || 0;
-		case 'forPoints':
-			return result.points || 0;
-		case 'forLoad':
-			return result.load || 0;
-		case 'amrap':
-			if (result.rounds) {
-				return result.reps ? result.rounds - Math.pow(result.reps, -1) : result.rounds;
-			} else return 0;
-	}
+var scoreForTime = function (result) {
+  var split = result.time.split(':');
+  if (split.length === 2) {
+    var sec = ((+split[0]) * 60) + (+split[1]);
+    if (result.hasCap) {
+      sec = result.capReps ? sec + Math.pow(result.capReps + 1, -1)  : sec + 1;
+    }
+    return Math.pow(sec, -1);
+  }
+  else return 0;
+}
+
+var scoreTeam = function (type, result, _variation) {
+  _variation = _variation || 0;
+  switch (type) {
+    case 'forTime':
+      if (result.time) {
+        return scoreForTime(result);
+      }
+      else if (result.triplet.length) {
+        return scoreForTime(result.triplet[_variation]);
+      } 
+      else return 0;
+      break;
+    case 'forReps':
+      return result.aloneReps || 0;
+    case 'forLoad':
+      return result.load || 0;
+    case 'amrap':
+      if (result.rounds) {
+        return result.reps ? result.rounds - Math.pow(result.reps, -1) : result.rounds;
+      } else return 0;
+  }
 };
 
-var resultText = function (type, result) {
-		switch (type) {
-		case 'forTime':
-			return result.hasCap ? 'cap' + (result.capReps && result.capReps !== 0 ? ' +' + result.capReps : '' ) : result.time;
-		case 'forReps':
-			return result.points + ' reps';
-		case 'forPoints':
-			return result.points + ' point';
-		case 'forLoad':
-			return result.load + 'kg';
-		case 'amrap':
-			return result.rounds + (result.rounds === 1 ? ' round' : ' rounds') + (result.reps && result.reps !== 0 ? ' +' + result.reps : '' );
-	}
+var resultText = function (type, result, _variation) {
+    _variation = _variation || 0;
+    switch (type) {
+      case 'forTime':
+        var res = {};
+        if (result.time) {
+          res = result;
+        } else if (result.triplet.length) {
+          res = result.triplet[_variation];
+        }
+        return res.hasCap ? 'cap' + (res.capReps && res.capReps !== 0 ? ' +' + res.capReps : '' ) : res.time;
+      case 'forReps':
+        return result.points + ' reps';
+      case 'forLoad':
+        return result.load + 'kg';
+      case 'amrap':
+        return result.rounds + (result.rounds === 1 ? ' round' : ' rounds') + (result.reps && result.reps !== 0 ? ' +' + result.reps : '' );
+    }
 };
 
-var buildResults = function (wod, result) {
-	_.each(wod.results, function(rs){
-		if (rs[result.team]) {
-			rs[result.team].score = scoreTeam(wod.type, result);
-			rs[result.team].text = resultText(wod.type, result);
-		}
-	});
+var buildResults = function (wod, result, _variation) {
+  _variation = _variation || 0;
+  _.each(wod.results, function(rs){
+    if (rs[result.team]) {
+      rs[result.team].score = scoreTeam(wod.type, result, _variation);
+      rs[result.team].text = resultText(wod.type, result, _variation);
+    }
+  });
 };
 
 var getOrdinal = function (n) {
@@ -128,7 +140,6 @@ exports = module.exports = function(req, res) {
 											results: defaultResult(teams)
 										};
 									case 'forLoad + amrap':
-									case 'multi':
 										locals.wods[wod._id + 'a'] = {
 											name: 'WOD'+num+'a',
 											type: 'forLoad',
@@ -140,6 +151,15 @@ exports = module.exports = function(req, res) {
 											results: defaultResult(teams)
 										};
 										break;
+                  case 'triplet':
+                  	_.each(['a', 'b', 'c'], function(n) {
+	                    locals.wods[wod._id + n] = {
+	                      name: 'WOD'+num+n,
+	                      type: 'forTime',
+	                      results: defaultResult(teams)
+	                    };
+	                  });
+                    break;
 									default:
 										locals.wods[wod._id] = {
 											name: 'WOD'+num,
@@ -162,8 +182,8 @@ exports = module.exports = function(req, res) {
 				.where('competition', locals.competition)
 				.exec(function(err, results){
 					_.each(results, function(result) {
-						_.each([result.wod, result.wod + 'a', result.wod + 'b'], function (id) {
-							if (locals.wods[id]) buildResults(locals.wods[id], result);
+						_.each([result.wod, result.wod + 'a', result.wod + 'b', result.wod + 'c'], function (id, v) {
+							if (locals.wods[id]) buildResults(locals.wods[id], result, v-1);
 						});
 					});
 					_.each(locals.wods, function (wod){

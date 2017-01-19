@@ -18,6 +18,13 @@ var localStorage = new keystone.Storage({
   },
 });
 
+var imageType = { type: Types.File, storage: localStorage };
+
+/*var imageType = {
+	type: Types.LocalFile,
+	dest: 'public/uploads'
+}*/
+
 Event.add({
 	name: { type: Types.Text, initial: true },
 	type: { type: Types.Select, initial: true, options: ['workout', 'social'] },
@@ -29,9 +36,9 @@ Event.add({
 	ticketUrl: { type: Types.Text },
 	description: { type: Types.Html, wysiwyg: true },
 	location: { type: Types.Location },
-	coverImage: { type: Types.File, storage: localStorage },
-	logoImage: { type: Types.File, storage: localStorage },
-	socialBanner: { type: Types.File, storage: localStorage },
+	coverImage: imageType,
+	logoImage: imageType,
+	socialBanner: imageType,
 	rxRequirements: { type: Types.Html, wysiwyg: true },
 	scaledRequirements: { type: Types.Html, wysiwyg: true },
 	showResultSection: { type: Types.Boolean, default: false },
@@ -42,7 +49,8 @@ Event.add({
 	barebellsBanner: { type: Types.Boolean, default: false }
 });
 
-Event.relationship({ path: 'wods', ref: 'Wod', refPath: 'competition' });
+Event.relationship({ path: 'wods', ref: 'Wod', refPath: 'competition', many: true });
+Event.relationship({ path: 'teams', ref: 'Team', refPath: 'competition', many: true });
 
 Event.defaultColumns = 'name, startTime';
 Event.register();

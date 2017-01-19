@@ -11,7 +11,7 @@ var Result = new keystone.List('Result');
 Result.add({
 		competition: { type: Types.Relationship, initial: true, ref: 'Event', required: true },
 		wod: { type: Types.Relationship, filters: { competition: ':competition' }, ref: 'Wod' },
-		team: { type: Types.Relationship, filters: { competition: ':competition' }, ref: 'Team' }
+		team: { type: Types.Relationship, filters: { competition: ':competition' }, ref: 'Team' },
 	},
 	'AMRAP', {
 		rounds: { type: Types.Number },
@@ -23,13 +23,20 @@ Result.add({
 		capReps: { type: Types.Number }
 	},
 	'forReps', {
-		reps: { type: Types.Number }
-	},
-	'forPoints', {
-		points: { type: Types.Number }
+		aloneReps: { type: Types.Number }
 	},
 	'forLoad (kg)', {
 		load: { type: Types.Text }
+	},
+	'triplet (A + B + C)', {
+		score: {
+			type: Types.List,
+			fields: {  
+				time: { type: Types.Text },
+				hasCap: { type: Types.Boolean, default: false},
+				capReps: { type: Types.Number }
+			}
+		}
 	});
 
 Result.defaultColumns = 'competition, wod, team';
