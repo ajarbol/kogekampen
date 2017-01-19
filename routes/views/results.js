@@ -203,7 +203,6 @@ exports = module.exports = function(req, res) {
 							});
 						});
 					});
-					console.log(locals.masterOrder);
 					_.each(locals.masterOrder, function(teams, division){
 						var ts = [];
 						_.each(teams, function(value, name){
