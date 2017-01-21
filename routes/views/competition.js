@@ -25,7 +25,7 @@ exports = module.exports = function(req, res) {
           c.location.geoOffset = [c.location.geo[0]+0.01, c.location.geo[1]+0.02];
         }
         var now = new Date();
-        var zoneAdjustedNow = (new Date()).setHours(now.getHours() - 2);
+        var zoneAdjustedNow = (new Date()).setHours(now.getHours() - 1);
         locals.hasCountdown = c.startTime - zoneAdjustedNow > 0 ? true : false;
         locals.competition = c;
 
