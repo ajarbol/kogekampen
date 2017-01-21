@@ -34,6 +34,10 @@ var scoreTeam = function (type, result) {
 			}
 			else return 0;
 			break;
+		case 'forReps':
+			return result.reps || 0;
+		case 'forPoints':
+			return result.points || 0;
 		case 'forLoad':
 			return result.load || 0;
 		case 'amrap':
@@ -47,6 +51,10 @@ var resultText = function (type, result) {
 		switch (type) {
 		case 'forTime':
 			return result.hasCap ? 'cap' + (result.capReps && result.capReps !== 0 ? ' +' + result.capReps : '' ) : result.time;
+		case 'forReps':
+			return result.points + ' reps';
+		case 'forPoints':
+			return result.points + ' point';
 		case 'forLoad':
 			return result.load + 'kg';
 		case 'amrap':
@@ -108,6 +116,18 @@ exports = module.exports = function(req, res) {
 							_.each(wods, function(wod, i){
 								var num = i + 1;
 								switch(wod.type) {
+									case 'forTime + forReps':
+										locals.wods[wod._id + 'a'] = {
+											name: 'WOD'+num+'a',
+											type: 'forTime',
+											results: defaultResult(teams)
+										};
+										locals.wods[wod._id + 'b'] = {
+											name: 'WOD'+num+'b',
+											type: 'forReps',
+											results: defaultResult(teams)
+										};
+									case 'forLoad + amrap':
 									case 'multi':
 										locals.wods[wod._id + 'a'] = {
 											name: 'WOD'+num+'a',

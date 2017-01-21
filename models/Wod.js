@@ -18,10 +18,10 @@ Wod.add({
   scaledVideoEmbedUrl: { type: Types.Url },
 	finisher: { type: Types.Boolean, default: false }, 
 	released: { type: Types.Boolean, default: false },
-	type: { type: Types.Select, initial: true, options: ['forTime', 'forLoad', 'amrap', 'multi'], required: true }
+	type: { type: Types.Select, initial: true, options: ['forTime', 'forLoad', 'forPoints', 'forReps', 'amrap', 'forLoad + amrap', 'forTime + forReps'], required: true }
 
 });
 
-Wod.defaultColumns = 'name, competition, division, order, type, released';
+Wod.defaultColumns = 'name, competition, order, type, released';
 Wod.defaultSort = 'competition, order';
 Wod.register();

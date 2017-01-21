@@ -55,39 +55,39 @@
 			    	  {{/if}}
 			    	{{/if}}
 		    	</div>
-		    	{{#if hasCountdown}}
-		    		<div class="counter">
-				    	<ul class="countdown">
-					        <li>
-					            <span class="days">--</span>
-					            <p class="days_ref">days</p>
-					        </li>
-					        <li>
-					            <span class="hours">--</span>
-					            <p class="hours_ref">hours</p>
-					        </li>
-					        <li>
-					            <span class="minutes">--</span>
-					            <p class="minutes_ref">minutes</p>
-					        </li>
-					        <li>
-					            <span class="seconds">--</span>
-					            <p class="seconds_ref">seconds</p>
-					        </li>
-					    </ul>
-				    </div>
+		    {{#if hasCountdown}}
+	    		<div class="counter">
+			    	<ul class="countdown">
+				        <li>
+				            <span class="days">--</span>
+				            <p class="days_ref">days</p>
+				        </li>
+				        <li>
+				            <span class="hours">--</span>
+				            <p class="hours_ref">hours</p>
+				        </li>
+				        <li>
+				            <span class="minutes">--</span>
+				            <p class="minutes_ref">minutes</p>
+				        </li>
+				        <li>
+				            <span class="seconds">--</span>
+				            <p class="seconds_ref">seconds</p>
+				        </li>
+				    </ul>
+			    </div>
 				{{else}}
 					{{#if schedules.length}}
-			    		<div class="info-box">
-			    			<ul>
-			    				{{#each schedules}}
-			    					<li>
-			    						<div class="schedule-up"><span>{{#if @first}}Lige nu:{{else}}Om <span data-role="schedule-time">{{this.minutes}}</span> minutter:{{/if}}</span> {{this.text}}</div>
-			    					</li>
-			    				{{/each}}
-			    			</ul>
-			    		</div>
-			    	{{/if}}
+		    		<div class="info-box">
+		    			<ul>
+		    				{{#each schedules}}
+		    					<li>
+		    						<div class="schedule-up"><span>{{#if @first}}Lige nu:{{else}}Om <span data-role="schedule-time">{{this.minutes}}</span> minutter:{{/if}}</span> {{this.text}}</div>
+		    					</li>
+		    				{{/each}}
+		    			</ul>
+		    		</div>
+		    	{{/if}}
 				{{/if}}
 		    </article>
 	  	</div>

@@ -42,5 +42,7 @@ Event.add({
 	barebellsBanner: { type: Types.Boolean, default: false }
 });
 
+Event.relationship({ path: 'wods', ref: 'Wod', refPath: 'competition' });
+
 Event.defaultColumns = 'name, startTime';
 Event.register();

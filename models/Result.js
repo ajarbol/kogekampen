@@ -17,14 +17,20 @@ Result.add({
 		rounds: { type: Types.Number },
 		reps: { type: Types.Number }
 	},
-	'forTime', {
+	'forTime (mm:ss)', {
 		time: { type: Types.Text },
 		hasCap: { type: Types.Boolean, default: false},
 		capReps: { type: Types.Number }
 	},
-	'forLoad', {
+	'forReps', {
+		reps: { type: Types.Number }
+	},
+	'forPoints', {
+		points: { type: Types.Number }
+	},
+	'forLoad (kg)', {
 		load: { type: Types.Text }
 	});
 
-Result.defaultColumns = 'event, wod, team, score';
+Result.defaultColumns = 'competition, wod, team';
 Result.register();
