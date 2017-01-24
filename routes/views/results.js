@@ -139,6 +139,7 @@ exports = module.exports = function(req, res) {
 											type: 'forReps',
 											results: defaultResult(teams)
 										};
+                    break;
 									case 'forLoad + amrap':
 										locals.wods[wod._id + 'a'] = {
 											name: 'WOD'+num+'a',
