@@ -103,28 +103,25 @@
 			    	  </div>
 		    	  {{/if}}
 		    	{{/if}}
-				<div class="row requirement-boxes">
-					<div class="col-sm-6">
-						{{#if competition.rxRequirements}}
-							<article style="background-image:url('/images/rx.jpg');">
-								<div>
-								{{{competition.rxRequirements}}}
-								</div>
-							</article>
-						{{/if}}
-
-					</div>
-					<div class="col-sm-6">
-						{{#if competition.scaledRequirements}}
-							<article style="background-image:url('/images/skaleret.jpg');">
-								<div>
-									{{{competition.scaledRequirements}}}
-								</div>
-							</article>
-						{{/if}}
-					</div>
-				</div>
-	  		</div>
+			    {{#if competition.rxRequirements}}
+						<div class="row requirement-boxes">
+							<div class="col-sm-6">
+								<article style="background-image:url('/images/rx.jpg');">
+									<div>
+									{{{competition.rxRequirements}}}
+									</div>
+								</article>
+							</div>
+							<div class="col-sm-6">
+								<article style="background-image:url('/images/skaleret.jpg');">
+									<div>
+										{{{competition.scaledRequirements}}}
+									</div>
+								</article>
+							</div>
+						</div>
+			  	{{/if}}
+			  </div>
 	  	</section>
 	  	{{#if wods.length}}
 		  	<section class="wods-section gray-section" id="wods">
@@ -320,7 +317,7 @@
 		    	var oneTheMinute = function () {
 		    		$.each(times, function(i, time){
 		    			var num = $(time).text() - 1;
-		    			if (num <= 0) {
+		    			if (num < 0) {
 		    				//window.location.reload();
 		    			}
 		    			else {
