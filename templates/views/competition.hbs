@@ -105,68 +105,71 @@
 		    	{{/if}}
 				<div class="row requirement-boxes">
 					<div class="col-sm-6">
-
-						<article style="background-image:url('/images/rx.jpg');">
-							<div>
-							{{{competition.rxRequirements}}}
-							</div>
-						</article>
+						{{#if competition.rxRequirements}}
+							<article style="background-image:url('/images/rx.jpg');">
+								<div>
+								{{{competition.rxRequirements}}}
+								</div>
+							</article>
+						{{/if}}
 
 					</div>
 					<div class="col-sm-6">
-
-						<article style="background-image:url('/images/skaleret.jpg');">
-							<div>
-								{{{competition.scaledRequirements}}}
-							</div>
-						</article>
-
+						{{#if competition.scaledRequirements}}
+							<article style="background-image:url('/images/skaleret.jpg');">
+								<div>
+									{{{competition.scaledRequirements}}}
+								</div>
+							</article>
+						{{/if}}
 					</div>
 				</div>
 	  		</div>
 	  	</section>
-	  	<section class="wods-section gray-section" id="wods">
-	  		<div class="container">
-		  		<h1>WODS</h1>
-		  		<form class="wod-control">
-		  			<h3>Vælg en række:</h3>
-		  			<select data-action="division-select">
-			            <option value="rx" selected>RX række</option>
-			            <option value="scaled">Skaleret række</option>
-			        </select>
-			  		<div class="row">
-			  		{{#each wods}}
-			  			<div class="col-sm-3">
-			  				<button class="btn--primary btn--black {{#if @first}}active{{/if}}" {{#unless rx}}disabled{{/unless}} data-action="wod-selector" data-target="{{@index}}">
-				  				{{#if finisher}}
-				  					Finale
-				  				{{else}}
-				  					#{{math @index "+" 1}}
-				  				{{/if}}
-			  					<br/>
-			  					{{#if released}}{{name}}{{else}}?{{/if}}
-			  				</button>
-			  			</div>
-			  		{{/each}}
-			  		</div>
-			  		<hr>
-			  		{{#each wods}}
-			  			{{#if @first}}
-					  		<article class="workout-desc {{#if @last}}inverse{{/if}}" {{#if @last}}style="background-image:url('images/overhead.jpg');"{{/if}}>
-						  		<div class="desc-wrap">
-						  			{{{rx.desc}}}
-						  		</div>	
-					  			{{#if rx.embedUrl}}
-					  				<div class="video-wrap">
-					  					<iframe src="{{rx.embedUrl}}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-					  				</div>
-					  			{{/if}}
-					  		</article>
-					  	{{/if}}
-				  	{{/each}}
-			  	</div>
-	  		</div>
-	  	</section>
+	  	{{#if wods.length}}
+		  	<section class="wods-section gray-section" id="wods">
+		  		<div class="container">
+			  		<h1>WODS</h1>
+			  		<form class="wod-control">
+			  			<h3>Vælg en række:</h3>
+			  			<select data-action="division-select">
+				            <option value="rx" selected>RX række</option>
+				            <option value="scaled">Skaleret række</option>
+				        </select>
+				  		<div class="row">
+				  		{{#each wods}}
+				  			<div class="col-sm-3">
+				  				<button class="btn--primary btn--black {{#if @first}}active{{/if}}" {{#unless rx}}disabled{{/unless}} data-action="wod-selector" data-target="{{@index}}">
+					  				{{#if finisher}}
+					  					Finale
+					  				{{else}}
+					  					#{{math @index "+" 1}}
+					  				{{/if}}
+				  					<br/>
+				  					{{#if released}}{{name}}{{else}}?{{/if}}
+				  				</button>
+				  			</div>
+				  		{{/each}}
+				  		</div>
+				  		<hr>
+				  		{{#each wods}}
+				  			{{#if @first}}
+						  		<article class="workout-desc {{#if @last}}inverse{{/if}}" {{#if @last}}style="background-image:url('images/overhead.jpg');"{{/if}}>
+							  		<div class="desc-wrap">
+							  			{{{rx.desc}}}
+							  		</div>	
+						  			{{#if rx.embedUrl}}
+						  				<div class="video-wrap">
+						  					<iframe src="{{rx.embedUrl}}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+						  				</div>
+						  			{{/if}}
+						  		</article>
+						  	{{/if}}
+					  	{{/each}}
+				  	</div>
+		  		</div>
+		  	</section>
+		  {{/if}}
 		  {{#if competition.hasSponsor}}
 			  <section>
 			    <div class="container">

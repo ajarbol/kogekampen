@@ -465,6 +465,13 @@ table {
         height: 250px;
         opacity: 1;
         transition: transform 200ms ease-in-out;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .graphic img {
+        max-width: 200px;
+        max-height: 200px;
     }
     .graphic-overlay {
         background-color: #1C1E23;

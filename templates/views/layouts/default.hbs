@@ -2,14 +2,13 @@
 <!--[if IE 8]>    <html class=" no-js ie8 oldie" lang="en"> <![endif]-->
 <!--[if IE 9]>    <html class=" no-js ie9 oldie" lang="en"> <![endif]-->
 <!--[if gt IE 9]><!--> <html class=" no-js" lang="en"> <!--<![endif]-->
-  	<head>
-	    <meta charset="utf-8">
-	    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
+  <head>
+	  <meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 		<meta name="application-name" content="Kogekampen">
-		<meta name="author" content="">
-		<meta name="description" content="">
+		<meta name="description" content="Kogekampen er tilbage! Vi fortsætter successen fra 2017 og afholder årets fedeste konkurrence lørdag d. 15. september 2018. Der vil være en Rx række og Scaled række, hvor både nye og øvede atleter vil blive udfordret!">
 
 		<meta property="og:type" name="og:type" content="website">
 		{{#if competition}}
@@ -25,16 +24,16 @@
 
 		<link rel="canonical" href="https://kogekampen.dk{{uri}}">
 
-	    <title>Kogekampen</title>
+    <title>Kogekampen</title>
 
-	    <!-- Prefetch DNS for external assets (Twitter widgets etc). -->
-	    <link rel="dns-prefetch" href="//ajax.googleapis.com">
-	    <link rel="dns-prefetch" href="//fonts.googleapis.com">
-	    <link rel="dns-prefetch" href="//themes.googleusercontent.com">
-	    <link rel="dns-prefetch" href="//www.google-analytics.com">
+    <!-- Prefetch DNS for external assets (Twitter widgets etc). -->
+    <link rel="dns-prefetch" href="//ajax.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//themes.googleusercontent.com">
+    <link rel="dns-prefetch" href="//www.google-analytics.com">
 
 
-	    <link rel="stylesheet" href="/styles/site.css?v1.1">
+    <link rel="stylesheet" href="/styles/site.css?v1.2">
 
 		<link rel="apple-touch-icon" sizes="57x57" href="/images/favicon/apple-touch-icon-57x57.png">
 		<link rel="apple-touch-icon" sizes="60x60" href="/images/favicon/apple-touch-icon-60x60.png">
@@ -71,21 +70,21 @@
 				<a href="#" class="back-to-home" data-action="historyBack">
 					<svg xmlns="http://www.w3.org/2000/svg" width="12" height="30" viewBox="250 246 12 20"><path fill="#FFF" d="M262 264.787L260.706 266 250 256l10.706-10 1.294 1.206-9.406 8.794z"/></svg>
 				</a>
-				<a href="/">
-					<div class="logo-top logo-center"></div>
-				</a>
 				{{/if}}
 				{{#unless showBackToHome}}
-					<a href="/">
-						<div class="logo-top"></div>
+					<a href="javascript:void(0)" class="right bars">
+						<span></span>
+						<span></span>
+						<span></span>
 					</a>
-					<a href="javascript:void(0)" class="right bars"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
 					<nav class="right">
 						<ul class="list-unstyled">
 							{{#if competition}}
-								<li>
-									<a href="#wods">WODS</a>
-								</li>
+								{{#if wods}}
+									<li>
+										<a href="#wods">WODS</a>
+									</li>
+								{{/if}}
 								{{#if competition.showAthleteSection}}
 									<li>
 										<a href="/{{competition.key}}/teams">TEAMS</a>

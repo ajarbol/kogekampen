@@ -15,8 +15,11 @@ exports = module.exports = function(req, res) {
 		Event.model.find()
 			.exec(function(err, cs){
 				if (err) return res.err(err);
-				cs.reverse(); //order by created ts down the line
-				locals.competitions = cs;
+				locals.competitions = cs.sort(function(a,b){
+				  // Turn your strings into dates, and then subtract them
+				  // to get a value that is either negative, positive, or zero.
+				  return new Date(b.startTime) - new Date(a.startTime);
+				});
 				next();
 			});
 	});
