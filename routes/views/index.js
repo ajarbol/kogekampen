@@ -15,7 +15,10 @@ exports = module.exports = function(req, res) {
 		Event.model.find()
 			.exec(function(err, cs){
 				if (err) return res.err(err);
-				locals.competitions = cs.sort(function(a,b){
+				locals.nextCompetition = cs.find(c => new Date(c.startTime) > new Date());
+				locals.competitions = cs
+				.filter(c => locals.nextCompetition ? c.key !== locals.nextCompetition.key : false)
+				.sort(function(a,b){
 				  // Turn your strings into dates, and then subtract them
 				  // to get a value that is either negative, positive, or zero.
 				  return new Date(b.startTime) - new Date(a.startTime);

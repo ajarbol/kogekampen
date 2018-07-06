@@ -9872,6 +9872,13 @@ table a:hover {
     opacity: 1;
     transition: transform 200ms ease-in-out; }
 
+.index-title {
+  margin: 30px 0 15px;
+  padding: 0 15px;
+  font-size: 18px;
+  font-weight: bold;
+  color: white; }
+
 .competition-card {
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.07);
   border: 1px solid #DEDFE3;
@@ -9880,12 +9887,9 @@ table a:hover {
   cursor: pointer;
   transition: border-color 200ms ease-in-out;
   overflow: hidden;
-  margin-top: 140px;
+  margin-bottom: 30px;
   background-clip: padding-box;
   perspective: 1px; }
-  @media screen and (max-width: 768px) {
-    .competition-card {
-      margin-top: 30px; } }
   .competition-card:hover {
     border-color: #3CDCB9; }
     .competition-card:hover .graphic {
@@ -10015,13 +10019,10 @@ section.gray-section {
 .header-main .logo-top {
   display: inline-block;
   width: 200px;
-  height: 32px;
-  margin-top: 10px;
+  height: 42px;
+  margin-top: 5px;
   background-image: url("/images/logo-only.png");
   background-size: cover; }
-  @media (max-width: 600px) {
-    .header-main .logo-top {
-      margin-top: 5px; } }
 
 .header-main .logo-center {
   position: absolute;
@@ -10043,14 +10044,11 @@ section.gray-section {
   display: none; }
 
 .header-main .bars {
-  margin: 15px 0;
   padding: 10px;
   display: none;
   flex-direction: column;
   justify-content: space-around;
-  height: 52px;
-  border-radius: 5px;
-  border: 1px solid #e3e3e3; }
+  height: 52px; }
 
 .header-main .bars span {
   background-color: white;
@@ -10061,19 +10059,10 @@ section.gray-section {
 .header-main nav a {
   color: white; }
 
-.header-main.change .bars,
-.header-main.black-header .bars {
-  background-color: white; }
-
 .header-main.change,
 .header-main.black-header {
   background-color: white;
   border-bottom: 1px solid #E3E3E3; }
-  @media (max-width: 600px) {
-    .header-main.change,
-    .header-main.black-header {
-      background-color: transparent;
-      border-bottom: 0; } }
 
 .header-main.change .bars span,
 .header-main.black-header .bars span {

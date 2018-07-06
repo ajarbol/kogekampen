@@ -1,8 +1,30 @@
 {{!< default}}
   <main>
     <section class="black-section" style="min-height: 100vh;">
+      {{#if nextCompetition}}
+        <div class="container">
+          <div class="row">
+            <div class="index-title">Næste konkurrence: <br />{{nextCompetition.prettyTime}}</div>
+            <div class="col-xs-12 col-sm-6 col-md-4">
+              <a href="/{{nextCompetition.key}}">
+                <div class="competition-card">
+                  <div class="graphic-wrapper">
+                    <div class="graphic" style="background-image: url('/uploads/{{nextCompetition.coverImage.filename}}');">
+                      <img src="/uploads/{{nextCompetition.logoImage.filename}}" />
+                    </div>
+                  </div>
+                  <div class="info">
+                    <h3>{{nextCompetition.name}}</h3>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      {{/if}}
       <div class="container">
         <div class="row">
+          <div class="index-title">Tidligere konkurrencer:</div>
           {{#each competitions}}
             <div class="col-xs-12 col-sm-6 col-md-4">
               <a href="/{{this.key}}">

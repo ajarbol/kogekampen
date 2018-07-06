@@ -106,11 +106,8 @@ section.gray-section {
 .header-main .logo-top {
     display: inline-block;
     width: 200px;
-    height: 32px;
-    margin-top: 10px;
-    @media (max-width: 600px) {
-        margin-top: 5px;
-    }
+    height: 42px;
+    margin-top: 5px;
     background-image: url('/images/logo-only.png');
     background-size: cover;
 }
@@ -139,14 +136,11 @@ section.gray-section {
 }
 
 .header-main .bars {
-    margin: 15px 0;
     padding: 10px;
     display: none;
     flex-direction: column;
     justify-content: space-around;
     height: 52px;
-    border-radius: 5px;
-    border: 1px solid #e3e3e3;
 }
 
 .header-main .bars span {
@@ -160,19 +154,10 @@ section.gray-section {
     color: white;
 }
 
-.header-main.change .bars,
-.header-main.black-header  .bars {
-    background-color: rgb(255, 255, 255);
-}
-
 .header-main.change,
 .header-main.black-header {
     background-color: rgb(255, 255, 255);
     border-bottom: 1px solid #E3E3E3;
-    @media (max-width: 600px) {
-        background-color: transparent;
-        border-bottom: 0;
-    }
 }
 
 .header-main.change .bars span,
