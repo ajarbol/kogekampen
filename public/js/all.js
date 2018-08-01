@@ -9,7 +9,9 @@ $(function() {
     /*-------------------------------------------------*/
     $('[data-action="historyBack"]').click(function(e){
         e.preventDefault();
-        window.history.back();
+        var url = window.location.href;
+        var prev = url.substring(0, url.lastIndexOf('/'));
+        window.location.href = prev;
     });
 
     /*-------------------------------------------------*/
