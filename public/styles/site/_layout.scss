@@ -857,12 +857,16 @@ input[type="checkbox"]:checked+.check-box-item {
         li {
             text-align: center;
             padding: 15px 0;
-            img {
+            .image {
                 border-radius: 5px;
-                width: 50px;
+                width: 75px;
+                height: 75px;
+                background-size: cover;
+                background-position: center;
                 border: 2px #ebebeb solid;
+                flex-shrink: 0;
             }
-            span {
+            .name {
                 margin-left: 20px;
                 font-size: 16px;
                 vertical-align: middle;
@@ -900,7 +904,6 @@ input[type="checkbox"]:checked+.check-box-item {
         margin-bottom: 30px;
         padding: 0;
         h3 {
-            text-align: left !important;
             margin: 0;
             margin-bottom: 20px;
             padding: 20px;
@@ -916,13 +919,12 @@ input[type="checkbox"]:checked+.check-box-item {
         }
         ul {
             li {
-                margin-left: 25px;
-                display: inline-block;
+                margin: 0 25px;
+                display: flex;
                 text-align: left;
-                display: block;
+                align-items: center;
             }
-            span {
-                display: inline-block;
+            .name {
                 margin-left: 10px;
 
             }

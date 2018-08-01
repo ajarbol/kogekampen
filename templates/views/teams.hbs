@@ -12,7 +12,7 @@
                   <h3 class="text-center">{{name}}</h3>
                   <ul>
                     {{#each athletes}}
-                      <li><img src="{{#if customImage}}https://graph.facebook.com/v2.6/{{customImage}}/picture{{else}}/images/default_{{gender}}.png{{/if}}"><span>{{name}}</span></li>
+                      <li><div class="image" style="background-image: url('{{#if customImage}}https://graph.facebook.com/v2.6/{{customImage}}/picture?width=300{{else}}/images/default_{{gender}}.png{{/if}}')"></div><div class="name">{{name}}</div></li>
                     {{/each}}
                   </ul>
                   <span class="badge">RX</span>
@@ -29,7 +29,7 @@
                   <h3 class="text-center">{{name}}</h3>
                   <ul>
                     {{#each athletes}}
-                      <li><img src="{{#if customImage}}https://graph.facebook.com/v2.6/{{customImage}}/picture{{else}}/images/default_{{gender}}.png{{/if}}"><span>{{name}}</span></li>
+                      <li><div class="image" style="background-image: url('{{#if customImage}}https://graph.facebook.com/v2.6/{{customImage}}/picture?width=300{{else}}/images/default_{{gender}}.png{{/if}}')"></div><div class="name">{{name}}</div></li>
                     {{/each}}
                   </ul>
                   <span class="badge">SKALERET</span>
