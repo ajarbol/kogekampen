@@ -353,6 +353,13 @@ span.party-icon {
                 font-weight: 700;
                 color: #fff;
                 font-size: 20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                .glyphicon {
+                    display: block;
+                }
             }
             tr:nth-of-type(odd) {
                 background-color: #fff;
@@ -362,6 +369,11 @@ span.party-icon {
                 font-weight: bold;
                 display: inline-block;
                 width: 6rem;  
+            }
+            tr.closed td:not(:first-child) {
+                height: 0px;
+                padding: 0;
+                overflow: hidden;
             }
         }
     }
@@ -379,7 +391,11 @@ table {
         padding: 10px;
     }
     td:first-child {
+        width: 340px;
         font-size: 18px;
+        .glyphicon {
+            display: none;
+        }
     }
     tr:nth-of-type(odd) {
         background-color: #ebebeb;
@@ -387,6 +403,10 @@ table {
     a:hover {
         color: #3CDCB9;
     }
+}
+
+.athleteNames {
+    font-size: 12px;
 }
 
 .sponsor-card {

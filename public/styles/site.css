@@ -9811,14 +9811,24 @@ span.party-icon {
     background-color: #3CDCB9;
     font-weight: 700;
     color: #fff;
-    font-size: 20px; }
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; }
+    table tbody tr td:first-child .glyphicon {
+      display: block; }
   table tbody tr:nth-of-type(odd) {
     background-color: #fff; }
   table tbody td:not(:first-child):before {
     content: attr(data-th);
     font-weight: bold;
     display: inline-block;
-    width: 6rem; } }
+    width: 6rem; }
+  table tbody tr.closed td:not(:first-child) {
+    height: 0px;
+    padding: 0;
+    overflow: hidden; } }
 
 table th {
   background-color: #3CDCB9;
@@ -9831,13 +9841,19 @@ table th, table td {
   padding: 10px; }
 
 table td:first-child {
+  width: 340px;
   font-size: 18px; }
+  table td:first-child .glyphicon {
+    display: none; }
 
 table tr:nth-of-type(odd) {
   background-color: #ebebeb; }
 
 table a:hover {
   color: #3CDCB9; }
+
+.athleteNames {
+  font-size: 12px; }
 
 .sponsor-card {
   max-width: 600px;
@@ -10149,6 +10165,10 @@ section.gray-section {
 .footer-main {
   background-color: #111111;
   padding: 20px; }
+  .footer-main .container {
+    padding-bottom: 0;
+    padding-bottom: constant(safe-area-inset-bottom);
+    padding-bottom: env(safe-area-inset-bottom); }
   .footer-main small {
     position: relative;
     top: 9px;
@@ -10157,40 +10177,31 @@ section.gray-section {
     font-family: 'Open Sans', sans-serif; }
     .footer-main small a {
       color: #777777; }
-
-.footer-main small {
-  position: relative;
-  top: 9px;
-  color: #777777;
-  font-size: 14px;
-  font-family: 'Open Sans', sans-serif; }
-
-.footer-main .social-links a {
-  color: white;
-  display: inline-block;
-  vertical-align: middle;
-  width: 45px;
-  height: 45px;
-  font-size: 17px;
-  text-align: center;
-  line-height: 43px;
-  border: 2px solid #fff;
-  border-radius: 50%; }
-  .footer-main .social-links a:not(:first-child) {
-    margin-left: 10px; }
-  .footer-main .social-links a:hover {
-    background-color: #fff;
-    color: #222222; }
-    .footer-main .social-links a:hover svg g path {
-      fill: #222222; }
-  .footer-main .social-links a a + a {
-    margin-left: 10px; }
-
-.footer-main svg {
-  width: 18px; }
-  .footer-main svg g path {
-    transition: fill .3s ease;
-    fill: white; }
+  .footer-main .social-links a {
+    color: white;
+    display: inline-block;
+    vertical-align: middle;
+    width: 45px;
+    height: 45px;
+    font-size: 17px;
+    text-align: center;
+    line-height: 43px;
+    border: 2px solid #fff;
+    border-radius: 50%; }
+    .footer-main .social-links a:not(:first-child) {
+      margin-left: 10px; }
+    .footer-main .social-links a:hover {
+      background-color: #fff;
+      color: #222222; }
+      .footer-main .social-links a:hover svg g path {
+        fill: #222222; }
+    .footer-main .social-links a a + a {
+      margin-left: 10px; }
+  .footer-main svg {
+    width: 18px; }
+    .footer-main svg g path {
+      transition: fill .3s ease;
+      fill: white; }
 
 @media (max-width: 600px) {
   .footer-main {

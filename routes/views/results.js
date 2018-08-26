@@ -5,12 +5,15 @@ var Result = keystone.list('Result');
 var Wod = keystone.list('Wod');
 var Team = keystone.list('Team');
 var Event = keystone.list('Event');
+var Athlete = keystone.list('Athlete');
 
 var defaultResult = function (teams){
   var obj = { rx: [], scaled: [] };
   _.each(teams, function (team){
     obj[team.division][team._id] = {
+      id: team._id,
       name: team.name,
+      athletes: team.athletes,
       text: '',
       score: 0.0
     };
@@ -88,6 +91,14 @@ var getOrdinal = function (n) {
     v = n%100;
     return n+(s[(v-20)%10]||s[v]||s[0]);
 };
+
+var cfScoreByPosition = function (p) {
+  if (p <= 3) {
+    return 100 - (6 * (p - 1));
+  }
+  else if (p <= 10) return 100 - (4 * p);
+  else return Math.max(80 - (2 * p), 0);
+}
 
 exports = module.exports = function(req, res) {
   
@@ -200,31 +211,59 @@ exports = module.exports = function(req, res) {
                   if (r.score !== wod.results[division][i-1].score) position++;
                 }
                 r.position = getOrdinal(position);
-                locals.masterOrder[division][r.name] = locals.masterOrder[division][r.name] ? locals.masterOrder[division][r.name] + position : position;
+                locals.masterOrder[division][r.id] = {
+                  id: r.id,
+                  name: r.name,
+                  athletes: r.athletes,
+                  positions: locals.masterOrder[division][r.id] ? locals.masterOrder[division][r.id].positions : [],
+                };
+                locals.masterOrder[division][r.id].positions.push(position);
               });
             });
           });
           _.each(locals.masterOrder, function(teams, division){
-            var ts = [];
-            _.each(teams, function(value, name){
-              ts.push({name: name, value: value});
+            locals.masterOrder[division] = Object.keys(teams)
+              .map(teamId => {
+                const team = teams[teamId];
+                return {
+                  id: team.id,
+                  name: team.name,
+                  athletes: team.athletes,
+                  points: team.positions.reduce((a, b) => a + cfScoreByPosition(b), 0),
+                  positions: team.positions.sort()
+                };
+              })
+              .sort(function(a, b){
+                const tieBreakA = a.positions.join('');
+                const tieBreakB = b.positions.join('');
+                if (a.points > b.points)
+                  return -1;
+                else if (a.points < b.points)
+                  return 1;
+                else if (a.points === b.points && tieBreakA < tieBreakB)
+                  return -1
+                else 
+                  return 1;
+              })
+              .map((t, i) => Object.assign(t, { position: i + 1 }));
+          });
+          next();
+        });
+    }
+    else next();
+  });
+
+  view.on('init', function(next) {
+    if (locals.competition) {
+      Athlete.model.find()
+        .where('competition', locals.competition)
+        .exec(function(err, athletes){
+          const athleteMap = {};
+          athletes.forEach(athlete => athleteMap[athlete.id] = athlete);
+          _.each(locals.masterOrder, function(teams, division){
+            locals.masterOrder[division] = teams.map(team => {
+              return Object.assign(team, { athletes: team.athletes.map(id => athleteMap[id] && athleteMap[id].name).join(' · ') });
             });
-            ts.sort(function(a, b){
-              if (a.value < b.value)
-                return -1;
-              else if (a.value > b.value)
-                return 1;
-              else 
-                return 0;
-            });
-            var position = 1;
-            _.each(ts, function(t, i){
-              if (ts[i-1]) {
-                if (t.value !== ts[i-1].value) position++;
-              }
-              t.position = getOrdinal(position);
-            });
-            locals.masterOrder[division] = ts;
           });
           next();
         });

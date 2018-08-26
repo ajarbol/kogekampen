@@ -26,11 +26,13 @@
 				  	</thead>
 			  		<tbody>
 				  		{{#each masterOrder.rx}}
-				  			<tr>
-				  				<td>
-				  					<a href="teams#{{name}}">
-				  						{{name}} ({{position}})
-				  					</a>
+				  			<tr class="closed">
+				  				<td data-role="mobile-expansion">
+			  						<span>
+			  							{{position}}. {{name}} ({{points}}p)
+			  							<div class="athleteNames">{{athletes}}</div>
+			  						</span>
+			  						<span class="glyphicon glyphicon-chevron-down"></span>
 				  				</td>
 				  				{{#each ../wods}}
 				  					{{#each this.results.rx}}
@@ -61,11 +63,13 @@
 				  	</thead>
 			  		<tbody>
 				  		{{#each masterOrder.scaled}}
-				  			<tr>
-				  				<td>
-				  					<a href="teams#{{id}}">
-				  						{{name}} ({{position}})
-				  					</a>
+				  			<tr class="closed">
+				  				<td data-role="mobile-expansion">
+			  						<span>
+			  							{{position}}. {{name}} ({{points}}p)
+			  							<div class="athleteNames">{{athletes}}</div>
+			  						</span>
+			  						<span class="glyphicon glyphicon-chevron-down"></span>
 				  				</td>
 				  				{{#each ../wods}}
 				  					{{#each this.results.scaled}}
@@ -108,4 +112,7 @@
 	    addData(document.querySelectorAll('[data-target="rx"] th'), document.querySelector('[data-target="rx"] tbody'));	    
 	    addData(document.querySelectorAll('[data-target="scaled"] th'), document.querySelector('[data-target="scaled"] tbody'));
 
+	   $('[data-role="mobile-expansion"]').click(function(e) {
+	   	$(this).closest('tr').toggleClass('closed');
+	   })
 	</script>

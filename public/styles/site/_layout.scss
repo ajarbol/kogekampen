@@ -266,6 +266,11 @@ section.gray-section {
 .footer-main {
     background-color: #111111;
     padding: 20px;
+    .container {
+        padding-bottom: 0;
+        padding-bottom: constant(safe-area-inset-bottom);
+        padding-bottom: env(safe-area-inset-bottom);
+    }
     small {
         position: relative;
         top: 9px;
@@ -275,16 +280,6 @@ section.gray-section {
         a {
             color: #777777;
         }
-    }
-}
-
-.footer-main {
-    small {
-        position: relative;
-        top: 9px;
-        color: #777777;
-        font-size: 14px;
-        font-family: 'Open Sans', sans-serif;
     }
     .social-links a {
         color: white;
