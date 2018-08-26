@@ -46,6 +46,9 @@ var scoreTeam = function (type, result, _variation) {
       else return 0;
       break;
     case 'forReps':
+      if (result.hasCap) {
+        return +("."+result.capReps);
+      }
       return result.aloneReps || 0;
     case 'forLoad':
       return result.load || 0;
@@ -68,6 +71,8 @@ var resultText = function (type, result, _variation) {
         }
         return res.hasCap ? 'cap' + (res.capReps && res.capReps !== 0 ? ' +' + res.capReps : '' ) : res.time;
       case 'forReps':
+        if (result.hasCap)
+          return 'cap' + (result.capReps && result.capReps !== 0 ? ' +' + result.capReps : '' );
         return result.aloneReps + ' reps';
       case 'forLoad':
         return result.load + 'kg';
@@ -218,7 +223,7 @@ exports = module.exports = function(req, res) {
                   athletes: r.athletes,
                   positions: locals.masterOrder[division][r.id] ? locals.masterOrder[division][r.id].positions : [],
                 };
-                locals.masterOrder[division][r.id].positions.push(position);
+                if (r.score !== 0.0) locals.masterOrder[division][r.id].positions.push(position);
               });
             });
           });
