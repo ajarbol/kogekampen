@@ -106,6 +106,7 @@ exports = module.exports = function(req, res) {
   var locals = res.locals;
 
   locals.section = 'resultater';
+  locals.title = 'Resultater';
   locals.showBackToHome = true;
   locals.showHeaderInitial = true;
 

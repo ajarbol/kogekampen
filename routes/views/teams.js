@@ -26,7 +26,7 @@ exports = module.exports = function(req, res) {
   // locals.section is used to set the currently selected
   // item in the header navigation.
   locals.section = 'teams';
-
+  locals.title = 'Teams';
   locals.showBackToHome = true;
   locals.showHeaderInitial = true;
 
