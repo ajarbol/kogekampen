@@ -46,8 +46,8 @@ var scoreTeam = function (type, result, _variation) {
       else return 0;
       break;
     case 'forReps':
-      if (result.hasCap) {
-        return +("."+result.capReps);
+      if (result.hasCap && result.capReps) {
+        return -Math.pow(result.capReps, -1);
       }
       return result.aloneReps || 0;
     case 'forLoad':
