@@ -29,6 +29,8 @@ var scoreForTime = function (result) {
       sec = result.capReps ? sec + Math.pow(result.capReps + 1, -1)  : sec + 1;
     }
     return Math.pow(sec, -1);
+  } else if (result.hasCap) {
+    return -result.capReps;
   }
   else return 0;
 }
@@ -37,7 +39,7 @@ var scoreTeam = function (type, result, _variation) {
   _variation = _variation || 0;
   switch (type) {
     case 'forTime':
-      if (result.time) {
+      if (result.time || result.hasCap) {
         return scoreForTime(result);
       }
       else if (result.score.length) {
@@ -47,7 +49,7 @@ var scoreTeam = function (type, result, _variation) {
       break;
     case 'forReps':
       if (result.hasCap && result.capReps) {
-        return -Math.pow(result.capReps, -1);
+        return -result.capReps;
       }
       return result.aloneReps || 0;
     case 'forLoad':
@@ -64,12 +66,13 @@ var resultText = function (type, result, _variation) {
     switch (type) {
       case 'forTime':
         var res = {};
-        if (result.time) {
+        if (result.time || result.hasCap) {
           res = result;
         } else if (result.score.length) {
           res = result.score[_variation];
         }
-        return res.hasCap ? 'cap' + (res.capReps && res.capReps !== 0 ? ' +' + res.capReps : '' ) : res.time;
+        res = res.hasCap ? 'cap' + (res.capReps && res.capReps !== 0 ? ' +' + res.capReps : '' ) : res.time;
+        return res;
       case 'forReps':
         if (result.hasCap)
           return 'cap' + (result.capReps && result.capReps !== 0 ? ' +' + result.capReps : '' );
