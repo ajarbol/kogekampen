@@ -29,7 +29,7 @@ exports = module.exports = function(req, res) {
         locals.hasCountdown = c.startTime - zoneAdjustedNow > 0 ? true : false;
         locals.competition = c;
 
-        if (c.bodyLabBanner || c.noccoBanner || c.barebellsBanner) {
+        if (c.bodyLabBanner || c.noccoBanner || c.barebellsBanner || c.kimsBanner || c.clnBanner) {
           locals.competition.hasSponsor = true;
         } else {
           locals.competition.hasSponsor = false;

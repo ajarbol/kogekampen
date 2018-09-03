@@ -47,7 +47,8 @@ Event.add({
 	bodyLabBanner: { type: Types.Boolean, default: false },
 	noccoBanner: { type: Types.Boolean, default: false },
 	barebellsBanner: { type: Types.Boolean, default: false },
-	kimsBanner: { type: Types.Boolean, default: false }
+	kimsBanner: { type: Types.Boolean, default: false },
+	clnBanner: { type: Types.Boolean, default: false }
 });
 
 Event.relationship({ path: 'wods', ref: 'Wod', refPath: 'competition', many: true });
