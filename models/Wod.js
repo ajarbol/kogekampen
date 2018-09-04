@@ -18,7 +18,7 @@ Wod.add({
   scaledVideoEmbedUrl: { type: Types.Url },
 	finisher: { type: Types.Boolean, default: false }, 
 	released: { type: Types.Boolean, default: false },
-	type: { type: Types.Select, initial: true, options: ['forTime', 'forLoad', 'forReps', 'forLoad + amrap', 'forTime + forReps', 'triplet'], required: true }
+	type: { type: Types.Select, initial: true, options: ['forTime', 'forLoad', 'forReps', 'amrap', 'forLoad + amrap', 'forTime + forReps', 'triplet'], required: true }
 
 });
 

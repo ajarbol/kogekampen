@@ -15,7 +15,7 @@ var defaultResult = function (teams){
       name: team.name,
       athletes: team.athletes,
       text: '',
-      score: 0.0
+      score: null
     };
   });
   return obj;
@@ -45,19 +45,17 @@ var scoreTeam = function (type, result, _variation) {
       else if (result.score.length) {
         return scoreForTime(result.score[_variation]);
       } 
-      else return 0;
+      else return null;
       break;
     case 'forReps':
       if (result.hasCap && result.capReps) {
         return -result.capReps;
       }
-      return result.aloneReps || 0;
+      return result.aloneReps || null;
     case 'forLoad':
-      return result.load || 0;
+      return result.load || null;
     case 'amrap':
-      if (result.rounds) {
-        return result.reps ? result.rounds - Math.pow(result.reps, -1) : result.rounds;
-      } else return 0;
+      return result.reps ? result.rounds - Math.pow(result.reps, -1) : result.rounds;
   }
 };
 
@@ -215,18 +213,20 @@ exports = module.exports = function(req, res) {
               }
               wod.results[division] = sortable.sort(function(a, b) {return b.score - a.score;});
               var position = 1;
+              var currentPosition = position;
               _.each(wod.results[division], function(r, i){
-                if (wod.results[division][i-1]) {
-                  if (r.score !== wod.results[division][i-1].score) position++;
+                if (wod.results[division][i-1] && wod.results[division][i-1].score !== null) {
+                  position++;
+                  if (r.score !== wod.results[division][i-1].score) currentPosition = position;
                 }
-                r.position = getOrdinal(position);
+                r.position = getOrdinal(currentPosition);
                 locals.masterOrder[division][r.id] = {
                   id: r.id,
                   name: r.name,
                   athletes: r.athletes,
                   positions: locals.masterOrder[division][r.id] ? locals.masterOrder[division][r.id].positions : [],
                 };
-                if (r.score !== 0.0) locals.masterOrder[division][r.id].positions.push(position);
+                if (r.score !== null) locals.masterOrder[division][r.id].positions.push(currentPosition);
               });
             });
           });
