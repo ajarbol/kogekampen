@@ -9,7 +9,7 @@
                 {{#each schedules}}
                   <tr>
                     <td style="width:20%;">{{this.startTime}}</td>
-                    <td>{{this.text}}</td>
+                    <td>{{this.text}}{{#if this.requiredTeams}}<div style="font-size: 12px;">{{this.requiredTeams}}{{/if}}</div></td>
                   </tr>
                 {{/each}}
               </tbody>

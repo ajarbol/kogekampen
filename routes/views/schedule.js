@@ -1,6 +1,7 @@
 var keystone = require('keystone');
 
 var Event = keystone.list('Event');
+var Team = keystone.list('Team');
 var Schedule = keystone.list('Schedule');
 
 exports = module.exports = function(req, res) {
@@ -29,13 +30,15 @@ exports = module.exports = function(req, res) {
   view.on('init', function(next) {
     Schedule.model.find()
       .where('competition', locals.competition)
+      .populate('requiredTeams')
       .sort('startTime')
       .exec(function (err, schedules) {
         locals.schedules = schedules.map(s => {
           var d = new Date(s.startTime);
           return {
             startTime: `${d.getHours() < 10 ? `0${d.getHours()}` : d.getHours() + ''}:${d.getMinutes() < 10 ? `0${d.getMinutes()}` : d.getMinutes() + ''}`,
-            text: s.text
+            text: s.text,
+            requiredTeams: s.requiredTeams.map(rt => rt.name).join(' · ')
           };
         });
         next();
