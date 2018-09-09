@@ -43,6 +43,7 @@ Event.add({
 	scaledRequirements: { type: Types.Html, wysiwyg: true },
 	showResultSection: { type: Types.Boolean, default: false },
 	showAthleteSection: { type: Types.Boolean, default: false },
+	showScheduleSection: { type: Types.Boolean, default: false },
 	showTeams: { type: Types.Boolean, default: false },
 	bodyLabBanner: { type: Types.Boolean, default: false },
 	noccoBanner: { type: Types.Boolean, default: false },

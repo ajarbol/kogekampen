@@ -42,6 +42,7 @@ exports = module.exports = function(app) {
 	app.get('/:competition', routes.views.competition);
 	app.get('/:competition/teams', routes.views.teams);
 	app.get('/:competition/resultater', routes.views.results);
+	app.get('/:competition/tidsplan', routes.views.schedule);
 
 	// API
 	app.post('/api/athlete', routes.api.athletePost);

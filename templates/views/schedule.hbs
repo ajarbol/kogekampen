@@ -1,0 +1,19 @@
+{{!< default}}
+    <main>
+      <section>
+        <div class="container header-compensation">
+          <div class="row" style="max-width: 750px; margin: auto;">
+            <table>
+              <tbody>
+                {{#each schedules}}
+                  <tr>
+                    <td style="width:20%;">{{this.startTime}}</td>
+                    <td>{{this.text}}</td>
+                  </tr>
+                {{/each}}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>

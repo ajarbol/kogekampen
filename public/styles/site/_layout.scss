@@ -94,8 +94,11 @@ section.gray-section {
     align-items: center;
 }
 
-.header-main .container {
+.header-main .header-inner {
     position: relative;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 15px;
     .back-to-home {
         position: fixed;
         top: 15px;
