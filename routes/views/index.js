@@ -17,7 +17,7 @@ exports = module.exports = function(req, res) {
 				if (err) return res.err(err);
 				locals.nextCompetition = cs.find(c => new Date(c.startTime) > new Date());
 				locals.competitions = cs
-				.filter(c => locals.nextCompetition ? c.key !== locals.nextCompetition.key : false)
+				.filter(c => locals.nextCompetition ? c.key !== locals.nextCompetition.key : true)
 				.sort(function(a,b){
 				  // Turn your strings into dates, and then subtract them
 				  // to get a value that is either negative, positive, or zero.

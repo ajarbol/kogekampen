@@ -78,7 +78,7 @@
 			    </div>
 				{{else}}
 					{{#if schedules.length}}
-		    		<div class="info-box">
+		    		<a href="/{{competition.key}}/tidsplan" class="info-box">
 		    			<ul>
 		    				{{#each schedules}}
 		    					<li>
@@ -86,7 +86,7 @@
 		    					</li>
 		    				{{/each}}
 		    			</ul>
-		    		</div>
+		    		</a>
 		    	{{/if}}
 				{{/if}}
 		    </article>
@@ -340,7 +340,7 @@
 		    	var timeout = null;
 		    	var oneTheMinute = function () {
 		    		$.each(times, function(i, time){
-		    			var num = $(time).text() + 0;
+		    			var num = $(time).text() - 1;
 		    			if (num < 0) {
 		    				window.location.reload();
 		    			}

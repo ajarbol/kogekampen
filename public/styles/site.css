@@ -10281,7 +10281,8 @@ section.gray-section {
       .subheader .info-box {
         font-size: 16px;
         border-top: 1px solid #e3e3e3;
-        background-color: rgba(51, 122, 183, 0.6); }
+        background-color: rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(10px); }
         .subheader .info-box span {
           font-size: 12px; } }
     @media (max-width: 320px) {
