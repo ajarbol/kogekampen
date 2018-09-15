@@ -342,7 +342,7 @@
 		    		$.each(times, function(i, time){
 		    			var num = $(time).text() - 1;
 		    			if (num < 0) {
-		    				//window.location.reload();
+		    				window.location.reload();
 		    			}
 		    			else {
 		    				$(time).text(num);
@@ -350,7 +350,7 @@
 		    		});
 		    		timeout = setTimeout(oneTheMinute, 1000 * 60);
 		    	}
-		    	setTimeout(oneTheMinute(), 1000 * 60);
+		    	setTimeout(oneTheMinute, 1000 * 60);
 		    }
 
 			// WOD CTRL
