@@ -340,7 +340,7 @@
 		    	var timeout = null;
 		    	var oneTheMinute = function () {
 		    		$.each(times, function(i, time){
-		    			var num = $(time).text() - 1;
+		    			var num = $(time).text() + 0;
 		    			if (num < 0) {
 		    				window.location.reload();
 		    			}
