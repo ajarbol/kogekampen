@@ -77,7 +77,7 @@ exports = module.exports = function(req, res) {
     return diffMs > 0 ? Math.round((diffMs * 0.001) / 60) : 0;
   };
 
-  /* view.on('init', function(next) {
+  view.on('init', function(next) {
     var now = new Date();
     Schedule.model.find()
       .where('competition', locals.competition)
@@ -94,7 +94,7 @@ exports = module.exports = function(req, res) {
         });
         next();
       });
-  }); */
+  });
   
   // Render the view
   view.render('competition');
