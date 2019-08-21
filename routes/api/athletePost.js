@@ -11,7 +11,7 @@ exports = module.exports = function(req, res) {
 
 	if (!req.body.name) return res.status(400).json({'error': 'Du mangler dit navn...'});
 	if (!req.body.gender) return res.status(400).json({'error': 'Du mangler at vælge køn...'});
-	if (!req.body.division) return res.status(400).json({'error': 'Du mangler at vælge række...'});
+	if (!req.body.division) return res.status(400).json({'error': 'Du mangler at vælge niveau...'});
 
 	Event.model.findById(req.body.eventId, function(err, event) {
 

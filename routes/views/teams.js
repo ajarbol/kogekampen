@@ -18,8 +18,7 @@ var sortByTime = function(a, b){
   return new Date(a.timestamp) - new Date(b.timestamp);
 };
 
-var allowedRx = 20;
-var allowedScaled = 25;
+var totalAllowed = 45;
 
 exports = module.exports = function(req, res) {
   
@@ -89,8 +88,17 @@ exports = module.exports = function(req, res) {
             }
           });
 
-          var nonWaitlistRx = rxAthletes.male.concat(rxAthletes.female).slice(0, allowedRx).sort(sortByTime);
-          var nonWaitlistScaled = scaledAthletes.male.concat(scaledAthletes.female).slice(0, allowedScaled).sort(sortByTime);
+          var rxSubs = rxAthletes.male.concat(rxAthletes.female).sort(sortByTime);
+          var scaledSubs = scaledAthletes.male.concat(scaledAthletes.female).sort(sortByTime);
+
+          var totalSubsCount = rxSubs + scaledSubs;
+          var excess = totalAllowed - totalSubsCount;
+
+          var allowedRx = excess > 0 ? Math.ceil((totalAllowed / 2) - excess) : Math.ceil(totalAllowed / 2);
+          var allowedScaled = excess > 0 ? Math.floor((totalAllowed / 2) - excess) : Math.floor(totalAllowed / 2);
+
+          var nonWaitlistRx = rxSubs.slice(0, allowedRx).sort(sortByTime);
+          var nonWaitlistScaled = scaledSubs.slice(0, allowedScaled).sort(sortByTime);
 
           locals.rxAthletes = splitInHalf(nonWaitlistRx);
           locals.scaledAthletes = splitInHalf(nonWaitlistScaled);
@@ -98,8 +106,8 @@ exports = module.exports = function(req, res) {
           var totalRx = rxAthletes.male.length + rxAthletes.female.length;
           var totalScaled = scaledAthletes.male.length + scaledAthletes.female.length;
           
-          var waitlistRx = rxAthletes.male.concat(rxAthletes.female).slice(allowedRx, totalRx).sort(sortByTime);
-          var waitlistScaled = scaledAthletes.male.concat(scaledAthletes.female).slice(allowedScaled, totalScaled).sort(sortByTime);
+          var waitlistRx = rxSubs.slice(allowedRx, totalRx).sort(sortByTime);
+          var waitlistScaled = scaledSubs.slice(allowedScaled, totalScaled).sort(sortByTime);
 
           if (waitlistRx.length) locals.rxWaitlist = splitInHalf(waitlistRx);
           if (waitlistScaled.length) locals.scaledWaitlist = splitInHalf(waitlistScaled);
