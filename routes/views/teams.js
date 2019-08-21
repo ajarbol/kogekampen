@@ -18,6 +18,9 @@ var sortByTime = function(a, b){
   return new Date(a.timestamp) - new Date(b.timestamp);
 };
 
+var allowedRx = 20;
+var allowedScaled = 25;
+
 exports = module.exports = function(req, res) {
   
   var view = new keystone.View(req, res);
@@ -86,14 +89,17 @@ exports = module.exports = function(req, res) {
             }
           });
 
-          var nonWaitlistRx = rxAthletes.male.slice(0, 18).concat(rxAthletes.female.slice(0, 9)).sort(sortByTime);
-          var nonWaitlistScaled = scaledAthletes.male.slice(0, 18).concat(scaledAthletes.female.slice(0, 9)).sort(sortByTime);
+          var nonWaitlistRx = rxAthletes.male.concat(rxAthletes.female).slice(0, allowedRx).sort(sortByTime);
+          var nonWaitlistScaled = scaledAthletes.male.concat(scaledAthletes.female).slice(0, allowedScaled).sort(sortByTime);
 
           locals.rxAthletes = splitInHalf(nonWaitlistRx);
           locals.scaledAthletes = splitInHalf(nonWaitlistScaled);
+
+          var totalRx = rxAthletes.male.length + rxAthletes.female.length;
+          var totalScaled = scaledAthletes.male.length + scaledAthletes.female.length;
           
-          var waitlistRx = rxAthletes.male.slice(18, rxAthletes.male.length).concat(rxAthletes.female.slice(9, rxAthletes.female.length)).sort(sortByTime);
-          var waitlistScaled = scaledAthletes.male.slice(18, scaledAthletes.male.length).concat(scaledAthletes.female.slice(9, scaledAthletes.female.length)).sort(sortByTime);
+          var waitlistRx = rxAthletes.male.concat(rxAthletes.female).slice(allowedRx, totalRx).sort(sortByTime);
+          var waitlistScaled = scaledAthletes.male.concat(scaledAthletes.female).slice(allowedScaled, totalScaled).sort(sortByTime);
 
           if (waitlistRx.length) locals.rxWaitlist = splitInHalf(waitlistRx);
           if (waitlistScaled.length) locals.scaledWaitlist = splitInHalf(waitlistScaled);
