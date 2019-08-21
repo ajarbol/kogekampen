@@ -69,6 +69,7 @@ exports = module.exports = function(req, res) {
         });
     }
     else {
+      locals.title = 'Tilmeldinger';
       Athlete.model.find()
         .where('competition', locals.competition)
         .where('accepted', true)

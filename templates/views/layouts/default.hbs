@@ -90,6 +90,13 @@
 									</li>
 								{{/if}}
 								{{#if competition.showAthleteSection}}
+									{{#unless competition.showTeams}}
+										<li>
+											<a href="/{{competition.key}}/teams">tilmeldinger</a>
+										</li>
+									{{/unless}}
+								{{/if}}
+								{{#if competition.showTeams}}
 									<li>
 										<a href="/{{competition.key}}/teams">TEAMS</a>
 									</li>

@@ -2,6 +2,7 @@ main {
     min-height: 100vh;
 }
 section {
+    min-height: 100vh;
     padding: 50px 0;
     background-color: #fff
 }
@@ -30,7 +31,9 @@ section.extra-padding {
     padding: 140px 0;
 }
 
-section p {
+section p,
+section ol,
+section ul {
     font-size: 19px;
     color: #555555;
     line-height: 24px
@@ -888,6 +891,18 @@ input[type="checkbox"]:checked+.check-box-item {
         }
         @media (max-width: 768px) {
             margin-bottom: 50px;
+        }
+        ul {
+            li {
+                margin: 0 25px;
+                display: flex;
+                text-align: left;
+                align-items: center;
+            }
+            .name {
+                margin-left: 10px;
+
+            }
         }
     }
     .teams-box {

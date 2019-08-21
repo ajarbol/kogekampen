@@ -9952,6 +9952,7 @@ main {
   min-height: 100vh; }
 
 section {
+  min-height: 100vh;
   padding: 50px 0;
   background-color: #fff; }
 
@@ -9974,7 +9975,9 @@ section h1 {
 section.extra-padding {
   padding: 140px 0; }
 
-section p, section .workout-desc .desc-wrap ul li, .workout-desc .desc-wrap ul section li {
+section p, section .workout-desc .desc-wrap ul li, .workout-desc .desc-wrap ul section li,
+section ol,
+section ul {
   font-size: 19px;
   color: #555555;
   line-height: 24px; }
@@ -10651,6 +10654,13 @@ input[type="checkbox"]:checked + .check-box-item {
   @media (max-width: 768px) {
     .teams-section .athletes-box {
       margin-bottom: 50px; } }
+  .teams-section .athletes-box ul li {
+    margin: 0 25px;
+    display: flex;
+    text-align: left;
+    align-items: center; }
+  .teams-section .athletes-box ul .name {
+    margin-left: 10px; }
 
 .teams-section .teams-box {
   position: relative;

@@ -41,17 +41,17 @@
       {{/if}}
       {{#unless competition.showTeams}}
         <div class="container header-compensation" style="max-width: 1000px;">
-          <h1>TEAMS</h1>
+          <h1>TILMELDINGER</h1>
           <div class="row">
             <div class="col-sm-6">
               <div class="athletes-box">
-                <h2>RX Række</h2>
+                <h2>Øvet</h2>
                 <div class="row">
                   {{#each rxAthletes}}
                   <div class="col-xs-6">
                     <ul>
                       {{#each this}}
-                        <li><img src="{{#if customImage}}https://graph.facebook.com/v2.6/{{customImage}}/picture{{else}}/images/default_{{gender}}.png{{/if}}"><span>{{name}}</span></li>
+                        <li><div class="image" style="background-image: url('{{#if customImage}}https://graph.facebook.com/v2.6/{{customImage}}/picture?width=300{{else}}/images/default_{{gender}}.png{{/if}}')"></div><div class="name">{{name}}</div></li>
                       {{/each}}
                     </ul>
                   </div>
@@ -64,7 +64,7 @@
                     <div class="col-xs-6">
                       <ul>
                         {{#each this}}
-                          <li><img src="{{#if customImage}}https://graph.facebook.com/v2.6/{{customImage}}/picture{{else}}/images/default_{{gender}}.png{{/if}}"><span>{{name}}</span></li>
+                          <li><div class="image" style="background-image: url('{{#if customImage}}https://graph.facebook.com/v2.6/{{customImage}}/picture?width=300{{else}}/images/default_{{gender}}.png{{/if}}')"></div><div class="name">{{name}}</div></li>
                         {{/each}}
                       </ul>
                     </div>
@@ -75,13 +75,13 @@
             </div>
             <div class="col-sm-6">
               <div class="athletes-box">
-                <h2>Skaleret Række</h2>
+                <h2>Mindre øvet</h2>
                 <div class="row">
                   {{#each scaledAthletes}}
                   <div class="col-xs-6">
                     <ul>
                       {{#each this}}
-                        <li><img src="{{#if customImage}}https://graph.facebook.com/v2.6/{{customImage}}/picture{{else}}/images/default_{{gender}}.png{{/if}}"><span>{{name}}</span></li>
+                        <li><div class="image" style="background-image: url('{{#if customImage}}https://graph.facebook.com/v2.6/{{customImage}}/picture?width=300{{else}}/images/default_{{gender}}.png{{/if}}')"></div><div class="name">{{name}}</div></li>
                       {{/each}}
                     </ul>
                   </div>
@@ -94,7 +94,7 @@
                       <div class="col-xs-6">
                         <ul>
                           {{#each this}}
-                            <li><img src="{{#if customImage}}https://graph.facebook.com/v2.6/{{customImage}}/picture{{else}}/images/default_{{gender}}.png{{/if}}"><span>{{name}}</span></li>
+                            <li><div class="image" style="background-image: url('{{#if customImage}}https://graph.facebook.com/v2.6/{{customImage}}/picture?width=300{{else}}/images/default_{{gender}}.png{{/if}}')"></div><div class="name">{{name}}</div></li>
                           {{/each}}
                         </ul>
                       </div>
