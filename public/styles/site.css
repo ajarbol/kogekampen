@@ -10353,16 +10353,14 @@ section.gray-section {
     margin: 35px auto; }
   .subheader .container.counter-compensation {
     padding-bottom: 75px; }
-  .subheader .counter {
-    bottom: 100px; }
-    .subheader .counter h5 {
-      margin-bottom: 20px; }
-    .subheader .counter ul.countdown li + li {
-      margin-left: 18px; }
-    .subheader .counter ul.countdown li + li:before {
-      -ms-transform: translate(-13px, -50%);
-      -webkit-transform: translate(-13px, -50%);
-      transform: translate(-13px, -50%); } }
+  .subheader .counter h5 {
+    margin-bottom: 20px; }
+  .subheader .counter ul.countdown li + li {
+    margin-left: 18px; }
+  .subheader .counter ul.countdown li + li:before {
+    -ms-transform: translate(-13px, -50%);
+    -webkit-transform: translate(-13px, -50%);
+    transform: translate(-13px, -50%); } }
 
 label {
   display: block;
