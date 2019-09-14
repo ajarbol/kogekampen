@@ -18,7 +18,7 @@ var sortByTime = function(a, b){
   return new Date(a.timestamp) - new Date(b.timestamp);
 };
 
-var totalAllowed = 45;
+var totalAllowed = 30;
 
 exports = module.exports = function(req, res) {
   
