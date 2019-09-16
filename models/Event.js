@@ -39,6 +39,7 @@ Event.add({
 	coverImage: imageType,
 	logoImage: imageType,
 	socialBanner: imageType,
+	hasMultiLevels: { type: Types.Boolean, default: true },
 	rxRequirements: { type: Types.Html, wysiwyg: true },
 	scaledRequirements: { type: Types.Html, wysiwyg: true },
 	showResultSection: { type: Types.Boolean, default: false },

@@ -63,6 +63,14 @@ exports = module.exports = function(req, res) {
           else {
             return {
               name: wod.name,
+              rx: {
+                desc: '<center><em>Kommer snart!</em></center>',
+                embedUrl: false
+              },
+              scaled: {
+                desc: '<center><em>Kommer snart!</em></center>',
+                embedUrl: false
+              },
               finisher: wod.finisher,
               released: wod.released
             };

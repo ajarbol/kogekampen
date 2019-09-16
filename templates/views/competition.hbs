@@ -127,11 +127,13 @@
 		  		<div class="container">
 			  		<h1>WODS</h1>
 			  		<form class="wod-control">
-			  			<h3>Vælg en række:</h3>
-			  			<select data-action="division-select">
-				            <option value="rx" selected>RX række</option>
-				            <option value="scaled">Skaleret række</option>
-				        </select>
+			  			{{#if competition.hasMultiLevel}}
+				  			<h3>Vælg en række:</h3>
+				  			<select data-action="division-select">
+					            <option value="rx" selected>RX række</option>
+					            <option value="scaled">Skaleret række</option>
+					        </select>
+					    {{/if}}
 				  		<div class="row">
 				  		{{#each wods}}
 				  			<div class="col-sm-3">

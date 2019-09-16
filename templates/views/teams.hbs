@@ -48,7 +48,7 @@
                 <h2>Øvet</h2>
                 <div class="row">
                   {{#each rxAthletes}}
-                  <div class="col-xs-6">
+                  <div class="col-sm-6 col-xs-12">
                     <ul>
                       {{#each this}}
                         <li><div class="image" style="background-image: url('{{#if customImage}}https://graph.facebook.com/v2.6/{{customImage}}/picture?width=300{{else}}/images/default_{{gender}}.png{{/if}}')"></div><div class="name">{{name}}</div></li>
@@ -61,7 +61,7 @@
                   <h4>På venteliste</h4>
                   <div class="row">
                     {{#each rxWaitlist}}
-                    <div class="col-xs-6">
+                    <div class="col-sm-6 col-xs-12">
                       <ul>
                         {{#each this}}
                           <li><div class="image" style="background-image: url('{{#if customImage}}https://graph.facebook.com/v2.6/{{customImage}}/picture?width=300{{else}}/images/default_{{gender}}.png{{/if}}')"></div><div class="name">{{name}}</div></li>
