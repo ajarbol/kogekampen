@@ -4,18 +4,20 @@
 	  		<div class="container header-compensation">
 		  		<p>Kogekampen bruger en standard point struktur til at score hvert event. Se den <a style="text-decoration: underline;" href="https://s3.amazonaws.com/crossfitpubliccontent/CFG2017-40-100PtTable.png" target="_blank">her</a>.</p>
 		  		<p>Hvis du ikke ser de nyeste resultater så prøv at <a style="text-decoration: underline;" href="#" onclick="(function(){window.location.reload();})()">refresh siden</a>.</p>
-		  		<div class="show-xs">
-		  			<h3>Vælg en række:</h3>
-		  			<form>
-			  			<select data-action="division-select">
-				            <option value="rx" selected>RX række</option>
-				            <option value="scaled">Skaleret række</option>
-				        </select>
-				    </form>
-				</div>
-				<h2 class="hide-xs">RX række</h2>
-				<table class="results" data-role="results" data-target="rx">
-					<thead>
+		  		{{#if competition.hasMultiLevels}}
+			  		<div class="show-xs">
+			  			<h3>Vælg en række:</h3>
+			  			<form>
+				  			<select data-action="division-select">
+					            <option value="rx" selected>RX række</option>
+					            <option value="scaled">Skaleret række</option>
+					        </select>
+					    </form>
+						</div>
+						<h2 class="hide-xs">RX række</h2>
+					{{/if}}
+					<table class="results" data-role="results" data-target="rx">
+						<thead>
 			  			<tr>
 			  				<th></th>
 			  			{{#each wods}}
@@ -50,43 +52,45 @@
 				  		{{/each}}
 			  		</tbody>
 		  		</table>
-		  		<h2 class="hide-xs">Skaleret række</h2>
-		  		<table class="results" data-role="results" data-target="scaled" class="hide-xs">
-		  			<thead>
-			  			<tr>
-			  				<th></th>
-			  			{{#each wods}}
-				  			<th>
-				  				{{this.name}}
-				  			</th>
-				  		{{/each}}
-				  		</tr>
-				  	</thead>
-			  		<tbody>
-				  		{{#each masterOrder.scaled}}
-				  			<tr class="closed">
-				  				<td data-role="mobile-expansion">
-			  						<span>
-			  							{{position}}. {{name}} ({{points}}p)
-			  							<div class="athleteNames">{{athletes}}</div>
-			  						</span>
-			  						<span class="glyphicon glyphicon-chevron-down"></span>
-				  				</td>
-				  				{{#each ../wods}}
-				  					{{#each this.results.scaled}}
-				  						{{#ifEq this.name ../../name}}
-				  							{{#if this.score}}
-				  								<td><b>{{this.position}}</b> ({{this.text}})</td>
-				  							{{else}}
-				  								<td>-</td>
-				  							{{/if}}
-				  						{{/ifEq}}
-				  					{{/each}}
-				  				{{/each}}
-				  			</tr>
-				  		{{/each}}
-				  	</tbody>
-		  		</table>
+		  		{{#if competition.hasMultiLevels}}
+			  		<h2 class="hide-xs">Skaleret række</h2>
+			  		<table class="results" data-role="results" data-target="scaled" class="hide-xs">
+			  			<thead>
+				  			<tr>
+				  				<th></th>
+				  			{{#each wods}}
+					  			<th>
+					  				{{this.name}}
+					  			</th>
+					  		{{/each}}
+					  		</tr>
+					  	</thead>
+				  		<tbody>
+					  		{{#each masterOrder.scaled}}
+					  			<tr class="closed">
+					  				<td data-role="mobile-expansion">
+				  						<span>
+				  							{{position}}. {{name}} ({{points}}p)
+				  							<div class="athleteNames">{{athletes}}</div>
+				  						</span>
+				  						<span class="glyphicon glyphicon-chevron-down"></span>
+					  				</td>
+					  				{{#each ../wods}}
+					  					{{#each this.results.scaled}}
+					  						{{#ifEq this.name ../../name}}
+					  							{{#if this.score}}
+					  								<td><b>{{this.position}}</b> ({{this.text}})</td>
+					  							{{else}}
+					  								<td>-</td>
+					  							{{/if}}
+					  						{{/ifEq}}
+					  					{{/each}}
+					  				{{/each}}
+					  			</tr>
+					  		{{/each}}
+					  	</tbody>
+			  		</table>
+			  	{{/if}}
 	  		</div>
 	  	</section>
 	</main>

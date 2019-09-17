@@ -3,7 +3,9 @@
     <section class="teams-section gray-section">
       {{#if competition.showTeams}}
         <div class="container header-compensation">
-          <h1>RX Række</h1>
+          {{#if competition.hasMultiLevels}}
+            <h1>RX Række</h1>
+          {{/if}}
           <div class="row">
             {{#each rxTeams}}
               <div class="col-xs-12 col-sm-6 col-md-4">
@@ -15,28 +17,32 @@
                       <li><div class="image" style="background-image: url('{{#if customImage}}https://graph.facebook.com/v2.6/{{customImage}}/picture?width=300{{else}}/images/default_{{gender}}.png{{/if}}')"></div><div class="name">{{name}}</div></li>
                     {{/each}}
                   </ul>
-                  <span class="badge">RX</span>
+                  {{#if competition.hasMultiLevels}}
+                    <span class="badge">RX</span>
+                  {{/if}}
                 </div>
               </div>
             {{/each}}
           </div>
-          <h1>Skaleret Række</h1>
-          <div class="row">
-            {{#each scaledTeams}}
-              <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="teams-box">
-                  <a class="anchor" name="{{name}}"></a>
-                  <h3 class="text-center">{{name}}</h3>
-                  <ul>
-                    {{#each athletes}}
-                      <li><div class="image" style="background-image: url('{{#if customImage}}https://graph.facebook.com/v2.6/{{customImage}}/picture?width=300{{else}}/images/default_{{gender}}.png{{/if}}')"></div><div class="name">{{name}}</div></li>
-                    {{/each}}
-                  </ul>
-                  <span class="badge">SKALERET</span>
+          {{#if competition.hasMultiLevels}}
+            <h1>Skaleret Række</h1>
+            <div class="row">
+              {{#each scaledTeams}}
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                  <div class="teams-box">
+                    <a class="anchor" name="{{name}}"></a>
+                    <h3 class="text-center">{{name}}</h3>
+                    <ul>
+                      {{#each athletes}}
+                        <li><div class="image" style="background-image: url('{{#if customImage}}https://graph.facebook.com/v2.6/{{customImage}}/picture?width=300{{else}}/images/default_{{gender}}.png{{/if}}')"></div><div class="name">{{name}}</div></li>
+                      {{/each}}
+                    </ul>
+                    <span class="badge">SKALERET</span>
+                  </div>
                 </div>
-              </div>
-            {{/each}}
-          </div>
+              {{/each}}
+            </div>
+          {{/if}}
         </div>
       {{/if}}
       {{#unless competition.showTeams}}
@@ -78,7 +84,7 @@
                 <h2>Mindre øvet</h2>
                 <div class="row">
                   {{#each scaledAthletes}}
-                  <div class="col-xs-6">
+                  <div class="col-sm-6 col-xs-12">
                     <ul>
                       {{#each this}}
                         <li><div class="image" style="background-image: url('{{#if customImage}}https://graph.facebook.com/v2.6/{{customImage}}/picture?width=300{{else}}/images/default_{{gender}}.png{{/if}}')"></div><div class="name">{{name}}</div></li>
@@ -91,7 +97,7 @@
                   <h4>På venteliste</h4>
                   <div class="row">
                     {{#each scaledWaitlist}}
-                      <div class="col-xs-6">
+                      <div class="col-sm-6 col-xs-12">
                         <ul>
                           {{#each this}}
                             <li><div class="image" style="background-image: url('{{#if customImage}}https://graph.facebook.com/v2.6/{{customImage}}/picture?width=300{{else}}/images/default_{{gender}}.png{{/if}}')"></div><div class="name">{{name}}</div></li>
