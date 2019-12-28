@@ -7,7 +7,7 @@
     "cloudinary": "^1.2.4",
     "dotenv": "^1.1.0",
     "express-handlebars": "^1.1.0",
-    "handlebars": "^2.0.0",
+    "handlebars": "^4.3.0",
     "keystone": "git://github.com/ajarbol/keystone#master",
     "moment": "^2.10.6",
     "node-sass": "^3.3.2",
