@@ -9,7 +9,7 @@
     "express-handlebars": "^1.1.0",
     "handlebars": "^2.0.0",
     "keystone": "git://github.com/ajarbol/keystone#master",
-    "moment": "^2.10.6",
+    "moment": "^2.29.4",
     "node-sass": "^3.3.2",
     "node-sass-middleware": "^0.9.7",
     "underscore": "^1.8.3"
